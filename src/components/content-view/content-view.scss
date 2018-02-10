@@ -1,0 +1,21 @@
+content-view {
+	.viewModeToolbar {
+		.toolbar-background {
+			background: transparent;
+		}
+		.toolbar-content {
+			.modeButton {
+				background: transparent;
+				border: 2px solid #666;
+				border-radius: 0;
+				color: #666;
+			    padding: 8px 12px;
+    			height: auto;
+				&.active {
+					background-color: #666;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
