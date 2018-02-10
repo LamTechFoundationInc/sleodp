@@ -1,0 +1,16 @@
+<!-- Generated template for the ContentViewComponent component -->
+<div>
+	<ion-toolbar class="viewModeToolbar">
+		<button ion-button (click)="setMapMode(true)" [ngClass]="{'active': mapMode}" class="modeButton" float-left>
+			<i class="fa fa-globe"></i> &nbsp;Map
+		</button>
+		<ion-title text-uppercase text-center>{{ resultRegion }}</ion-title>
+		<button ion-button (click)="setMapMode(false)" [ngClass]="{'active': !mapMode}" class="modeButton" float-right end>
+			<i class="fa fa-table"></i> &nbsp;Table
+		</button>
+	</ion-toolbar>
+	<map-view *ngIf="mapMode" [resultRegion]="resultRegion">
+	</map-view>
+	<table-view *ngIf="!mapMode" [resultRegion]="resultRegion">
+	</table-view>
+</div>

@@ -1,0 +1,39 @@
+<!--
+  Generated template for the PresidentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="dark">
+    <button ion-button menuToggle>
+      <i class="fa fa-navicon"></i>
+    </button>
+    <ion-title text-uppercase text-center>sloedp</ion-title>
+    <button ion-button menuToggle end>
+      <i class="fa fa-ellipsis-h"></i>
+    </button>
+  </ion-toolbar>
+  <ion-navbar color="dark">
+    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>
+      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}
+    </a>
+    <ion-title>
+      {{year}} Presidential Elections
+    </ion-title>
+    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>
+      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>
+    </a>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides (ionSlideDidChange)="slideChanged()">
+
+    <ion-slide *ngFor="let p of subpages">
+      <content-view type="president" [year]="p.year"></content-view>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
