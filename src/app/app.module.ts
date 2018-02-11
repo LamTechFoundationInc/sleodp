@@ -1,3 +1,5 @@
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -20,6 +22,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// Providers
+import { DataProvider } from '../providers/data/data';
+
 @NgModule({
   declarations: [
   // App
@@ -37,6 +42,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     NgbModule.forRoot()
   ],
@@ -52,7 +59,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider
   ]
 })
 export class AppModule {}

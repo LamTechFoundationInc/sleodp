@@ -31,8 +31,8 @@
 <ion-content padding>
   <ion-slides (ionSlideDidChange)="slideChanged()">
 
-    <ion-slide *ngFor="let p of subpages">
-      <content-view type="president" [year]="p.year"></content-view>
+    <ion-slide *ngFor="let p of subpages; let i = index">
+      <content-view type="president" [year]="p.year" #president_{{i}}></content-view>
     </ion-slide>
 
   </ion-slides>

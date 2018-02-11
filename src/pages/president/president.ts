@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+
+import { DataProvider } from '../../providers/data/data';
+
+import { ContentViewComponent } from '../../components/content-view/content-view';
 
 /**
  * Generated class for the PresidentPage page.
@@ -17,6 +21,7 @@ import { Slides } from 'ionic-angular';
 })
 export class PresidentPage {
   @ViewChild(Slides) slides: Slides;
+  @ViewChildren(ContentViewComponent) subPageViews: any;
   subpages:		Array<{year: Number}>;
   totalPages:	Number;
   year:			Number;
@@ -26,34 +31,46 @@ export class PresidentPage {
   prevEnabled:	Boolean;
   nextEnabled:	Boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
   	this.prevEnabled = false;
     this.nextEnabled = false;
     this.year = 0;
     this.prevYear = 0;
     this.nextYear = 0;
-
-  	this.subpages = [
-      { year: 2012},
-      { year: 2013},
-      { year: 2014}
-    ];
-
-    this.totalPages = this.subpages.length;
-    if (this.totalPages > 0) {
-    	this.year = this.subpages[0].year;
-    }
-
-    if (this.totalPages > 1) {
-    	this.nextEnabled = true;
-    	this.nextYear = this.subpages[1].year;
-    }
+    this.subpages = [];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PresidentPage');
+    this.load();
   }
 
+  ionViewDidEnter() {
+    this.subPageViews._results[0].setMapInit();
+  }
+
+// Load Subpages
+  load() {
+    this.dataService.loadPresidents()
+      .then(data => {
+        this.subpages = data;
+        this.setPageInfo();
+      });
+  }
+
+  setPageInfo() {
+    this.totalPages = this.subpages.length;
+    if (this.totalPages > 0) {
+      this.year = this.subpages[0].year;
+      // this.subPageViews._results[0].setMapInit();
+    }
+
+    if (this.totalPages > 1) {
+      this.nextEnabled = true;
+      this.nextYear = this.subpages[1].year;
+    }
+  }
+
+// Page Setting
   setPrevPage() {
   	this.slides.slideTo(this.slides.getActiveIndex() - 1, 500);
   }
@@ -65,7 +82,8 @@ export class PresidentPage {
   slideChanged() {
   	let currentIndex = this.slides.getActiveIndex();
   	if (currentIndex == this.totalPages) return;
-
+    
+    this.subPageViews._results[currentIndex].setMapInit();
   	this.prevEnabled = !this.slides.isBeginning();
   	this.nextEnabled = !this.slides.isEnd();
 
