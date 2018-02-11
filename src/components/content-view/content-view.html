@@ -9,8 +9,8 @@
 			<i class="fa fa-table"></i> &nbsp;Table
 		</button>
 	</ion-toolbar>
-	<map-view *ngIf="mapMode" [resultRegion]="resultRegion">
+	<map-view *ngIf="mapMode" [resultRegion]="resultRegion" [year]="year" #mapview>
 	</map-view>
-	<table-view *ngIf="!mapMode" [resultRegion]="resultRegion">
+	<table-view *ngIf="!mapMode" [resultRegion]="resultRegion" [year]="year">
 	</table-view>
 </div>

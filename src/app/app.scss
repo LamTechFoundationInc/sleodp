@@ -46,6 +46,11 @@ ion-navbar {
 		}
 	}
 }
+ion-content {
+	.scroll-content {
+		padding-top: 4px !important;
+	}	
+}
 .swiper-slide {
 	display: block;
 }

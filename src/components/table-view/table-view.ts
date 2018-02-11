@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the TableViewComponent component.
@@ -12,6 +12,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TableViewComponent {
 
+  @Input('year') year;
   @Input('resultRegion') resultRegion;
 
   constructor() {
