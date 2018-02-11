@@ -55,16 +55,25 @@ export class MapViewComponent {
 			'data': '../../assets/maps/SLE_adm2_simp_001.json'
 			});
 			map.addLayer({
-			'id': 'disctricts',
-			'type': 'fill',
-			'source': "districts-layer",
-			'paint': {
-			    'fill-color': 'rgba(100, 0, 0, 1)',
-			    'fill-outline-color': 'rgba(255, 255, 255, 0.5)',
-			    "fill-opacity": 0.3
-			}
-			});
+				'id': 'disctricts',
+				'type': 'fill',
+				'source': "districts-layer",
+				'paint': {
+				    'fill-color': 'rgba(100, 0, 0, 1)',
+				    'fill-outline-color': 'rgba(255, 255, 255, 1)',
+				    "fill-opacity": 0.3,
 
+				},
+			});
+			map.addLayer({
+				'id': 'disctricts-line',
+				'type': 'line',
+				'source': "districts-layer",
+				'paint': {
+					'line-width': 3,
+					'line-color': 'rgba(255, 255, 255, 1)'
+				},
+			});
 			map.addLayer({
 				"id": "disctricts-highlighted",
 				"type": "fill",

@@ -42,7 +42,8 @@ export class ContentViewComponent {
 
   setMapInit() {
     setTimeout((...args: any[]) => {
-      this.mapView.drawMap();
+      if (this.mapView)
+        this.mapView.drawMap();
     }, 10)
   }
 }

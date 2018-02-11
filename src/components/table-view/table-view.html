@@ -1,4 +1,15 @@
 <!-- Generated template for the TableViewComponent component -->
 <div>
-  Table
+	<div class="row header">
+		<div class="col">Candidate</div>
+		<div class="col">Party</div>
+		<div class="col">Votes</div>
+		<div class="col">%</div>
+	</div>
+	<div class="row" *ngFor="let data of datas">
+		<div class="col">{{data.name}}</div>
+		<div class="col">{{data.party}}</div>
+		<div class="col">{{data.votes}}</div>
+		<div class="col">{{data.percent}}</div>
+	</div>
 </div>
