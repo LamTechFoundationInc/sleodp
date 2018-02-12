@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 376:
+/***/ 380:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParliamentPageModule", function() { return ParliamentPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VillageHeadmanPageModule", function() { return VillageHeadmanPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parliament__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__village_headman__ = __webpack_require__(131);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ParliamentPageModule = (function () {
-    function ParliamentPageModule() {
+var VillageHeadmanPageModule = (function () {
+    function VillageHeadmanPageModule() {
     }
-    ParliamentPageModule = __decorate([
+    VillageHeadmanPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */],
+                __WEBPACK_IMPORTED_MODULE_2__village_headman__["a" /* VillageHeadmanPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__village_headman__["a" /* VillageHeadmanPage */]),
             ],
         })
-    ], ParliamentPageModule);
-    return ParliamentPageModule;
+    ], VillageHeadmanPageModule);
+    return VillageHeadmanPageModule;
 }());
 
-//# sourceMappingURL=parliament.module.js.map
+//# sourceMappingURL=village-headman.module.js.map
 
 /***/ })
 

@@ -1,4 +1,4 @@
-webpackJsonp([6],{
+webpackJsonp([8],{
 
 /***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -111,7 +111,7 @@ var ChairpersonPage = (function () {
     ], ChairpersonPage.prototype, "subPageViews", void 0);
     ChairpersonPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chairperson',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/,
+            selector: 'page-chairperson',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/chairperson/chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/chairperson/chairperson.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], ChairpersonPage);
@@ -233,7 +233,7 @@ var CouncilorPage = (function () {
     ], CouncilorPage.prototype, "subPageViews", void 0);
     CouncilorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-councilor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/,
+            selector: 'page-councilor',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/councilor/councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/councilor/councilor.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], CouncilorPage);
@@ -355,7 +355,7 @@ var MayorPage = (function () {
     ], MayorPage.prototype, "subPageViews", void 0);
     MayorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mayor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Mayoral Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/,
+            selector: 'page-mayor',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/mayor/mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Mayoral Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/mayor/mayor.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], MayorPage);
@@ -477,7 +477,7 @@ var ParliamentPage = (function () {
     ], ParliamentPage.prototype, "subPageViews", void 0);
     ParliamentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-parliament',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/,
+            selector: 'page-parliament',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/parliament/parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/parliament/parliament.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], ParliamentPage);
@@ -599,7 +599,7 @@ var PresidentPage = (function () {
     ], PresidentPage.prototype, "subPageViews", void 0);
     PresidentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-president',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/,
+            selector: 'page-president',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/president/president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/president/president.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], PresidentPage);
@@ -713,7 +713,7 @@ var VillageHeadmanPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */])
     ], VillageHeadmanPage.prototype, "slides", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChildren */])(__WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__["a" /* ContentViewComponent */]),
@@ -721,12 +721,11 @@ var VillageHeadmanPage = (function () {
     ], VillageHeadmanPage.prototype, "subPageViews", void 0);
     VillageHeadmanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-village-headman',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/'<!--\n  Generated template for the VillageHeadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} VillageHeadman Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/,
+            selector: 'page-village-headman',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/village-headman/village-headman.html"*/'<!--\n  Generated template for the VillageHeadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} VillageHeadman Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/village-headman/village-headman.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], VillageHeadmanPage);
     return VillageHeadmanPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=village-headman.js.map
@@ -756,27 +755,35 @@ webpackEmptyAsyncContext.id = 145;
 var map = {
 	"../pages/chairperson/chairperson.module": [
 		373,
-		5
+		7
 	],
 	"../pages/councilor/councilor.module": [
 		374,
-		4
+		6
 	],
 	"../pages/mayor/mayor.module": [
 		375,
-		3
+		5
 	],
-	"../pages/parliament/parliament.module": [
+	"../pages/pariament/pariament.module": [
 		376,
-		2
-	],
-	"../pages/president/president.module": [
-		377,
 		1
 	],
-	"../pages/village-headman/village-headman.module": [
+	"../pages/parliament/parliament.module": [
+		377,
+		4
+	],
+	"../pages/president-national/president-national.module": [
 		378,
 		0
+	],
+	"../pages/president/president.module": [
+		379,
+		3
+	],
+	"../pages/village-headman/village-headman.module": [
+		380,
+		2
 	]
 };
 function webpackAsyncContext(req) {
@@ -914,7 +921,7 @@ var MapViewComponent = (function () {
     ], MapViewComponent.prototype, "region", void 0);
     MapViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'map-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map">\n	</div>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/
+            selector: 'map-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/map-view/map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map">\n	</div>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/map-view/map-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["e" /* LoadingController */]])
     ], MapViewComponent);
@@ -963,7 +970,7 @@ var RangeViewComponent = (function () {
     };
     RangeViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'range-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_center\')">Results By Polling Center</button>\n	<button ion-item (click)="seletGranularity(\'polling_station\')">Results By Polling Station</button>\n</ion-list>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/
+            selector: 'range-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/range-view/range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_center\')">Results By Polling Center</button>\n	<button ion-item (click)="seletGranularity(\'polling_station\')">Results By Polling Station</button>\n</ion-list>'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/range-view/range-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], RangeViewComponent);
@@ -1075,7 +1082,9 @@ var AppModule = (function () {
                         { loadChildren: '../pages/chairperson/chairperson.module#ChairpersonPageModule', name: 'ChairpersonPage', segment: 'chairperson', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/councilor/councilor.module#CouncilorPageModule', name: 'CouncilorPage', segment: 'councilor', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mayor/mayor.module#MayorPageModule', name: 'MayorPage', segment: 'mayor', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pariament/pariament.module#PariamentPageModule', name: 'PariamentPage', segment: 'pariament', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/parliament/parliament.module#ParliamentPageModule', name: 'ParliamentPage', segment: 'parliament', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/president-national/president-national.module#PresidentNationalPageModule', name: 'PresidentNationalPage', segment: 'president-national', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/president/president.module#PresidentPageModule', name: 'PresidentPage', segment: 'president', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/village-headman/village-headman.module#VillageHeadmanPageModule', name: 'VillageHeadmanPage', segment: 'village-headman', priority: 'low', defaultHistory: [] }
                     ]
@@ -1383,7 +1392,7 @@ var ContentViewComponent = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1__components_map_view_map_view__["a" /* MapViewComponent */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__components_map_view_map_view__["a" /* MapViewComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__components_map_view_map_view__["a" /* MapViewComponent */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__components_map_view_map_view__["a" /* MapViewComponent */])
     ], ContentViewComponent.prototype, "mapView", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('year'),
@@ -1399,12 +1408,11 @@ var ContentViewComponent = (function () {
     ], ContentViewComponent.prototype, "region", void 0);
     ContentViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'content-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-toolbar class="viewModeToolbar">\n		<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n			<i class="fa fa-globe"></i> &nbsp;Map\n		</button>\n		<ion-title text-uppercase text-center>{{ resultRegion }}</ion-title>\n		<ion-buttons end>\n			<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton" float-right>\n				<i class="fa fa-table"></i> &nbsp;Table\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<map-view *ngIf="mapMode" [year]="year" [region]="region" #mapview>\n	</map-view>\n	<table-view *ngIf="!mapMode" [year]="year" [region]="region">\n	</table-view>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/
+            selector: 'content-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/content-view/content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-toolbar class="viewModeToolbar">\n		<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n			<i class="fa fa-globe"></i> &nbsp;Map\n		</button>\n		<ion-title text-uppercase text-center>{{ resultRegion }}</ion-title>\n		<ion-buttons end>\n			<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton" float-right>\n				<i class="fa fa-table"></i> &nbsp;Table\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<map-view *ngIf="mapMode" [year]="year" [region]="region" #mapview>\n	</map-view>\n	<table-view *ngIf="!mapMode" [year]="year" [region]="region">\n	</table-view>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/content-view/content-view.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], ContentViewComponent);
     return ContentViewComponent;
-    var _a;
 }());
 
 //# sourceMappingURL=content-view.js.map
@@ -1481,7 +1489,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/app/app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1531,7 +1539,7 @@ var HeaderViewComponent = (function () {
     };
     HeaderViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'header-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end>\n			<button ion-button icon-only (click)="selectRange($event)" style="margin-right: 15px;">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/
+            selector: 'header-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/header-view/header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end>\n			<button ion-button icon-only (click)="selectRange($event)" style="margin-right: 15px;">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/header-view/header-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */]])
     ], HeaderViewComponent);
@@ -1611,7 +1619,7 @@ var TableViewComponent = (function () {
     ], TableViewComponent.prototype, "region", void 0);
     TableViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'table-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<div class="row header">\n		<div class="col">Candidate</div>\n		<div class="col">Party</div>\n		<div class="col">Votes</div>\n		<div class="col">%</div>\n	</div>\n	<div class="row" *ngFor="let data of datas">\n		<div class="col">{{data.name}}</div>\n		<div class="col">{{data.party}}</div>\n		<div class="col">{{data.votes}}</div>\n		<div class="col">{{data.percent}}</div>\n	</div>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/
+            selector: 'table-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/table-view/table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<div class="row header">\n		<div class="col">Candidate</div>\n		<div class="col">Party</div>\n		<div class="col">Votes</div>\n		<div class="col">%</div>\n	</div>\n	<div class="row" *ngFor="let data of datas">\n		<div class="col">{{data.name}}</div>\n		<div class="col">{{data.party}}</div>\n		<div class="col">{{data.votes}}</div>\n		<div class="col">{{data.percent}}</div>\n	</div>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/table-view/table-view.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TableViewComponent);

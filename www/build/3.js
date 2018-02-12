@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 375:
+/***/ 379:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MayorPageModule", function() { return MayorPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PresidentPageModule", function() { return PresidentPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mayor__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__president__ = __webpack_require__(130);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MayorPageModule = (function () {
-    function MayorPageModule() {
+var PresidentPageModule = (function () {
+    function PresidentPageModule() {
     }
-    MayorPageModule = __decorate([
+    PresidentPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__mayor__["a" /* MayorPage */],
+                __WEBPACK_IMPORTED_MODULE_2__president__["a" /* PresidentPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mayor__["a" /* MayorPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__president__["a" /* PresidentPage */]),
             ],
         })
-    ], MayorPageModule);
-    return MayorPageModule;
+    ], PresidentPageModule);
+    return PresidentPageModule;
 }());
 
-//# sourceMappingURL=mayor.module.js.map
+//# sourceMappingURL=president.module.js.map
 
 /***/ })
 
