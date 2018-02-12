@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { LoadingController } from 'ionic-angular/index';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
@@ -9,27 +9,24 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
  * Components.
  */
 @Component({
-  selector: 'map-view',
-  templateUrl: 'map-view.html'
+	selector: 'map-view',
+	templateUrl: 'map-view.html'
 })
 export class MapViewComponent {
-  @Input('year') year;
-  @Input('resultRegion') resultRegion;
-  
-  isLoaded: Boolean;
-  
-  constructor(public loadingCtrl: LoadingController) {
-    console.log('Hello MapViewComponent Component');
-    
-  }
+	@Input('year') year;
+	@Input('region') region;
 
-  ngAfterViewInit() {
-  	this.isLoaded = false;
-  }
+	isLoaded: Boolean;
+  
+	constructor(public loadingCtrl: LoadingController) {
+		console.log('Hello MapViewComponent Component');    
+	}
 
-  drawMap() {
-  	if (!this.isLoaded) {
-  		this.isLoaded = true;
+	ngAfterViewInit() {
+		this.isLoaded = false;
+	}
+	
+	drawMap() {
 		let mapContainer = this.year+"_map";
 	  	// Create the popup
 	    let loadingPopup = this.loadingCtrl.create({
@@ -39,25 +36,27 @@ export class MapViewComponent {
 	    // Show the popup
 	    loadingPopup.present();
 
+	    let sourceUrl = '../../assets/maps/' + this.region + '.geojson';
+
 	    // Map Init
 	  	mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW5qaW4iLCJhIjoiY2pkaXFleWJrMG9rNDJxcHJrNXNnN2d4NiJ9.sRB7ZJ05xbMZYyw5YvO7SQ';
-			var map = new mapboxgl.Map({
-				style: 'mapbox://styles/mapbox/light-v9',
-				center: [-11.779889, 8.460555],
-				zoom: 6.3,
-				container: mapContainer
-			});
+		var map = new mapboxgl.Map({
+			style: 'mapbox://styles/mapbox/light-v9',
+			center: [-11.779889, 8.460555],
+			zoom: 6.3,
+			container: mapContainer
+		});
 
-			map.on('load', function () {
+		map.on('load', function () {
 			// Add a layer showing the state polygons.
-			map.addSource("districts-layer", {
+			map.addSource("map-layer", {
 			'type': 'geojson',
-			'data': '../../assets/maps/SLE_adm2_simp_001.json'
+			'data': sourceUrl
 			});
 			map.addLayer({
-				'id': 'disctricts',
+				'id': 'map',
 				'type': 'fill',
-				'source': "districts-layer",
+				'source': "map-layer",
 				'paint': {
 				    'fill-color': 'rgba(100, 0, 0, 1)',
 				    'fill-outline-color': 'rgba(255, 255, 255, 1)',
@@ -66,49 +65,49 @@ export class MapViewComponent {
 				},
 			});
 			map.addLayer({
-				'id': 'disctricts-line',
+				'id': 'map-line',
 				'type': 'line',
-				'source': "districts-layer",
+				'source': "map-layer",
 				'paint': {
 					'line-width': 3,
 					'line-color': 'rgba(255, 255, 255, 1)'
 				},
 			});
 			map.addLayer({
-				"id": "disctricts-highlighted",
+				"id": "map-highlighted",
 				"type": "fill",
-				"source": "districts-layer",
+				"source": "map-layer",
 				"paint": {
 				    'fill-color': 'rgba(100, 0, 0, 1)',
 				    'fill-outline-color': 'rgba(255, 255, 255, 0.5)',
 				    "fill-opacity": 1.0
 				},
-				"filter": ["in", "NAME_2", ""]
+				"filter": ["in", "Name", ""]
 				});
 
 				// When a click event occurs on a feature in the states layer, open a popup at the
 				// location of the click, with description HTML from its properties.
 			map.on('click', function(e) {
 				// set bbox as 5px reactangle area around clicked point
-				var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
-				var features = map.queryRenderedFeatures(bbox, { layers: ['disctricts'] });
+				var bbox = [[e.point.x, e.point.y], [e.point.x, e.point.y]];
+				var features = map.queryRenderedFeatures(bbox, { layers: ['map'] });
 				// Run through the selected features and set a filter
 				// to match features with unique FIPS codes to activate
-				// the `disctricts-highlighted` layer.
+				// the `map-highlighted` layer.
 				var filter = features.reduce(function(memo, feature) {
-				    memo.push(feature.properties.NAME_2);
+				    memo.push(feature.properties.Name);
 				    return memo;
-				}, ['in', 'NAME_2']);
+				}, ['in', 'Name']);
 
-				map.setFilter("disctricts-highlighted", filter);
+				map.setFilter("map-highlighted", filter);
 				});
 
 				// disable map zoom when using scroll
 				map.scrollZoom.disable();
 				map.doubleClickZoom.disable();
-			});
+			}
+		);
 
-			loadingPopup.dismiss();
-  	}
-  }
+		loadingPopup.dismiss();
+	}
 }

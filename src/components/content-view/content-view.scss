@@ -3,20 +3,18 @@ content-view {
 		.toolbar-background {
 			background: transparent;
 		}
-		.toolbar-content {
-			.modeButton {
-				background: transparent;
-				border: 2px solid #666;
-				border-radius: 0;
-				color: #666;
-			    padding: 5px 10px;
-			    margin: 0;
-    			height: auto;
-    			font-size: 14px;
-				&.active {
-					background-color: #666;
-					color: #fff;
-				}
+		.modeButton {
+			background: transparent !important;
+			border: 2px solid #666 !important;
+			border-radius: 0 !important;
+			color: #666 !important;
+		    padding: 5px 10px !important;
+		    margin: 0 !important;
+			height: auto !important;
+			font-size: 14px !important;
+			&.active {
+				background-color: #666 !important;
+				color: #fff !important;
 			}
 		}
 	}
