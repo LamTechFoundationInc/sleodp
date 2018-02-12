@@ -25682,6 +25682,12 @@ ion-header ion-toolbar {
   border-bottom: 1px solid #fff;
 }
 
+ion-header ion-navbar {
+  min-height: 34px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 ion-header ion-navbar .toolbar-content a {
   color: white;
 }
@@ -25710,19 +25716,19 @@ ion-header ion-navbar .toolbar-content ion-icon {
 }
 
 ion-content .fixed-content {
-  margin-top: 112px;
+  margin-top: 102px;
 }
 
 ion-content .scroll-content {
-  margin-top: 112px;
+  margin-top: 102px;
 }
 
 ion-content.content-ios .fixed-content {
-  margin-top: 88px;
+  margin-top: 78px;
 }
 
 ion-content.content-ios .scroll-content {
-  margin-top: 88px;
+  margin-top: 78px;
   padding-top: 4px !important;
 }
 
@@ -25730,8 +25736,18 @@ ion-content.content-ios .scroll-content {
   display: block;
 }
 
+content-view .viewModeToolbar {
+  padding: 0;
+  padding-bottom: 4px;
+  min-height: auto;
+}
+
 content-view .viewModeToolbar .toolbar-background {
   background: transparent;
+}
+
+content-view .viewModeToolbar .toolbar-title {
+  font-size: 1.5rem;
 }
 
 content-view .viewModeToolbar .modeButton {
@@ -25758,6 +25774,10 @@ map-view {
   right: 0;
 }
 
+map-view .small {
+  font-size: 0.8rem;
+}
+
 map-view .view-container {
   position: relative;
   width: 100%;
@@ -25769,12 +25789,65 @@ map-view .view-container .map {
   top: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 60%;
 }
 
 map-view .view-container .map canvas {
   width: 100% !important;
   height: 100% !important;
+  left: 0;
+}
+
+map-view .view-container .election-details {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 40%;
+}
+
+map-view .view-container .election-details > div {
+  padding-top: 10px;
+}
+
+map-view .view-container .election-details .party-card {
+  width: 60%;
+  height: 12px;
+  margin: auto;
+  margin-top: 2px;
+}
+
+map-view .view-container .election-details .election-competitors {
+  font-size: 14px;
+  padding-top: 50px;
+}
+
+map-view .view-container .election-details .election-competitors ion-col .card {
+  border: 2px solid #000;
+  height: 20px;
+  line-height: 16px;
+  position: relative;
+}
+
+map-view .view-container .election-details .election-competitors ion-col .card img {
+  width: 70%;
+  max-height: none;
+  position: absolute;
+  bottom: 0;
+}
+
+map-view .view-container .election-details .election-competitors ion-col:first-child .card {
+  border-left: none;
+}
+
+map-view .view-container .election-details .election-competitors ion-col:first-child .card img {
+  right: 0;
+}
+
+map-view .view-container .election-details .election-competitors ion-col:last-child .card {
+  border-right: none;
+}
+
+map-view .view-container .election-details .election-competitors ion-col:last-child .card img {
   left: 0;
 }
 

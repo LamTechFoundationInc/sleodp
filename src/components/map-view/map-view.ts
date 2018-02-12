@@ -1,6 +1,7 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoadingController } from 'ionic-angular/index';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the MapViewComponent component.
@@ -15,10 +16,21 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 export class MapViewComponent {
 	@Input('year') year;
 	@Input('region') region;
+	@Input('type') type;
+
+	parties:    Array<string>;
+
+	valid_votes = 0;
+	invalid_votes = 0;
+	total_votes = 0;
+	result_status = 0;
 
 	isLoaded: Boolean;
+	firstParty = { name: "APC", color: "#cf2a27", percent: "34", votes: "34" };
+	secondParty = { name: "SLPP", color: "#009e0f", percent: "33", votes: "33" };
+	otherParty = { percent: "33", votes: "33" };
   
-	constructor(public loadingCtrl: LoadingController) {
+	constructor(public loadingCtrl: LoadingController, public dataService: DataProvider) {
 		console.log('Hello MapViewComponent Component');    
 	}
 
@@ -26,6 +38,13 @@ export class MapViewComponent {
 		this.isLoaded = false;
 	}
 	
+	loadParties() {
+		this.dataService.loadParties()
+		.then(data => {
+			this.parties = data;
+		});
+	}
+
 	drawMap() {
 		let mapContainer = this.year+"_map";
 	  	// Create the popup
@@ -43,7 +62,7 @@ export class MapViewComponent {
 		var map = new mapboxgl.Map({
 			style: 'mapbox://styles/mapbox/light-v9',
 			center: [-11.779889, 8.460555],
-			zoom: 6.3,
+			zoom: 6.2,
 			container: mapContainer
 		});
 
@@ -83,10 +102,10 @@ export class MapViewComponent {
 				    "fill-opacity": 1.0
 				},
 				"filter": ["in", "Name", ""]
-				});
+			});
 
-				// When a click event occurs on a feature in the states layer, open a popup at the
-				// location of the click, with description HTML from its properties.
+			// When a click event occurs on a feature in the states layer, open a popup at the
+			// location of the click, with description HTML from its properties.
 			map.on('click', function(e) {
 				// set bbox as 5px reactangle area around clicked point
 				var bbox = [[e.point.x, e.point.y], [e.point.x, e.point.y]];

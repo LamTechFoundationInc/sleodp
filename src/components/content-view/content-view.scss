@@ -1,7 +1,13 @@
 content-view {
 	.viewModeToolbar {
+		padding: 0;
+		padding-bottom: 4px;
+		min-height: auto;
 		.toolbar-background {
 			background: transparent;
+		}
+		.toolbar-title {
+			font-size: 1.5rem;
 		}
 		.modeButton {
 			background: transparent !important;

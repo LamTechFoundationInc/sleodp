@@ -20,6 +20,9 @@ ion-header {
 		border-bottom: 1px solid #fff;
 	}
 	ion-navbar {
+		min-height: 34px !important;
+	    padding-top: 0 !important;
+    	padding-bottom: 0 !important;
 		.toolbar-content {
 			a {
 				color: white;
@@ -51,17 +54,17 @@ ion-header {
 
 ion-content {
 	.fixed-content {
-		margin-top: 112px;
+		margin-top: 102px;
 	}
 	.scroll-content {
-		margin-top: 112px;
+		margin-top: 102px;
 	}
 	&.content-ios {
 		.fixed-content {
-			margin-top: 88px;
+			margin-top: 78px;
 		}
 		.scroll-content {
-			margin-top: 88px;
+			margin-top: 78px;
 			padding-top: 4px !important;
 		}
 	}
