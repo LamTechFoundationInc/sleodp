@@ -15,41 +15,56 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-toolbar {
-	border-bottom: 1px solid #fff;
-}
-ion-navbar {
-	.toolbar-content {
-		a {
-			color: white;
-		}
-		ion-title {
-		    left: 0;
-		    top: 0;
-		    padding: 0 90px 1px;
-		    position: absolute;
-		    width: 100%;
-		    height: 100%;
-		    -webkit-transform: translateZ(0);
-		    transform: translateZ(0);
-		    pointer-events: none;
+ion-header {
+	ion-toolbar {
+		border-bottom: 1px solid #fff;
+	}
+	ion-navbar {
+		.toolbar-content {
+			a {
+				color: white;
+			}
+			ion-title {
+			    left: 0;
+			    top: 0;
+			    padding: 0 90px 1px;
+			    position: absolute;
+			    width: 100%;
+			    height: 100%;
+			    -webkit-transform: translateZ(0);
+			    transform: translateZ(0);
+			    pointer-events: none;
 
-		    .toolbar-title {
-		    	text-align: center;
-				font-weight: 300;
-				font-size: 14px;
+			    .toolbar-title {
+			    	text-align: center;
+					font-weight: 300;
+					font-size: 14px;
+				}
+			}
+			ion-icon {
+				font-size: 3.4rem;
+				vertical-align: middle;
 			}
 		}
-		ion-icon {
-			font-size: 3.4rem;
-			vertical-align: middle;
+	}	
+}
+
+ion-content {
+	.fixed-content {
+		margin-top: 112px;
+	}
+	.scroll-content {
+		margin-top: 112px;
+	}
+	&.content-ios {
+		.fixed-content {
+			margin-top: 88px;
+		}
+		.scroll-content {
+			margin-top: 88px;
+			padding-top: 4px !important;
 		}
 	}
-}
-ion-content {
-	.scroll-content {
-		padding-top: 4px !important;
-	}	
 }
 .swiper-slide {
 	display: block;

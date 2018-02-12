@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
 export class TableViewComponent {
 
   @Input('year') year;
-  @Input('resultRegion') resultRegion;
+  @Input('region') region;
 
   datas: any;
 

@@ -5,12 +5,14 @@
 			<i class="fa fa-globe"></i> &nbsp;Map
 		</button>
 		<ion-title text-uppercase text-center>{{ resultRegion }}</ion-title>
-		<button ion-button (click)="setMapMode(false)" [ngClass]="{'active': !mapMode}" class="modeButton" float-right end>
-			<i class="fa fa-table"></i> &nbsp;Table
-		</button>
+		<ion-buttons end>
+			<button ion-button (click)="setMapMode(false)" [ngClass]="{'active': !mapMode}" class="modeButton" float-right>
+				<i class="fa fa-table"></i> &nbsp;Table
+			</button>
+		</ion-buttons>
 	</ion-toolbar>
-	<map-view *ngIf="mapMode" [resultRegion]="resultRegion" [year]="year" #mapview>
+	<map-view *ngIf="mapMode" [year]="year" [region]="region" #mapview>
 	</map-view>
-	<table-view *ngIf="!mapMode" [resultRegion]="resultRegion" [year]="year">
+	<table-view *ngIf="!mapMode" [year]="year" [region]="region">
 	</table-view>
 </div>

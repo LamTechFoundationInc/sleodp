@@ -4,10 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { PresidentPage } from '../pages/president/president';
-import { PariamentPage } from '../pages/pariament/pariament';
+import { ParliamentPage } from '../pages/parliament/parliament';
 import { MayorPage } from '../pages/mayor/mayor';
 import { ChairpersonPage } from '../pages/chairperson/chairperson';
 import { CouncilorPage } from '../pages/councilor/councilor';
+import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,10 +26,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'President', component: PresidentPage },
-      { title: 'Pariament', component: PariamentPage },
+      { title: 'Parliament', component: ParliamentPage },
       { title: 'Mayor', component: MayorPage },
       { title: 'Chairperson', component: ChairpersonPage },
-      { title: 'Councilor', component: CouncilorPage }
+      { title: 'Councilor', component: CouncilorPage },
+      { title: 'VillageHeadman', component: VillageHeadmanPage }
     ];
 
   }
