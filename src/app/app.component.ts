@@ -26,7 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'President', component: PresidentPage },
-      { title: 'Parliament', component: ParliamentPage },
+      { title: 'Member of Parliament', component: ParliamentPage },
       { title: 'Mayor', component: MayorPage },
       { title: 'Chairperson', component: ChairpersonPage },
       { title: 'Councilor', component: CouncilorPage },

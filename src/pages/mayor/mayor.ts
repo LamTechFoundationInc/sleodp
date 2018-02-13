@@ -44,7 +44,7 @@ export class MayorPage {
     this.subpages = [];
     this.subscription = this.dataService.getGranularity().subscribe(granularity => { 
       this.granularity = granularity;
-      if (granularity == "polling_center" || granularity == "polling_station") {
+      if (granularity == "polling_centre" || granularity == "polling_station") {
         this.region = "village";
       }
       else

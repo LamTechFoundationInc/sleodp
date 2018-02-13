@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
-import { PopoverController } from 'ionic-angular';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { NavController, PopoverController } from 'ionic-angular';
 import { RangeViewComponent } from '../range-view/range-view';
+import { Platform } from 'ionic-angular';
+import { PresidentPage } from '../../pages/president/president';
+import { ParliamentPage } from '../../pages/parliament/parliament';
+import { MayorPage } from '../../pages/mayor/mayor';
+import { ChairpersonPage } from '../../pages/chairperson/chairperson';
+import { CouncilorPage } from '../../pages/councilor/councilor';
+import { VillageHeadmanPage } from '../../pages/village-headman/village-headman';
 
 /**
  * Generated class for the HeaderViewComponent component.
@@ -14,10 +21,22 @@ import { RangeViewComponent } from '../range-view/range-view';
 })
 export class HeaderViewComponent {
 
-  text: string;
+  isTablet: boolean;
+  isDesktop: boolean;
 
-  constructor(public popoverCtrl: PopoverController) {
-    console.log('Hello HeaderViewComponent Component');
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public plt: Platform, public el: ElementRef, public rd: Renderer2) {
+    this.isTablet = this.plt.is('tablet');
+    this.isDesktop = this.plt.is('core');
+  }
+
+  ngAfterViewInit() {
+    if (this.isDesktop) {
+      setTimeout((...args: any[]) => {
+        let view = this.navCtrl.getActive();
+        let selected = this.el.nativeElement.querySelector('ion-segment-button.' + view.component.name);
+        this.rd.addClass(selected, 'active');
+      }, 100);
+    }
   }
 
   selectRange(event) {
@@ -27,4 +46,26 @@ export class HeaderViewComponent {
     });
   }
 
+  selectedType(type) {
+    switch (type) {
+      case "president":
+        this.navCtrl.setRoot(PresidentPage)
+        break;
+      case "parliament":
+        this.navCtrl.setRoot(ParliamentPage)
+        break;
+      case "mayor":
+        this.navCtrl.setRoot(MayorPage)
+        break;
+      case "councilor":
+        this.navCtrl.setRoot(CouncilorPage)
+        break;
+      case "villageheadman":
+        this.navCtrl.setRoot(VillageHeadmanPage)
+        break;
+      default:
+        // code...
+        break;
+    }
+  }
 }

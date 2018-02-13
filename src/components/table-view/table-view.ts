@@ -20,7 +20,6 @@ export class TableViewComponent {
   datas: any;
 
   constructor(public dataService: DataProvider) {
-    console.log('Hello TableViewComponent Component');
     this.datas = [{
   		name: 'Kamara Samura',
   		party: 'APC',

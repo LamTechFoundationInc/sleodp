@@ -1,5 +1,8 @@
 import { Component, Input, ViewChild } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { MapViewComponent } from '../../components/map-view/map-view';
+import { DataProvider } from '../../providers/data/data';
+
 /**
  * Generated class for the ContentViewComponent component.
  *
@@ -17,11 +20,21 @@ export class ContentViewComponent {
   @Input('type') type;
   @Input('region') region;
 
+  granularity: string;
+
   mapMode: boolean;
   firstTime: boolean;
   resultRegion: string;
 
-  constructor() {
+  results: any;
+  
+  isTablet: Boolean;
+  isDesktop: Boolean;
+  
+  constructor(public dataService: DataProvider, public plt: Platform) {
+    this.isTablet = this.plt.is('tablet');
+    this.isDesktop = this.plt.is('core');
+    
     this.firstTime = true;
     this.setMapMode(true);
   }
@@ -30,6 +43,8 @@ export class ContentViewComponent {
   }
 
   setMapMode(mode) {
+    if (this.mapMode == mode) return;
+
   	this.mapMode = mode;
     if (this.firstTime) {
       this.firstTime = false;
@@ -43,8 +58,14 @@ export class ContentViewComponent {
     }
   }
 
+  seletGranularity(granularity) {
+    this.dataService.setGranularity(granularity);
+  }
+
   setContentView(region, granularity) {
+    this.granularity = granularity;
     setTimeout((...args: any[]) => {
+      this.mapView.loadResults();
       this.setMapInit(region);
       this.setTableInit(region);
       this.setResultRegion(granularity);
@@ -53,7 +74,6 @@ export class ContentViewComponent {
 
   setMapInit(region) {
     if (this.mapView) {
-      this.mapView.loadParties();
       this.mapView.drawMap();
     }
   }
@@ -67,6 +87,9 @@ export class ContentViewComponent {
       case "nation":
         this.resultRegion = "National Results";
         break;
+      case "region":
+        this.resultRegion = "Results By Region";
+        break;
       case "district":
         this.resultRegion = "Results By District";
         break;
@@ -76,11 +99,8 @@ export class ContentViewComponent {
       case "ward":
         this.resultRegion = "Result By Ward";
         break;
-      case "polling_center":
+      case "polling_centre":
         this.resultRegion = "Result By Polling Center";
-        break;
-      case "polling_station":
-        this.resultRegion = "Result By Polling Station";
         break;
       default:
         this.resultRegion = "";

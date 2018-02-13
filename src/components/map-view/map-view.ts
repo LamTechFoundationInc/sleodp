@@ -18,31 +18,32 @@ export class MapViewComponent {
 	@Input('region') region;
 	@Input('type') type;
 
-	parties:    Array<string>;
-
-	valid_votes = 0;
-	invalid_votes = 0;
-	total_votes = 0;
-	result_status = 0;
+	result: any;
 
 	isLoaded: Boolean;
-	firstParty = { name: "APC", color: "#cf2a27", percent: "34", votes: "34" };
-	secondParty = { name: "SLPP", color: "#009e0f", percent: "33", votes: "33" };
-	otherParty = { percent: "33", votes: "33" };
-  
+	
 	constructor(public loadingCtrl: LoadingController, public dataService: DataProvider) {
-		console.log('Hello MapViewComponent Component');    
+		this.result = {
+			'ResultStatus': "",
+			'TotalVotes': "",
+			'ValidVotes': "",
+			'InvalidVotes': "",
+			'electionParties': []
+		};
 	}
 
 	ngAfterViewInit() {
 		this.isLoaded = false;
 	}
 	
-	loadParties() {
-		this.dataService.loadParties()
-		.then(data => {
-			this.parties = data;
-		});
+	loadResults() {		
+		var fields = {
+			year: this.year,
+			type: this.type,
+			region: this.region
+		}
+
+		this.result = this.dataService.loadResultsByFields(fields);
 	}
 
 	drawMap() {
@@ -55,7 +56,7 @@ export class MapViewComponent {
 	    // Show the popup
 	    loadingPopup.present();
 
-	    let sourceUrl = '../../assets/maps/' + this.region + '.geojson';
+	    let sourceUrl = 'assets/maps/' + this.region + '.geojson';
 
 	    // Map Init
 	  	mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW5qaW4iLCJhIjoiY2pkaXFleWJrMG9rNDJxcHJrNXNnN2d4NiJ9.sRB7ZJ05xbMZYyw5YvO7SQ';
@@ -63,6 +64,7 @@ export class MapViewComponent {
 			style: 'mapbox://styles/mapbox/light-v9',
 			center: [-11.779889, 8.460555],
 			zoom: 6.2,
+			attributionControl: false,
 			container: mapContainer
 		});
 

@@ -25678,6 +25678,15 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.box {
+  background: white;
+  border: 1px solid #dadada;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.2);
+  -ms-box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.2);
+  -o-box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.2);
+}
+
 ion-header ion-toolbar {
   border-bottom: 1px solid #fff;
 }
@@ -25720,7 +25729,7 @@ ion-content .scroll-content {
 }
 
 .platform-mobile ion-navbar {
-  min-height: 34px !important;
+  min-height: 44px !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -25735,17 +25744,29 @@ ion-content .scroll-content {
 }
 
 .platform-mobile ion-content .fixed-content {
-  margin-top: 78px;
+  margin-top: 102px;
 }
 
 .platform-mobile ion-content .scroll-content {
-  margin-top: 78px;
+  margin-top: 102px;
   padding-top: 4px !important;
+}
+
+.platform-ios ion-navbar {
+  min-height: 34px !important;
+}
+
+.platform-ios ion-content .fixed-content {
+  margin-top: 78px;
+}
+
+.platform-ios ion-content .scroll-content {
+  margin-top: 78px;
 }
 
 content-view .viewModeToolbar {
   padding: 0;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
   min-height: auto;
 }
 
@@ -25773,44 +25794,113 @@ content-view .viewModeToolbar .modeButton.active {
   color: #fff !important;
 }
 
-map-view {
+content-view .granularity-list {
+  position: absolute;
+  left: 0;
+  height: 100%;
+}
+
+content-view .granularity-list a {
+  cursor: pointer;
+}
+
+content-view .granularity-list a .senate {
+  position: relative;
+  height: 20%;
+  margin: 0;
+  padding: 5px;
+}
+
+content-view .granularity-list a .senate .box {
+  position: relative;
+  height: 100%;
+}
+
+content-view .granularity-list a .senate .box h2 {
+  display: block;
+  padding: 5px;
+  margin: 0;
+  line-height: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: #eee;
+  color: #333;
+  -webkit-box-shadow: inset 0 -3px 3px -2px rgba(128, 128, 128, 0.2);
+  -ms-box-shadow: inset 0 -3px 3px -2px rgba(128, 128, 128, 0.2);
+  -o-box-shadow: inset 0 -3px 3px -2px rgba(128, 128, 128, 0.2);
+  box-shadow: inset 0 -3px 3px -2px rgba(128, 128, 128, 0.2);
+}
+
+content-view .granularity-list a .senate .box .box-content {
+  top: 35px;
+  bottom: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
-  left: 0;
-  right: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+content-view .granularity-list a:first-child .senate {
+  padding-top: 0;
+}
+
+content-view .granularity-list a:hover .box {
+  -webkit-box-shadow: 0 0 4px 1px #009bff;
+  box-shadow: 0 0 4px 1px #009bff;
+}
+
+header-view .logo-icon {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+header-view .logo-icon img {
+  vertical-align: middle;
+}
+
+header-view .page-links {
+  width: 60%;
+}
+
+header-view .page-links ion-segment-button {
+  border: 1px solid #999 !important;
+  font-size: 16px;
+  background-color: #fff !important;
+  opacity: 1 !important;
+  color: #333 !important;
+}
+
+header-view .page-links ion-segment-button:hover, header-view .page-links ion-segment-button.active {
+  color: #999 !important;
+  background-color: #333 !important;
+  -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+  -ms-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+  -o-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
 }
 
 map-view .small {
-  font-size: 0.8rem;
-}
-
-map-view .view-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  font-size: 1rem;
 }
 
 map-view .view-container .map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 60%;
+  position: unset !important;
+  height: 50vh;
 }
 
 map-view .view-container .map canvas {
-  width: 100% !important;
-  height: 100% !important;
-  left: 0;
+  position: unset !important;
+}
+
+map-view .view-container .map .mapboxgl-ctrl-logo {
+  display: none;
 }
 
 map-view .view-container .election-details {
   bottom: 0;
-  padding: 1px;
-  width: 100%;
-  height: 40%;
-  position: absolute;
 }
 
 map-view .view-container .election-details > div {
@@ -25826,11 +25916,16 @@ map-view .view-container .election-details .party-card {
 
 map-view .view-container .election-details .election-competitors {
   font-size: 14px;
-  padding-top: 30px;
+  padding-top: 0;
+}
+
+map-view .view-container .election-details .election-competitors ion-row {
+  padding-top: 40px;
 }
 
 map-view .view-container .election-details .election-competitors ion-col .card {
   border: 2px solid #000;
+  border-left: none;
   height: 20px;
   line-height: 16px;
   position: relative;
@@ -25843,20 +25938,24 @@ map-view .view-container .election-details .election-competitors ion-col .card i
   bottom: 0;
 }
 
-map-view .view-container .election-details .election-competitors ion-col:first-child .card {
-  border-left: none;
-}
-
-map-view .view-container .election-details .election-competitors ion-col:first-child .card img {
-  right: 0;
-}
-
 map-view .view-container .election-details .election-competitors ion-col:last-child .card {
-  border-right: none;
+  border-left: 2px solid #000;
 }
 
 map-view .view-container .election-details .election-competitors ion-col:last-child .card img {
   left: 0;
+}
+
+.platform-ios map-view .small {
+  font-size: 0.8rem;
+}
+
+.platform-tablet map-view .view-container .map {
+  height: 35vh;
+}
+
+.platform-core .view-container .map {
+  height: 35vh;
 }
 
 range-view ion-list ion-list-header ion-label {

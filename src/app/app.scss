@@ -15,6 +15,15 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.box {
+	background: white;
+    border: 1px solid #dadada;
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -ms-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -o-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2)
+}
 ion-header {
 	ion-toolbar {
 		border-bottom: 1px solid #fff;
@@ -59,7 +68,7 @@ ion-content {
 }
 .platform-mobile {
 	ion-navbar {
-		min-height: 34px !important;
+		min-height: 44px !important;
 	    padding-top: 0 !important;
     	padding-bottom: 0 !important;
     	.toolbar-title {
@@ -72,11 +81,24 @@ ion-content {
 			margin: 1px;
 		}
 		.fixed-content {
+			margin-top: 102px;
+		}
+		.scroll-content {
+			margin-top: 102px;
+			padding-top: 4px !important;
+		}
+	}
+}
+.platform-ios {
+	ion-navbar {
+		min-height: 34px !important;
+	}
+	ion-content {
+		.fixed-content {
 			margin-top: 78px;
 		}
 		.scroll-content {
 			margin-top: 78px;
-			padding-top: 4px !important;
 		}
 	}
 }

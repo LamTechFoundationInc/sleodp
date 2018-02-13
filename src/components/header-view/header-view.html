@@ -1,6 +1,6 @@
 <!-- Generated template for the HeaderViewComponent component -->
 <ion-header>
-	<ion-toolbar color="dark">
+	<ion-toolbar color="dark" *ngIf="!isDesktop">
 		<button ion-button menuToggle>
 			<i class="fa fa-navicon"></i>
 		</button>
@@ -11,6 +11,30 @@
 				<i class="fa fa-ellipsis-h"></i>
 			</button>
 		</ion-buttons>
+	</ion-toolbar>
+	<ion-toolbar color="dark" *ngIf="isDesktop">
+		<button ion-button href="/" class="bar-button-menutoggle-md bar-button-default-md disable-hover logo-icon" float-left>
+			<img src="assets/imgs/logo.png" width="35"> &nbsp;SLOEDP
+		</button>
+		<ion-title text-uppercase text-center>
+			<ion-segment class="page-links" color="primary" width-50>
+				<ion-segment-button class="PresidentPage" (ionSelect)="selectedType('president')">
+				President
+				</ion-segment-button>
+				<ion-segment-button class="ParliamentPage" (ionSelect)="selectedType('parliament')">
+				Member of Parliament
+				</ion-segment-button>
+				<ion-segment-button class="MayorPage" (ionSelect)="selectedType('mayor')">
+				Mayor/Chairperson
+				</ion-segment-button>
+				<ion-segment-button class="CouncilorPage" (ionSelect)="selectedType('councilor')">
+				Councilor
+				</ion-segment-button>
+				<ion-segment-button class="VillageHeadmanPage" (ionSelect)="selectedType('villageheadman')">
+				Village Headman
+				</ion-segment-button>
+			</ion-segment>
+		</ion-title>
 	</ion-toolbar>
 	<ng-content select="[sub-navbar]"></ng-content>
 </ion-header>

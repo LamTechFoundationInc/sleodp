@@ -1,18 +1,18 @@
 <!-- Generated template for the MapViewComponent component -->
 <div class="view-container">
-	<div id="{{year}}_map" class="map">
+	<div id="{{year}}_map" class="map box">
 	</div>
 	<div class="election-details">
 		<div class="election-info">
 			<ion-grid no-padding>
 				<ion-row>
 					<ion-col text-right class="small">
-						Total Registered Votes: {{ total_votes }}<br>
-						Result Status: {{ result_status ? 'Legend' : 'Provisional Results' }}
+						Total Registered Votes: {{ result.TotalVotes }}<br>
+						Result Status: {{ result.ResultStatus }}
 					</ion-col>
 					<ion-col text-left class="small">
-						Total Valid Votes: {{ valid_votes }}<br>
-						Total Invalid Votes: {{ invalid_votes }}
+						Total Valid Votes: {{ result.ValidVotes }}<br>
+						Total Invalid Votes: {{ result.InvalidVotes }}
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -20,34 +20,154 @@
 		<div class="election-parties">
 			<ion-grid no-padding>
 				<ion-row>
-					<ion-col *ngFor="let party of parties" class="small">
-						{{ party.name }}
-						<div class="party-card" [style.background-color]="party.color"></div>
+					<ion-col *ngFor="let party of result.electionParties" class="small">
+						{{ party.CandidatePoliticalParty }}
+						<div class="party-card" [style.background-color]="party.CandidatePoliticalPartyColor"></div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
 		</div>
 		<div class="election-competitors">
-			<ion-grid no-padding>
+			<ion-grid no-padding hideWhen="core,tablet">
 				<ion-row>
 					<ion-col text-right>
-						<div text-left padding-bottom>{{ secondParty.percent }}%</div>
-						<div class="card" [style.background-color]="secondParty.color">
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
 							<img src="/assets/imgs/avatar.png">
 						</div>
-						{{ secondParty.votes }} votes
 					</ion-col>
 					<ion-col width-25 text-center>
-						<div padding-bottom>{{ otherParty.percent }}%</div>
+						<div padding-bottom></div>
 						<div class="card">All Others</div>
-						votes {{ otherParty.votes }}
+						 
 					</ion-col>
 					<ion-col text-left>
-						<div text-right padding-bottom>{{ firstParty.percent }}%</div>
-						<div class="card" [style.background-color]="firstParty.color">
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'green'">
 							<img src="/assets/imgs/avatar.png">
 						</div>
-						{{ firstParty.votes }} votes
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<ion-grid no-padding showWhen="tablet">
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<ion-grid no-padding showWhen="core">
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-center>
+						<div text-center padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom></div>
+						<div class="card" [style.background-color]="'red'">
+							<img src="/assets/imgs/avatar.png">
+						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>

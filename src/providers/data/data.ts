@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
+let election_results: Array<object> = require('../../assets/results/results.json');
+
 /*
   Generated class for the DataProvider provider.
 
@@ -11,16 +13,32 @@ import { Subject } from 'rxjs/Subject';
 */
 @Injectable()
 export class DataProvider {
-
-  election_years: any;
   parties: any;
+  election_years: any;
+  election_results: any;
 
   private granularitySubject = new Subject<any>();
 
   constructor(public http: HttpClient) {
   }
 
+  loadParties() {
+    if (this.parties) {
+      return Promise.resolve(this.parties);
+    }
+
+    return new Promise(resolve => {
+      this.http.get('https://electiondata.io/resources/political-parties/all')
+      .subscribe(data => {
+        console.log(data);
+        this.parties = data;
+        resolve(this.parties);
+      });
+    });
+  }
+
   loadElectionYears() {
+    this.loadParties();
     if (this.election_years) {
       return Promise.resolve(this.election_years);
     }
@@ -35,42 +53,55 @@ export class DataProvider {
 
     return new Promise(resolve => {
       resolve(this.election_years);
-    // this.http.get('path/to/data.json')
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.election_years = data;
-    //     resolve(this.election_years);
-    //   });
     });
   }
 
-  loadParties() {
-    if (this.parties) {
-      return Promise.resolve(this.parties);
-    }
- 
-    this.parties = [
-      { name: "APC", color: "#cf2a27" },
-      { name: "ADP", color: "#ff00ff" },
-      { name: "CDP", color: "#ffff00" },
-      { name: "C4C", color: "#999999" },
-      { name: "NDA", color: "#009e0f" },
-      { name: "NGC", color: "#cc0000" },
-      { name: "NPD", color: "#2b78e4" },
-      { name: "NURP", color: "#999999" },
-      { name: "PLP", color: "#6fa8dc" },
-      { name: "PMDC", color: "#ff9900" },
-      { name: "ReNIP", color: "#999999" },
-      { name: "RUFP", color: "#999999" },
-      { name: "SLPP", color: "#009e0f" },
-      { name: "UDM", color: "#999999" },
-      { name: "UNPP", color: "#ffff00" },
-      { name: "UP", color: "#6fa8dc" }
-    ];
+  loadResultsByFields(fields) {
+    var result = {};
+    var isYear = false;
+    var isType = false;
+    var isRegion = false;
+    var date = "";
+    var date_position = -1;
+    var date_string = "";
 
-    return new Promise(resolve => {
-      resolve(this.parties);
+    var temp_results = election_results.filter(result => {
+      date_position = result["ElectionDate"].indexOf(">");
+      if (date_position != -1) {
+        date = result["ElectionDate"].substring(date_position+1, date_position+11);
+      }
+
+      switch (fields.type) {
+        case "president":
+          isType = result["ElectionType"] == "Presidential";
+          break;
+        case "parliament":
+          isType = result["ElectionType"] == "Parliamentary";
+          break;
+        case "mayor":
+          isType = result["ElectionType"] == "Mayoral";
+          break;
+        case "chairperson":
+          isType = result["ElectionType"] == "District Chairperson";
+          break;
+        case "councilor":
+          isType = result["ElectionType"] == "District Councilor";
+          break;
+        case "villageheadman":
+          isType = result["ElectionType"] == "Village Headman";
+          break;
+        default:
+          break;
+      }
+      if (!isType) return;
     });
+
+    result['ResultStatus'] = "Provisional";
+    result['TotalVotes'] = "310";
+    result['ValidVotes'] = "300";
+    result['InvalidVotes'] = "10";
+    result['electionParties'] = [];
+    return result;
   }
 
   setGranularity(data: string) {

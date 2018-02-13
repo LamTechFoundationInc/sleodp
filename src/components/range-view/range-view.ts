@@ -15,7 +15,6 @@ import { DataProvider } from '../../providers/data/data';
 export class RangeViewComponent {
 
   constructor(public viewCtrl: ViewController, public dataService: DataProvider) {
-    console.log('Hello RangeViewComponent Component');
   }
 
   seletGranularity(granularity) {
