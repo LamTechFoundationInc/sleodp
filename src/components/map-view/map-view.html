@@ -2,4 +2,55 @@
 <div class="view-container">
 	<div id="{{year}}_map" class="map">
 	</div>
+	<div class="election-details">
+		<div class="election-info">
+			<ion-grid no-padding>
+				<ion-row>
+					<ion-col text-right class="small">
+						Total Registered Votes: {{ total_votes }}<br>
+						Result Status: {{ result_status ? 'Legend' : 'Provisional Results' }}
+					</ion-col>
+					<ion-col text-left class="small">
+						Total Valid Votes: {{ valid_votes }}<br>
+						Total Invalid Votes: {{ invalid_votes }}
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+		<div class="election-parties">
+			<ion-grid no-padding>
+				<ion-row>
+					<ion-col *ngFor="let party of parties" class="small">
+						{{ party.name }}
+						<div class="party-card" [style.background-color]="party.color"></div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+		<div class="election-competitors">
+			<ion-grid no-padding>
+				<ion-row>
+					<ion-col text-right>
+						<div text-left padding-bottom>{{ secondParty.percent }}%</div>
+						<div class="card" [style.background-color]="secondParty.color">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+						{{ secondParty.votes }} votes
+					</ion-col>
+					<ion-col width-25 text-center>
+						<div padding-bottom>{{ otherParty.percent }}%</div>
+						<div class="card">All Others</div>
+						votes {{ otherParty.votes }}
+					</ion-col>
+					<ion-col text-left>
+						<div text-right padding-bottom>{{ firstParty.percent }}%</div>
+						<div class="card" [style.background-color]="firstParty.color">
+							<img src="/assets/imgs/avatar.png">
+						</div>
+						{{ firstParty.votes }} votes
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+	</div>
 </div>

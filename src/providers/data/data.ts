@@ -12,24 +12,20 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class DataProvider {
 
-  presidents: any;
-  pariaments: any;
-  mayors: any;
-  chairpersons: any;
-  councilors: any;
-  village_headmans: any;
+  election_years: any;
+  parties: any;
 
   private granularitySubject = new Subject<any>();
 
   constructor(public http: HttpClient) {
   }
 
-  loadPresidents() {
-    if (this.presidents) {
-      return Promise.resolve(this.presidents);
+  loadElectionYears() {
+    if (this.election_years) {
+      return Promise.resolve(this.election_years);
     }
  
- 	  this.presidents = [
+     this.election_years = [
       { year: 2018},
       { year: 2012},
       { year: 2007},
@@ -38,133 +34,42 @@ export class DataProvider {
     ];
 
     return new Promise(resolve => {
-		  resolve(this.presidents);
-		// this.http.get('path/to/data.json')
-		//   .map(res => res.json())
-		//   .subscribe(data => {
-		//     this.presidents = data;
-		//     resolve(this.presidents);
-		//   });
-    });
-  }
-
-  loadParliaments() {
-    if (this.pariaments) {
-      return Promise.resolve(this.pariaments);
-    }
- 
-     this.pariaments = [
-      { year: 2018},
-      { year: 2012},
-      { year: 2007},
-      { year: 2002},
-      { year: 1996}
-    ];
-
-    return new Promise(resolve => {
-      resolve(this.pariaments);
+      resolve(this.election_years);
     // this.http.get('path/to/data.json')
     //   .map(res => res.json())
     //   .subscribe(data => {
-    //     this.pariaments = data;
-    //     resolve(this.pariaments);
+    //     this.election_years = data;
+    //     resolve(this.election_years);
     //   });
     });
   }
 
-  loadMayors() {
-    if (this.mayors) {
-      return Promise.resolve(this.mayors);
+  loadParties() {
+    if (this.parties) {
+      return Promise.resolve(this.parties);
     }
  
-     this.mayors = [
-      { year: 2018},
-      { year: 2012},
-      { year: 2007},
-      { year: 2002},
-      { year: 1996}
+    this.parties = [
+      { name: "APC", color: "#cf2a27" },
+      { name: "ADP", color: "#ff00ff" },
+      { name: "CDP", color: "#ffff00" },
+      { name: "C4C", color: "#999999" },
+      { name: "NDA", color: "#009e0f" },
+      { name: "NGC", color: "#cc0000" },
+      { name: "NPD", color: "#2b78e4" },
+      { name: "NURP", color: "#999999" },
+      { name: "PLP", color: "#6fa8dc" },
+      { name: "PMDC", color: "#ff9900" },
+      { name: "ReNIP", color: "#999999" },
+      { name: "RUFP", color: "#999999" },
+      { name: "SLPP", color: "#009e0f" },
+      { name: "UDM", color: "#999999" },
+      { name: "UNPP", color: "#ffff00" },
+      { name: "UP", color: "#6fa8dc" }
     ];
 
     return new Promise(resolve => {
-      resolve(this.mayors);
-    // this.http.get('path/to/data.json')
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.mayors = data;
-    //     resolve(this.mayors);
-    //   });
-    });
-  }
-
-  loadChairpersons() {
-    if (this.chairpersons) {
-      return Promise.resolve(this.chairpersons);
-    }
- 
-     this.chairpersons = [
-      { year: 2018},
-      { year: 2012},
-      { year: 2007},
-      { year: 2002},
-      { year: 1996}
-    ];
-
-    return new Promise(resolve => {
-      resolve(this.chairpersons);
-    // this.http.get('path/to/data.json')
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.chairpersons = data;
-    //     resolve(this.chairpersons);
-    //   });
-    });
-  }
-
-  loadCouncilors() {
-    if (this.councilors) {
-      return Promise.resolve(this.councilors);
-    }
- 
-     this.councilors = [
-      { year: 2018},
-      { year: 2012},
-      { year: 2007},
-      { year: 2002},
-      { year: 1996}
-    ];
-
-    return new Promise(resolve => {
-      resolve(this.councilors);
-    // this.http.get('path/to/data.json')
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.councilors = data;
-    //     resolve(this.councilors);
-    //   });
-    });
-  }
-
-  loadVillageHeadmans() {
-    if (this.village_headmans) {
-      return Promise.resolve(this.village_headmans);
-    }
- 
-     this.village_headmans = [
-      { year: 2018},
-      { year: 2012},
-      { year: 2007},
-      { year: 2002},
-      { year: 1996}
-    ];
-
-    return new Promise(resolve => {
-      resolve(this.village_headmans);
-    // this.http.get('path/to/data.json')
-    //   .map(res => res.json())
-    //   .subscribe(data => {
-    //     this.village_headmans = data;
-    //     resolve(this.village_headmans);
-    //   });
+      resolve(this.parties);
     });
   }
 
@@ -172,7 +77,7 @@ export class DataProvider {
     this.granularitySubject.next(data);
   }
 
-  getRegion(): Observable<any> {
+  getGranularity(): Observable<any> {
     return this.granularitySubject.asObservable();
   }
 }

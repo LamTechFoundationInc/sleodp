@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 377:
+/***/ 374:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParliamentPageModule", function() { return ParliamentPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CouncilorPageModule", function() { return CouncilorPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parliament__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__councilor__ = __webpack_require__(127);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ParliamentPageModule = (function () {
-    function ParliamentPageModule() {
+var CouncilorPageModule = (function () {
+    function CouncilorPageModule() {
     }
-    ParliamentPageModule = __decorate([
+    CouncilorPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */],
+                __WEBPACK_IMPORTED_MODULE_2__councilor__["a" /* CouncilorPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__councilor__["a" /* CouncilorPage */]),
             ],
         })
-    ], ParliamentPageModule);
-    return ParliamentPageModule;
+    ], CouncilorPageModule);
+    return CouncilorPageModule;
 }());
 
-//# sourceMappingURL=parliament.module.js.map
+//# sourceMappingURL=councilor.module.js.map
 
 /***/ })
 

@@ -1,4 +1,4 @@
-webpackJsonp([8],{
+webpackJsonp([6],{
 
 /***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([8],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChairpersonPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -37,34 +37,36 @@ var ChairpersonPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "district";
+        this.granularity = "district";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     ChairpersonPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     ChairpersonPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     ChairpersonPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadChairpersons()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -91,7 +93,7 @@ var ChairpersonPage = (function () {
         var currentIndex = this.slides.getActiveIndex();
         if (currentIndex == this.totalPages)
             return;
-        this.subPageViews._results[currentIndex].setContentView();
+        this.subPageViews._results[currentIndex].setContentView(this.region, this.granularity);
         this.prevEnabled = !this.slides.isBeginning();
         this.nextEnabled = !this.slides.isEnd();
         this.year = this.subpages[currentIndex].year;
@@ -111,7 +113,7 @@ var ChairpersonPage = (function () {
     ], ChairpersonPage.prototype, "subPageViews", void 0);
     ChairpersonPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chairperson',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/chairperson/chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/chairperson/chairperson.html"*/,
+            selector: 'page-chairperson',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], ChairpersonPage);
@@ -129,7 +131,7 @@ var ChairpersonPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CouncilorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -159,34 +161,36 @@ var CouncilorPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "ward";
+        this.granularity = "ward";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     CouncilorPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     CouncilorPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     CouncilorPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadCouncilors()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -233,7 +237,7 @@ var CouncilorPage = (function () {
     ], CouncilorPage.prototype, "subPageViews", void 0);
     CouncilorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-councilor',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/councilor/councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/councilor/councilor.html"*/,
+            selector: 'page-councilor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], CouncilorPage);
@@ -251,7 +255,7 @@ var CouncilorPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MayorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -281,34 +285,36 @@ var MayorPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "district";
+        this.granularity = "district";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     MayorPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     MayorPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     MayorPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadMayors()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -355,7 +361,7 @@ var MayorPage = (function () {
     ], MayorPage.prototype, "subPageViews", void 0);
     MayorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mayor',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/mayor/mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Mayoral Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/mayor/mayor.html"*/,
+            selector: 'page-mayor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Mayorl Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], MayorPage);
@@ -373,7 +379,7 @@ var MayorPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ParliamentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -403,34 +409,37 @@ var ParliamentPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "constituency";
+        this.granularity = "constituency";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     ParliamentPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     ParliamentPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        if (this.subpages.length > 0)
+            this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     ParliamentPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadParliaments()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -469,7 +478,7 @@ var ParliamentPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]) === "function" && _a || Object)
     ], ParliamentPage.prototype, "slides", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChildren */])(__WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__["a" /* ContentViewComponent */]),
@@ -477,11 +486,12 @@ var ParliamentPage = (function () {
     ], ParliamentPage.prototype, "subPageViews", void 0);
     ParliamentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-parliament',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/parliament/parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/parliament/parliament.html"*/,
+            selector: 'page-parliament',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]) === "function" && _d || Object])
     ], ParliamentPage);
     return ParliamentPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=parliament.js.map
@@ -495,7 +505,7 @@ var ParliamentPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PresidentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -525,34 +535,37 @@ var PresidentPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "nation";
+        this.granularity = "nation";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     PresidentPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     PresidentPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        if (this.subpages.length > 0)
+            this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     PresidentPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadPresidents()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -577,7 +590,7 @@ var PresidentPage = (function () {
     };
     PresidentPage.prototype.slideChanged = function () {
         var currentIndex = this.slides.getActiveIndex();
-        if (currentIndex == this.totalPages)
+        if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0)
             return;
         this.subPageViews._results[currentIndex].setContentView();
         this.prevEnabled = !this.slides.isBeginning();
@@ -591,7 +604,7 @@ var PresidentPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */]) === "function" && _a || Object)
     ], PresidentPage.prototype, "slides", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChildren */])(__WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__["a" /* ContentViewComponent */]),
@@ -599,11 +612,12 @@ var PresidentPage = (function () {
     ], PresidentPage.prototype, "subPageViews", void 0);
     PresidentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-president',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/president/president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/president/president.html"*/,
+            selector: 'page-president',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]) === "function" && _d || Object])
     ], PresidentPage);
     return PresidentPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=president.js.map
@@ -617,7 +631,7 @@ var PresidentPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VillageHeadmanPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -647,34 +661,36 @@ var VillageHeadmanPage = (function () {
         this.navParams = navParams;
         this.dataService = dataService;
         this.region = "village";
+        this.granularity = "polling_center";
         this.prevEnabled = false;
         this.nextEnabled = false;
         this.year = 0;
         this.prevYear = 0;
         this.nextYear = 0;
         this.subpages = [];
-        this.subscription = this.dataService.getRegion().subscribe(function (region) {
-            if (region == "polling_center" || region == "polling_station") {
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.granularity = granularity;
+            if (granularity == "polling_center" || granularity == "polling_station") {
                 _this.region = "village";
             }
             else
-                _this.region = region;
+                _this.region = granularity;
             var currentIndex = _this.slides.getActiveIndex();
             if (currentIndex == _this.totalPages)
                 return;
-            _this.subPageViews._results[currentIndex].setContentView();
+            _this.subPageViews._results[currentIndex].setContentView(_this.region, _this.granularity);
         });
     }
     VillageHeadmanPage.prototype.ionViewDidLoad = function () {
         this.load();
     };
     VillageHeadmanPage.prototype.ionViewDidEnter = function () {
-        this.subPageViews._results[0].setContentView();
+        this.subPageViews._results[0].setContentView(this.region, this.granularity);
     };
     // Load Subpages
     VillageHeadmanPage.prototype.load = function () {
         var _this = this;
-        this.dataService.loadVillageHeadmans()
+        this.dataService.loadElectionYears()
             .then(function (data) {
             _this.subpages = data;
             _this.setPageInfo();
@@ -721,7 +737,7 @@ var VillageHeadmanPage = (function () {
     ], VillageHeadmanPage.prototype, "subPageViews", void 0);
     VillageHeadmanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-village-headman',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/village-headman/village-headman.html"*/'<!--\n  Generated template for the VillageHeadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n    <ion-title>\n      {{year}} VillageHeadman Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/pages/village-headman/village-headman.html"*/,
+            selector: 'page-village-headman',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/'<!--\n  Generated template for the VillageHeadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="nextEnabled" (click)="setNextPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{nextYear}}\n    </a>\n    <ion-title>\n      {{year}} Village Headman Elections\n    </ion-title>\n    <a float-right *ngIf="prevEnabled" (click)="setPrevPage()" padding-right>\n      {{prevYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" dir="rtl">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], VillageHeadmanPage);
@@ -755,35 +771,27 @@ webpackEmptyAsyncContext.id = 145;
 var map = {
 	"../pages/chairperson/chairperson.module": [
 		373,
-		7
+		5
 	],
 	"../pages/councilor/councilor.module": [
 		374,
-		6
+		4
 	],
 	"../pages/mayor/mayor.module": [
 		375,
-		5
-	],
-	"../pages/pariament/pariament.module": [
-		376,
-		1
-	],
-	"../pages/parliament/parliament.module": [
-		377,
-		4
-	],
-	"../pages/president-national/president-national.module": [
-		378,
-		0
-	],
-	"../pages/president/president.module": [
-		379,
 		3
 	],
-	"../pages/village-headman/village-headman.module": [
-		380,
+	"../pages/parliament/parliament.module": [
+		376,
 		2
+	],
+	"../pages/president/president.module": [
+		377,
+		1
+	],
+	"../pages/village-headman/village-headman.module": [
+		378,
+		0
 	]
 };
 function webpackAsyncContext(req) {
@@ -811,6 +819,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_data_data__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -823,6 +832,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the MapViewComponent component.
  *
@@ -830,12 +840,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Components.
  */
 var MapViewComponent = (function () {
-    function MapViewComponent(loadingCtrl) {
+    function MapViewComponent(loadingCtrl, dataService) {
         this.loadingCtrl = loadingCtrl;
+        this.dataService = dataService;
+        this.valid_votes = 0;
+        this.invalid_votes = 0;
+        this.total_votes = 0;
+        this.result_status = 0;
+        this.firstParty = { name: "APC", color: "#cf2a27", percent: "34", votes: "34" };
+        this.secondParty = { name: "SLPP", color: "#009e0f", percent: "33", votes: "33" };
+        this.otherParty = { percent: "33", votes: "33" };
         console.log('Hello MapViewComponent Component');
     }
     MapViewComponent.prototype.ngAfterViewInit = function () {
         this.isLoaded = false;
+    };
+    MapViewComponent.prototype.loadParties = function () {
+        var _this = this;
+        this.dataService.loadParties()
+            .then(function (data) {
+            _this.parties = data;
+        });
     };
     MapViewComponent.prototype.drawMap = function () {
         var mapContainer = this.year + "_map";
@@ -851,7 +876,7 @@ var MapViewComponent = (function () {
         var map = new __WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js___default.a.Map({
             style: 'mapbox://styles/mapbox/light-v9',
             center: [-11.779889, 8.460555],
-            zoom: 6.3,
+            zoom: 6.2,
             container: mapContainer
         });
         map.on('load', function () {
@@ -908,8 +933,8 @@ var MapViewComponent = (function () {
             // disable map zoom when using scroll
             map.scrollZoom.disable();
             map.doubleClickZoom.disable();
+            loadingPopup.dismiss();
         });
-        loadingPopup.dismiss();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('year'),
@@ -919,16 +944,119 @@ var MapViewComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('region'),
         __metadata("design:type", Object)
     ], MapViewComponent.prototype, "region", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('type'),
+        __metadata("design:type", Object)
+    ], MapViewComponent.prototype, "type", void 0);
     MapViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'map-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/map-view/map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map">\n	</div>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/map-view/map-view.html"*/
+            selector: 'map-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map">\n	</div>\n	<div class="election-details">\n		<div class="election-info">\n			<ion-grid no-padding>\n				<ion-row>\n					<ion-col text-right class="small">\n						Total Registered Votes: {{ total_votes }}<br>\n						Result Status: {{ result_status ? \'Legend\' : \'Provisional Results\' }}\n					</ion-col>\n					<ion-col text-left class="small">\n						Total Valid Votes: {{ valid_votes }}<br>\n						Total Invalid Votes: {{ invalid_votes }}\n					</ion-col>\n				</ion-row>\n			</ion-grid>\n		</div>\n		<div class="election-parties">\n			<ion-grid no-padding>\n				<ion-row>\n					<ion-col *ngFor="let party of parties" class="small">\n						{{ party.name }}\n						<div class="party-card" [style.background-color]="party.color"></div>\n					</ion-col>\n				</ion-row>\n			</ion-grid>\n		</div>\n		<div class="election-competitors">\n			<ion-grid no-padding>\n				<ion-row>\n					<ion-col text-right>\n						<div text-left padding-bottom>{{ secondParty.percent }}%</div>\n						<div class="card" [style.background-color]="secondParty.color">\n							<img src="/assets/imgs/avatar.png">\n						</div>\n						{{ secondParty.votes }} votes\n					</ion-col>\n					<ion-col width-25 text-center>\n						<div padding-bottom>{{ otherParty.percent }}%</div>\n						<div class="card">All Others</div>\n						votes {{ otherParty.votes }}\n					</ion-col>\n					<ion-col text-left>\n						<div text-right padding-bottom>{{ firstParty.percent }}%</div>\n						<div class="card" [style.background-color]="firstParty.color">\n							<img src="/assets/imgs/avatar.png">\n						</div>\n						{{ firstParty.votes }} votes\n					</ion-col>\n				</ion-row>\n			</ion-grid>\n		</div>\n	</div>\n</div>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["e" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["e" /* LoadingController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_data_data__["a" /* DataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_data_data__["a" /* DataProvider */]) === "function" && _b || Object])
     ], MapViewComponent);
     return MapViewComponent;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=map-view.js.map
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/*
+  Generated class for the DataProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var DataProvider = (function () {
+    function DataProvider(http) {
+        this.http = http;
+        this.granularitySubject = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["Subject"]();
+    }
+    DataProvider.prototype.loadElectionYears = function () {
+        var _this = this;
+        if (this.election_years) {
+            return Promise.resolve(this.election_years);
+        }
+        this.election_years = [
+            { year: 2018 },
+            { year: 2012 },
+            { year: 2007 },
+            { year: 2002 },
+            { year: 1996 }
+        ];
+        return new Promise(function (resolve) {
+            resolve(_this.election_years);
+            // this.http.get('path/to/data.json')
+            //   .map(res => res.json())
+            //   .subscribe(data => {
+            //     this.election_years = data;
+            //     resolve(this.election_years);
+            //   });
+        });
+    };
+    DataProvider.prototype.loadParties = function () {
+        var _this = this;
+        if (this.parties) {
+            return Promise.resolve(this.parties);
+        }
+        this.parties = [
+            { name: "APC", color: "#cf2a27" },
+            { name: "ADP", color: "#ff00ff" },
+            { name: "CDP", color: "#ffff00" },
+            { name: "C4C", color: "#999999" },
+            { name: "NDA", color: "#009e0f" },
+            { name: "NGC", color: "#cc0000" },
+            { name: "NPD", color: "#2b78e4" },
+            { name: "NURP", color: "#999999" },
+            { name: "PLP", color: "#6fa8dc" },
+            { name: "PMDC", color: "#ff9900" },
+            { name: "ReNIP", color: "#999999" },
+            { name: "RUFP", color: "#999999" },
+            { name: "SLPP", color: "#009e0f" },
+            { name: "UDM", color: "#999999" },
+            { name: "UNPP", color: "#ffff00" },
+            { name: "UP", color: "#6fa8dc" }
+        ];
+        return new Promise(function (resolve) {
+            resolve(_this.parties);
+        });
+    };
+    DataProvider.prototype.setGranularity = function (data) {
+        this.granularitySubject.next(data);
+    };
+    DataProvider.prototype.getGranularity = function () {
+        return this.granularitySubject.asObservable();
+    };
+    DataProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], DataProvider);
+    return DataProvider;
+}());
+
+//# sourceMappingURL=data.js.map
 
 /***/ }),
 
@@ -939,7 +1067,7 @@ var MapViewComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RangeViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -970,7 +1098,7 @@ var RangeViewComponent = (function () {
     };
     RangeViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'range-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/range-view/range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_center\')">Results By Polling Center</button>\n	<button ion-item (click)="seletGranularity(\'polling_station\')">Results By Polling Station</button>\n</ion-list>'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/range-view/range-view.html"*/
+            selector: 'range-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_center\')">Results By Polling Center</button>\n	<button ion-item (click)="seletGranularity(\'polling_station\')">Results By Polling Station</button>\n</ion-list>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], RangeViewComponent);
@@ -1020,7 +1148,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_content_view_content_view__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_map_view_map_view__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_table_view_table_view__ = __webpack_require__(372);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_data_data__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_data_data__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1082,9 +1210,7 @@ var AppModule = (function () {
                         { loadChildren: '../pages/chairperson/chairperson.module#ChairpersonPageModule', name: 'ChairpersonPage', segment: 'chairperson', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/councilor/councilor.module#CouncilorPageModule', name: 'CouncilorPage', segment: 'councilor', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mayor/mayor.module#MayorPageModule', name: 'MayorPage', segment: 'mayor', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pariament/pariament.module#PariamentPageModule', name: 'PariamentPage', segment: 'pariament', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/parliament/parliament.module#ParliamentPageModule', name: 'ParliamentPage', segment: 'parliament', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/president-national/president-national.module#PresidentNationalPageModule', name: 'PresidentNationalPage', segment: 'president-national', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/president/president.module#PresidentPageModule', name: 'PresidentPage', segment: 'president', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/village-headman/village-headman.module#VillageHeadmanPageModule', name: 'VillageHeadmanPage', segment: 'village-headman', priority: 'low', defaultHistory: [] }
                     ]
@@ -1114,187 +1240,6 @@ var AppModule = (function () {
 }());
 
 //# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ 32:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/*
-  Generated class for the DataProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var DataProvider = (function () {
-    function DataProvider(http) {
-        this.http = http;
-        this.granularitySubject = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["Subject"]();
-    }
-    DataProvider.prototype.loadPresidents = function () {
-        var _this = this;
-        if (this.presidents) {
-            return Promise.resolve(this.presidents);
-        }
-        this.presidents = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.presidents);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.presidents = data;
-            //     resolve(this.presidents);
-            //   });
-        });
-    };
-    DataProvider.prototype.loadParliaments = function () {
-        var _this = this;
-        if (this.pariaments) {
-            return Promise.resolve(this.pariaments);
-        }
-        this.pariaments = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.pariaments);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.pariaments = data;
-            //     resolve(this.pariaments);
-            //   });
-        });
-    };
-    DataProvider.prototype.loadMayors = function () {
-        var _this = this;
-        if (this.mayors) {
-            return Promise.resolve(this.mayors);
-        }
-        this.mayors = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.mayors);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.mayors = data;
-            //     resolve(this.mayors);
-            //   });
-        });
-    };
-    DataProvider.prototype.loadChairpersons = function () {
-        var _this = this;
-        if (this.chairpersons) {
-            return Promise.resolve(this.chairpersons);
-        }
-        this.chairpersons = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.chairpersons);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.chairpersons = data;
-            //     resolve(this.chairpersons);
-            //   });
-        });
-    };
-    DataProvider.prototype.loadCouncilors = function () {
-        var _this = this;
-        if (this.councilors) {
-            return Promise.resolve(this.councilors);
-        }
-        this.councilors = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.councilors);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.councilors = data;
-            //     resolve(this.councilors);
-            //   });
-        });
-    };
-    DataProvider.prototype.loadVillageHeadmans = function () {
-        var _this = this;
-        if (this.village_headmans) {
-            return Promise.resolve(this.village_headmans);
-        }
-        this.village_headmans = [
-            { year: 2018 },
-            { year: 2012 },
-            { year: 2007 },
-            { year: 2002 },
-            { year: 1996 }
-        ];
-        return new Promise(function (resolve) {
-            resolve(_this.village_headmans);
-            // this.http.get('path/to/data.json')
-            //   .map(res => res.json())
-            //   .subscribe(data => {
-            //     this.village_headmans = data;
-            //     resolve(this.village_headmans);
-            //   });
-        });
-    };
-    DataProvider.prototype.setGranularity = function (data) {
-        this.granularitySubject.next(data);
-    };
-    DataProvider.prototype.getRegion = function () {
-        return this.granularitySubject.asObservable();
-    };
-    DataProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], DataProvider);
-    return DataProvider;
-}());
-
-//# sourceMappingURL=data.js.map
 
 /***/ }),
 
@@ -1347,26 +1292,28 @@ var ContentViewComponent = (function () {
             }
         }
     };
-    ContentViewComponent.prototype.setContentView = function () {
+    ContentViewComponent.prototype.setContentView = function (region, granularity) {
         var _this = this;
         setTimeout(function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            _this.setMapInit(_this.region);
-            _this.setTableInit(_this.region);
-            _this.setResultRegion(_this.region);
+            _this.setMapInit(region);
+            _this.setTableInit(region);
+            _this.setResultRegion(granularity);
         }, 10);
     };
     ContentViewComponent.prototype.setMapInit = function (region) {
-        if (this.mapView)
+        if (this.mapView) {
+            this.mapView.loadParties();
             this.mapView.drawMap();
+        }
     };
     ContentViewComponent.prototype.setTableInit = function (region) {
     };
-    ContentViewComponent.prototype.setResultRegion = function (region) {
-        switch (this.region) {
+    ContentViewComponent.prototype.setResultRegion = function (granularity) {
+        switch (granularity) {
             case "nation":
                 this.resultRegion = "National Results";
                 break;
@@ -1408,7 +1355,7 @@ var ContentViewComponent = (function () {
     ], ContentViewComponent.prototype, "region", void 0);
     ContentViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'content-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/content-view/content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-toolbar class="viewModeToolbar">\n		<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n			<i class="fa fa-globe"></i> &nbsp;Map\n		</button>\n		<ion-title text-uppercase text-center>{{ resultRegion }}</ion-title>\n		<ion-buttons end>\n			<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton" float-right>\n				<i class="fa fa-table"></i> &nbsp;Table\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<map-view *ngIf="mapMode" [year]="year" [region]="region" #mapview>\n	</map-view>\n	<table-view *ngIf="!mapMode" [year]="year" [region]="region">\n	</table-view>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/content-view/content-view.html"*/
+            selector: 'content-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-toolbar class="viewModeToolbar">\n		<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n			Map&nbsp;<i class="fa fa-globe"></i>\n		</button>\n		<ion-title text-center>{{ resultRegion }}</ion-title>\n		<ion-buttons float-right left>\n			<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton">\n				Table&nbsp;<i class="fa fa-table"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<map-view *ngIf="mapMode" [year]="year" [region]="region" [type]="type" #mapview>\n	</map-view>\n	<table-view *ngIf="!mapMode" [year]="year" [region]="region" [type]="type">\n	</table-view>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], ContentViewComponent);
@@ -1489,7 +1436,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/app/app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1539,7 +1486,7 @@ var HeaderViewComponent = (function () {
     };
     HeaderViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'header-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/header-view/header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end>\n			<button ion-button icon-only (click)="selectRange($event)" style="margin-right: 15px;">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/header-view/header-view.html"*/
+            selector: 'header-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end>\n			<button ion-button class="bar-button-menutoggle-md" (click)="selectRange($event)">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */]])
     ], HeaderViewComponent);
@@ -1556,6 +1503,7 @@ var HeaderViewComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TableViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1566,6 +1514,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 /**
  * Generated class for the TableViewComponent component.
  *
@@ -1573,7 +1522,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Components.
  */
 var TableViewComponent = (function () {
-    function TableViewComponent() {
+    function TableViewComponent(dataService) {
+        this.dataService = dataService;
         console.log('Hello TableViewComponent Component');
         this.datas = [{
                 name: 'Kamara Samura',
@@ -1617,11 +1567,15 @@ var TableViewComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('region'),
         __metadata("design:type", Object)
     ], TableViewComponent.prototype, "region", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('type'),
+        __metadata("design:type", Object)
+    ], TableViewComponent.prototype, "type", void 0);
     TableViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'table-view',template:/*ion-inline-start:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/table-view/table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<div class="row header">\n		<div class="col">Candidate</div>\n		<div class="col">Party</div>\n		<div class="col">Votes</div>\n		<div class="col">%</div>\n	</div>\n	<div class="row" *ngFor="let data of datas">\n		<div class="col">{{data.name}}</div>\n		<div class="col">{{data.party}}</div>\n		<div class="col">{{data.votes}}</div>\n		<div class="col">{{data.percent}}</div>\n	</div>\n</div>\n'/*ion-inline-end:"/Users/tamba.s.lamin/DEV/SLOEDP-PWA/src/components/table-view/table-view.html"*/
+            selector: 'table-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<div class="row header">\n		<div class="col">Candidate</div>\n		<div class="col">Party</div>\n		<div class="col">Votes</div>\n		<div class="col">%</div>\n	</div>\n	<div class="row" *ngFor="let data of datas">\n		<div class="col">{{data.name}}</div>\n		<div class="col">{{data.party}}</div>\n		<div class="col">{{data.votes}}</div>\n		<div class="col">{{data.percent}}</div>\n	</div>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */]])
     ], TableViewComponent);
     return TableViewComponent;
 }());

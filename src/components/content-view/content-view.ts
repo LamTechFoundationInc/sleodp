@@ -43,25 +43,27 @@ export class ContentViewComponent {
     }
   }
 
-  setContentView() {
+  setContentView(region, granularity) {
     setTimeout((...args: any[]) => {
-      this.setMapInit(this.region);
-      this.setTableInit(this.region);
-      this.setResultRegion(this.region);
+      this.setMapInit(region);
+      this.setTableInit(region);
+      this.setResultRegion(granularity);
     }, 10)
   }
 
   setMapInit(region) {
-    if (this.mapView)
+    if (this.mapView) {
+      this.mapView.loadParties();
       this.mapView.drawMap();
+    }
   }
 
   setTableInit(region) {
 
   }
 
-  setResultRegion(region) {
-    switch (this.region) {
+  setResultRegion(granularity) {
+    switch (granularity) {
       case "nation":
         this.resultRegion = "National Results";
         break;

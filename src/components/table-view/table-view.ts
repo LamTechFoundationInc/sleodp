@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the TableViewComponent component.
@@ -14,10 +15,11 @@ export class TableViewComponent {
 
   @Input('year') year;
   @Input('region') region;
+  @Input('type') type;
 
   datas: any;
 
-  constructor() {
+  constructor(public dataService: DataProvider) {
     console.log('Hello TableViewComponent Component');
     this.datas = [{
   		name: 'Kamara Samura',

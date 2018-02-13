@@ -37,8 +37,6 @@ ion-header {
 
 			    .toolbar-title {
 			    	text-align: center;
-					font-weight: 300;
-					font-size: 14px;
 				}
 			}
 			ion-icon {
@@ -46,26 +44,39 @@ ion-header {
 				vertical-align: middle;
 			}
 		}
-	}	
+	}
 }
-
 ion-content {
+	.swiper-slide {
+		display: block;
+	}
 	.fixed-content {
 		margin-top: 112px;
 	}
 	.scroll-content {
 		margin-top: 112px;
 	}
-	&.content-ios {
+}
+.platform-mobile {
+	ion-navbar {
+		min-height: 34px !important;
+	    padding-top: 0 !important;
+    	padding-bottom: 0 !important;
+    	.toolbar-title {
+    		font-weight: 300;
+			font-size: 14px;
+    	}
+	}
+	ion-content {
+		ion-slides {
+			margin: 1px;
+		}
 		.fixed-content {
-			margin-top: 88px;
+			margin-top: 78px;
 		}
 		.scroll-content {
-			margin-top: 88px;
+			margin-top: 78px;
 			padding-top: 4px !important;
 		}
 	}
-}
-.swiper-slide {
-	display: block;
 }

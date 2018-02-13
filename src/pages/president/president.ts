@@ -31,6 +31,7 @@ export class PresidentPage {
   prevEnabled:	Boolean;
   nextEnabled:	Boolean;
   region = "nation";
+  granularity = "nation";
 
   subscription: Subscription;
 
@@ -41,16 +42,17 @@ export class PresidentPage {
     this.prevYear = 0;
     this.nextYear = 0;
     this.subpages = [];
-    this.subscription = this.dataService.getRegion().subscribe(region => { 
-      if (region == "polling_center" || region == "polling_station") {
+    this.subscription = this.dataService.getGranularity().subscribe(granularity => { 
+      this.granularity = granularity;
+      if (granularity == "polling_center" || granularity == "polling_station") {
         this.region = "village";
       }
       else
-        this.region = region;
+        this.region = granularity;
       let currentIndex = this.slides.getActiveIndex();
       if (currentIndex == this.totalPages) return;
       
-      this.subPageViews._results[currentIndex].setContentView();
+      this.subPageViews._results[currentIndex].setContentView(this.region, this.granularity);
     });
   }
 
@@ -59,12 +61,13 @@ export class PresidentPage {
   }
 
   ionViewDidEnter() {
-    this.subPageViews._results[0].setContentView();
+    if (this.subpages.length > 0)
+      this.subPageViews._results[0].setContentView(this.region, this.granularity);
   }
 
 // Load Subpages
   load() {
-    this.dataService.loadPresidents()
+    this.dataService.loadElectionYears()
       .then(data => {
         this.subpages = data;
         this.setPageInfo();
@@ -94,8 +97,8 @@ export class PresidentPage {
 
   slideChanged() {
   	let currentIndex = this.slides.getActiveIndex();
-  	if (currentIndex == this.totalPages) return;
-    
+  	if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0) return;
+
     this.subPageViews._results[currentIndex].setContentView();
   	this.prevEnabled = !this.slides.isBeginning();
   	this.nextEnabled = !this.slides.isEnd();
