@@ -226,11 +226,18 @@ var DataProvider = (function () {
             return Promise.resolve(this.parties);
         }
         return new Promise(function (resolve) {
-            _this.http.get('https://electiondata.io/resources/political-parties/all')
-                .subscribe(function (data) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            });
+            _this.http.get("api/resources/political-parties/all", { headers: headers }).subscribe(function (data) {
                 console.log(data);
                 _this.parties = data;
                 resolve(_this.parties);
+            }, function (error) {
+                console.log("Error with Data");
             });
         });
     };

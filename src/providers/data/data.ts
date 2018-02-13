@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -28,12 +28,21 @@ export class DataProvider {
     }
 
     return new Promise(resolve => {
-      this.http.get('https://electiondata.io/resources/political-parties/all')
-      .subscribe(data => {
+      const headers = new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      });
+
+      this.http.get("api/resources/political-parties/all", {headers: headers}).subscribe (data => {
         console.log(data);
         this.parties = data;
         resolve(this.parties);
+      }, error => {
+        console.log("Error with Data");
       });
+
     });
   }
 
