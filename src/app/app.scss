@@ -102,3 +102,16 @@ ion-content {
 		}
 	}
 }
+.platform-core {
+	ios-navbar {
+		min-height: 44px;
+	}
+	ion-content {
+		.fixed-content {
+			margin-top: 100px;
+		}
+		.scroll-content {
+			margin-top: 100px;
+		}
+	}
+}

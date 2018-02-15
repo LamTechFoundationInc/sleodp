@@ -10,12 +10,17 @@ header-view {
 	}
 	.page-links {
 		width: 60%;
+		ion-title {
+			padding-right: 130px;
+		}
 		ion-segment-button {
 			border: 1px solid #999 !important;
 			font-size: 16px;
 			background-color: #fff !important;
 			opacity: 1 !important;
 			color: #333 !important;
+			height: 3.2rem !important;
+			line-height: 3rem !important;
 			&:hover, &.active {
 				color: #999 !important;
 				background-color: #333 !important;

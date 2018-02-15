@@ -31,8 +31,8 @@ export class CouncilorPage {
   prevEnabled:  Boolean;
   nextEnabled:  Boolean;
   region = "ward";
-  granularity = "ward";
-
+  initialSlide = 4;
+  
   subscription: Subscription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataProvider) {
@@ -41,37 +41,34 @@ export class CouncilorPage {
     this.year = 0;
     this.prevYear = 0;
     this.nextYear = 0;
-    this.subpages = [];
+
+    this.subpages = [
+      { year: 1996},
+      { year: 2002},
+      { year: 2007},
+      { year: 2012},
+      { year: 2018},
+    ];
+    this.initialSlide = this.subpages.length - 1;
+    this.setPageInfo();
+
     this.subscription = this.dataService.getGranularity().subscribe(granularity => { 
-      this.granularity = granularity;
-      if (granularity == "polling_centre" || granularity == "polling_station") {
-        this.region = "village";
-      }
-      else
-        this.region = granularity;
+      this.region = granularity;
       let currentIndex = this.slides.getActiveIndex();
       if (currentIndex == this.totalPages) return;
       
-      this.subPageViews._results[currentIndex].setContentView(this.region, this.granularity);
+      this.subPageViews._results[currentIndex].setContentView(this.region);
     });
   }
 
   ionViewDidLoad() {
-    this.load();
+
   }
 
   ionViewDidEnter() {
-    if (this.subpages.length > 0)
-      this.subPageViews._results[0].setContentView(this.region, this.granularity);
-  }
-
-// Load Subpages
-  load() {
-    this.dataService.loadElectionYears()
-      .then(data => {
-        this.subpages = data;
-        this.setPageInfo();
-      });
+    if (this.subpages.length > 0) {
+      this.subPageViews._results[this.subPageViews._results.length - 1].setContentView(this.region);
+    }
   }
 
   setPageInfo() {
@@ -97,9 +94,9 @@ export class CouncilorPage {
 
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
-    if (currentIndex == this.totalPages) return;
-    
-    this.subPageViews._results[currentIndex].setContentView();
+    if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0) return;
+
+    this.subPageViews._results[currentIndex].setContentView(this.region);
     this.prevEnabled = !this.slides.isBeginning();
     this.nextEnabled = !this.slides.isEnd();
 

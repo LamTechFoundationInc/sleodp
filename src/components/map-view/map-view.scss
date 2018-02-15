@@ -7,7 +7,7 @@ map-view {
 			position: unset !important;
 			height: 50vh;
 			canvas {
-				position: unset !important;
+				left: 0;
 			}
 			.mapboxgl-ctrl-logo {
 				display: none;
@@ -27,29 +27,26 @@ map-view {
 			.election-competitors {
 				font-size: 14px;
 				padding-top: 0;
-				ion-row {
-					padding-top: 40px;
-				}
 				ion-col {
+					padding: 0;
+					padding-top: 20px;
 					.card {
 						border: 2px solid #000;
-						border-left: none;
+						border-right: none;
 						height: 20px;
 						line-height: 16px;
 						position: relative;
 						img {
-							width: 60px;
+							width: 80px;
 							max-height: none;
 							position: absolute;
 							bottom: 0;
+							left: 0;
 						}
 					}
 					&:last-child {
 						.card {
-							border-left: 2px solid #000;
-							img {
-								left: 0;
-							}
+							border-right: 2px solid #000;
 						}
 					}
 				}
@@ -57,10 +54,32 @@ map-view {
 		}
 	}
 }
-.platform-ios {
+.platform-mobile {
 	map-view {
-		.small {
-			font-size: 0.8rem;
+		.view-container {
+			.election-details {
+				.small {
+					font-size: 0.8rem;
+				}
+				.election-competitors {
+					ion-col {
+						img {
+							width: 60px;
+						}
+						&:first-child {
+							img {
+								left: 0
+							}
+						}
+						&:last-child {
+							img {
+								right: 0;
+								left: unset;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

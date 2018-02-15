@@ -6,11 +6,11 @@
 		<div class="election-info">
 			<ion-grid no-padding>
 				<ion-row>
-					<ion-col text-right class="small">
+					<ion-col text-left class="small">
 						Total Registered Votes: {{ result.TotalVotes }}<br>
 						Result Status: {{ result.ResultStatus }}
 					</ion-col>
-					<ion-col text-left class="small">
+					<ion-col text-right class="small">
 						Total Valid Votes: {{ result.ValidVotes }}<br>
 						Total Invalid Votes: {{ result.InvalidVotes }}
 					</ion-col>
@@ -20,153 +20,62 @@
 		<div class="election-parties">
 			<ion-grid no-padding>
 				<ion-row>
-					<ion-col *ngFor="let party of result.electionParties" class="small">
-						{{ party.CandidatePoliticalParty }}
-						<div class="party-card" [style.background-color]="party.CandidatePoliticalPartyColor"></div>
+					<ion-col *ngFor="let party of result.Parties">
+						<small>{{ party.Acronym }}</small>
+						<div class="party-card" [style.background-color]="colorFilter(party.Color)"></div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
 		</div>
 		<div class="election-competitors">
-			<ion-grid no-padding hideWhen="core,tablet">
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
+			<ion-grid hideWhen="core,tablet" padding-top>
+				<ion-row *ngIf="result.Candidates.length > 1">
+					<ion-col>
+						<div padding-bottom text-right>
+							{{ result.Candidates[0].percent }} %
+						</div>
+						<div class="card" [style.background-color]="colorFilter(result.Candidates[0].color)">
+							<img src="/assets/imgs/avatar.png" *ngIf="!result.Candidates[0].photo">
+							<img src="{{ setPhotoUrl(result.Candidates[0].photo) }}" *ngIf="result.Candidates[0].photo">
 						</div>
 					</ion-col>
 					<ion-col width-25 text-center>
-						<div padding-bottom></div>
+						<div padding-bottom>{{ currentPercent(result.Candidates) }} %</div>
 						<div class="card">All Others</div>
-						 
 					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'green'">
-							<img src="/assets/imgs/avatar.png">
+					<ion-col>
+						<div padding-bottom text-left>
+							{{ result.Candidates[1].percent }} %
+						</div>
+						<div class="card" [style.background-color]="colorFilter(result.Candidates[1].color)">
+							<img src="/assets/imgs/avatar.png" *ngIf="!result.Candidates[1].photo">
+							<img src="{{ setPhotoUrl(result.Candidates[1].photo) }}" *ngIf="result.Candidates[1].photo">
 						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
-			<ion-grid no-padding showWhen="tablet">
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
+			<ion-grid showWhen="tablet">
+				<ion-row *ngFor="let row of transform2d(result.Candidates, 3, 6)">
+					<ion-col *ngFor="let candidate of row;">
+						<div padding-bottom>
+							{{ candidate.percent }} %
 						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
+						<div class="card" [style.background-color]="colorFilter(candidate.color)">
+							<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.photo">
+							<img src="{{ setPhotoUrl(candidate.photo) }}" padding-left *ngIf="candidate.photo">
 						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
-			<ion-grid no-padding showWhen="core">
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
+			<ion-grid showWhen="core">
+				<ion-row *ngFor="let row of transform2d(result.Candidates, 4, 12)">
+					<ion-col *ngFor="let candidate of row;" col-3>
+						<div padding-bottom>
+							{{ candidate.percent }} %
 						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col text-right>
-						<div text-left padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-center>
-						<div text-center padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
-						</div>
-					</ion-col>
-					<ion-col text-left>
-						<div text-right padding-bottom></div>
-						<div class="card" [style.background-color]="'red'">
-							<img src="/assets/imgs/avatar.png">
+						<div class="card" [style.background-color]="colorFilter(candidate.color)">
+							<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.photo">
+							<img src="{{ setPhotoUrl(candidate.photo) }}" padding-left *ngIf="candidate.photo">
 						</div>
 					</ion-col>
 				</ion-row>

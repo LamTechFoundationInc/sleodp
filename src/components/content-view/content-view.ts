@@ -20,8 +20,6 @@ export class ContentViewComponent {
   @Input('type') type;
   @Input('region') region;
 
-  granularity: string;
-
   mapMode: boolean;
   firstTime: boolean;
   resultRegion: string;
@@ -62,13 +60,11 @@ export class ContentViewComponent {
     this.dataService.setGranularity(granularity);
   }
 
-  setContentView(region, granularity) {
-    this.granularity = granularity;
+  setContentView(region) {
     setTimeout((...args: any[]) => {
-      this.mapView.loadResults();
       this.setMapInit(region);
       this.setTableInit(region);
-      this.setResultRegion(granularity);
+      this.setResultRegion(region);
     }, 10)
   }
 
@@ -82,13 +78,10 @@ export class ContentViewComponent {
 
   }
 
-  setResultRegion(granularity) {
-    switch (granularity) {
+  setResultRegion(region) {
+    switch (region) {
       case "nation":
         this.resultRegion = "National Results";
-        break;
-      case "region":
-        this.resultRegion = "Results By Region";
         break;
       case "district":
         this.resultRegion = "Results By District";
@@ -99,11 +92,10 @@ export class ContentViewComponent {
       case "ward":
         this.resultRegion = "Result By Ward";
         break;
-      case "polling_centre":
-        this.resultRegion = "Result By Polling Center";
+      case "polling_station":
+        this.resultRegion = "Result By Polling Station";
         break;
       default:
-        this.resultRegion = "";
         break;
     }
   }

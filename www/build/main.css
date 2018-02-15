@@ -25764,6 +25764,18 @@ ion-content .scroll-content {
   margin-top: 78px;
 }
 
+.platform-core ios-navbar {
+  min-height: 44px;
+}
+
+.platform-core ion-content .fixed-content {
+  margin-top: 100px;
+}
+
+.platform-core ion-content .scroll-content {
+  margin-top: 100px;
+}
+
 content-view .viewModeToolbar {
   padding: 0;
   padding-bottom: 8px;
@@ -25806,7 +25818,7 @@ content-view .granularity-list a {
 
 content-view .granularity-list a .senate {
   position: relative;
-  height: 20%;
+  height: 25%;
   margin: 0;
   padding: 5px;
 }
@@ -25865,12 +25877,18 @@ header-view .page-links {
   width: 60%;
 }
 
+header-view .page-links ion-title {
+  padding-right: 130px;
+}
+
 header-view .page-links ion-segment-button {
   border: 1px solid #999 !important;
   font-size: 16px;
   background-color: #fff !important;
   opacity: 1 !important;
   color: #333 !important;
+  height: 3.2rem !important;
+  line-height: 3rem !important;
 }
 
 header-view .page-links ion-segment-button:hover, header-view .page-links ion-segment-button.active {
@@ -25892,7 +25910,7 @@ map-view .view-container .map {
 }
 
 map-view .view-container .map canvas {
-  position: unset !important;
+  left: 0;
 }
 
 map-view .view-container .map .mapboxgl-ctrl-logo {
@@ -25919,35 +25937,46 @@ map-view .view-container .election-details .election-competitors {
   padding-top: 0;
 }
 
-map-view .view-container .election-details .election-competitors ion-row {
-  padding-top: 40px;
+map-view .view-container .election-details .election-competitors ion-col {
+  padding: 0;
+  padding-top: 20px;
 }
 
 map-view .view-container .election-details .election-competitors ion-col .card {
   border: 2px solid #000;
-  border-left: none;
+  border-right: none;
   height: 20px;
   line-height: 16px;
   position: relative;
 }
 
 map-view .view-container .election-details .election-competitors ion-col .card img {
-  width: 60px;
+  width: 80px;
   max-height: none;
   position: absolute;
   bottom: 0;
-}
-
-map-view .view-container .election-details .election-competitors ion-col:last-child .card {
-  border-left: 2px solid #000;
-}
-
-map-view .view-container .election-details .election-competitors ion-col:last-child .card img {
   left: 0;
 }
 
-.platform-ios map-view .small {
+map-view .view-container .election-details .election-competitors ion-col:last-child .card {
+  border-right: 2px solid #000;
+}
+
+.platform-mobile map-view .view-container .election-details .small {
   font-size: 0.8rem;
+}
+
+.platform-mobile map-view .view-container .election-details .election-competitors ion-col img {
+  width: 60px;
+}
+
+.platform-mobile map-view .view-container .election-details .election-competitors ion-col:first-child img {
+  left: 0;
+}
+
+.platform-mobile map-view .view-container .election-details .election-competitors ion-col:last-child img {
+  right: 0;
+  left: unset;
 }
 
 .platform-tablet map-view .view-container .map {

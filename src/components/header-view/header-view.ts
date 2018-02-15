@@ -54,8 +54,8 @@ export class HeaderViewComponent {
       case "parliament":
         this.navCtrl.setRoot(ParliamentPage)
         break;
-      case "mayor":
-        this.navCtrl.setRoot(MayorPage)
+      case "chairperson":
+        this.navCtrl.setRoot(ChairpersonPage)
         break;
       case "councilor":
         this.navCtrl.setRoot(CouncilorPage)
