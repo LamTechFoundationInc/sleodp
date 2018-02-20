@@ -1,18 +1,18 @@
 <!-- Generated template for the HeaderViewComponent component -->
 <ion-header>
-	<ion-toolbar color="dark" *ngIf="!isDesktop">
+	<ion-toolbar color="dark" class="show-mobile">
 		<button ion-button menuToggle>
 			<i class="fa fa-navicon"></i>
 		</button>
 		<ion-title text-uppercase text-center>sloedp</ion-title>
 
-		<ion-buttons end>
+		<ion-buttons end *ngIf="isGranularityEnabled">
 			<button ion-button class="bar-button-menutoggle-md" (click)="selectRange($event)">
 				<i class="fa fa-ellipsis-h"></i>
 			</button>
 		</ion-buttons>
 	</ion-toolbar>
-	<ion-toolbar color="dark" *ngIf="isDesktop">
+	<ion-toolbar color="dark" class="show-core" style="padding: 10px;">
 		<button ion-button href="/" class="bar-button-menutoggle-md bar-button-default-md disable-hover logo-icon" float-left>
 			<img src="assets/imgs/logo.png" width="35"> &nbsp;SLOEDP
 		</button>

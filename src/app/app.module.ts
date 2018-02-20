@@ -17,6 +17,8 @@ import { MayorPage } from '../pages/mayor/mayor';
 import { ChairpersonPage } from '../pages/chairperson/chairperson';
 import { CouncilorPage } from '../pages/councilor/councilor';
 import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
+import { PartyProfilePage } from '../pages/party-profile/party-profile';
+import { CandidateProfilePage } from '../pages/candidate-profile/candidate-profile';
 
 // Components
 import { HeaderViewComponent } from '../components/header-view/header-view';
@@ -27,6 +29,9 @@ import { TableViewComponent } from '../components/table-view/table-view';
 
 // Providers
 import { DataProvider } from '../providers/data/data';
+
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,8 @@ import { DataProvider } from '../providers/data/data';
     ChairpersonPage,
     CouncilorPage,
     VillageHeadmanPage,
+    PartyProfilePage,
+    CandidateProfilePage,
   // Components
     HeaderViewComponent,
     RangeViewComponent,
@@ -51,7 +58,8 @@ import { DataProvider } from '../providers/data/data';
     HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,6 +70,8 @@ import { DataProvider } from '../providers/data/data';
     ChairpersonPage,
     CouncilorPage,
     VillageHeadmanPage,
+    PartyProfilePage,
+    CandidateProfilePage,
     RangeViewComponent
   ],
   providers: [

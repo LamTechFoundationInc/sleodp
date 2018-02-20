@@ -2,10 +2,13 @@ map-view {
     .small {
     	font-size: 1rem;
     }
+    i {
+    	color: green;
+    }
 	.view-container {
 		.map {
 			position: unset !important;
-			height: 50vh;
+			height: 35vh;
 			canvas {
 				left: 0;
 			}
@@ -29,19 +32,24 @@ map-view {
 				padding-top: 0;
 				ion-col {
 					padding: 0;
-					padding-top: 20px;
+					padding-top: 15px;
 					.card {
 						border: 2px solid #000;
 						border-right: none;
 						height: 20px;
 						line-height: 16px;
 						position: relative;
+						font-size: 1rem;
 						img {
-							width: 80px;
+							width: 60px;
 							max-height: none;
 							position: absolute;
 							bottom: 0;
 							left: 0;
+						}
+						a {
+							color: #fff;
+							display: block;
 						}
 					}
 					&:last-child {
@@ -54,18 +62,29 @@ map-view {
 		}
 	}
 }
-.platform-mobile {
+@media only screen 
+	and (max-width: 760px),(min-device-width: 768px) 
+	and (max-device-width: 1024px) {
 	map-view {
 		.view-container {
+			.map {
+				height: 40vh;
+			}
+		}
+	}
+}
+@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+	map-view {
+		.view-container {
+			.map {
+				height: 45vh;
+			}
 			.election-details {
-				.small {
-					font-size: 0.8rem;
-				}
 				.election-competitors {
 					ion-col {
-						img {
-							width: 60px;
-						}
+						padding-top: 30px;
 						&:first-child {
 							img {
 								left: 0
@@ -80,22 +99,6 @@ map-view {
 					}
 				}
 			}
-		}
-	}
-}
-.platform-tablet {
-	map-view {
-		.view-container {
-			.map {
-				height: 35vh;
-			}
-		}
-	}
-}
-.platform-core {
-	.view-container {
-		.map {
-			height: 35vh;
 		}
 	}
 }

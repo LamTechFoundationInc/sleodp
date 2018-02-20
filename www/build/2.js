@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 390:
+/***/ 395:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParliamentPageModule", function() { return ParliamentPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PartyProfilePageModule", function() { return PartyProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__parliament__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__party_profile__ = __webpack_require__(64);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ParliamentPageModule = (function () {
-    function ParliamentPageModule() {
+var PartyProfilePageModule = (function () {
+    function PartyProfilePageModule() {
     }
-    ParliamentPageModule = __decorate([
+    PartyProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */],
+                __WEBPACK_IMPORTED_MODULE_2__party_profile__["a" /* PartyProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__parliament__["a" /* ParliamentPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__party_profile__["a" /* PartyProfilePage */]),
             ],
         })
-    ], ParliamentPageModule);
-    return ParliamentPageModule;
+    ], PartyProfilePageModule);
+    return PartyProfilePageModule;
 }());
 
-//# sourceMappingURL=parliament.module.js.map
+//# sourceMappingURL=party-profile.module.js.map
 
 /***/ })
 

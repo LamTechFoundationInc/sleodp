@@ -1,7 +1,6 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, Input } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 import { RangeViewComponent } from '../range-view/range-view';
-import { Platform } from 'ionic-angular';
 import { PresidentPage } from '../../pages/president/president';
 import { ParliamentPage } from '../../pages/parliament/parliament';
 import { MayorPage } from '../../pages/mayor/mayor';
@@ -20,27 +19,26 @@ import { VillageHeadmanPage } from '../../pages/village-headman/village-headman'
   templateUrl: 'header-view.html'
 })
 export class HeaderViewComponent {
+  isGranularityEnabled: boolean;
 
-  isTablet: boolean;
-  isDesktop: boolean;
+  @Input('type') type;
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public plt: Platform, public el: ElementRef, public rd: Renderer2) {
-    this.isTablet = this.plt.is('tablet');
-    this.isDesktop = this.plt.is('core');
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public el: ElementRef, public rd: Renderer2) {
+    this.isGranularityEnabled = true;
   }
 
   ngAfterViewInit() {
-    if (this.isDesktop) {
-      setTimeout((...args: any[]) => {
-        let view = this.navCtrl.getActive();
-        let selected = this.el.nativeElement.querySelector('ion-segment-button.' + view.component.name);
+    setTimeout((...args: any[]) => {
+      let view = this.navCtrl.getActive();
+      let selected = this.el.nativeElement.querySelector('ion-segment-button.' + view.component.name);
+
+      if (selected)
         this.rd.addClass(selected, 'active');
-      }, 100);
-    }
+    }, 100);
   }
 
   selectRange(event) {
-  	let popover = this.popoverCtrl.create(RangeViewComponent);
+  	let popover = this.popoverCtrl.create(RangeViewComponent, {type: this.type});
     popover.present({
     	ev: event
     });

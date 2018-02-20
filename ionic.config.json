@@ -8,6 +8,6 @@
   "proxies": [
   {
     "path": "/api",
-    "proxyUrl": "https://electiondata.io"
+    "proxyUrl": "https://electiondata.io/"
   }]
 }

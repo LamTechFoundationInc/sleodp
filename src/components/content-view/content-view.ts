@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 import { MapViewComponent } from '../../components/map-view/map-view';
+import { TableViewComponent } from '../../components/table-view/table-view';
 import { DataProvider } from '../../providers/data/data';
 
 /**
@@ -15,6 +16,7 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class ContentViewComponent {
   @ViewChild(MapViewComponent) mapView: MapViewComponent;
+  @ViewChild(TableViewComponent) tableView: TableViewComponent;
 
   @Input('year') year;
   @Input('type') type;
@@ -25,16 +27,21 @@ export class ContentViewComponent {
   resultRegion: string;
 
   results: any;
-  
-  isTablet: Boolean;
-  isDesktop: Boolean;
-  
-  constructor(public dataService: DataProvider, public plt: Platform) {
-    this.isTablet = this.plt.is('tablet');
-    this.isDesktop = this.plt.is('core');
-    
+
+  nationAvailable: boolean;
+  districtAvailable: boolean;
+  constituencyAvailable: boolean;
+  wardAvailable: boolean;
+  pollingCentreAvailable: boolean;
+
+  boundary: string;
+
+  constructor(public dataService: DataProvider, public events: Events) {
     this.firstTime = true;
     this.setMapMode(true);
+    events.subscribe('boundary:select', (boundary) => {
+      this.boundary = boundary;
+    });
   }
 
   ngAfterViewInit() {
@@ -50,7 +57,14 @@ export class ContentViewComponent {
     else {
       if (this.mapMode) {
         setTimeout((...args: any[]) => {
-          this.setMapInit(this.region);
+          if (this.mapView)
+            this.setMapInit();
+        }, 10);
+      }
+      else {
+        setTimeout((...args: any[]) => {
+          if (this.tableView)
+            this.setTableInit(this.boundary);
         }, 10);
       }
     }
@@ -60,22 +74,23 @@ export class ContentViewComponent {
     this.dataService.setGranularity(granularity);
   }
 
-  setContentView(region) {
+  setContentView() {
     setTimeout((...args: any[]) => {
-      this.setMapInit(region);
-      this.setTableInit(region);
-      this.setResultRegion(region);
+      this.setGranularityList();
+      this.setMapInit();
+      this.setTableInit(this.boundary);
+      this.setResultRegion(this.region);
     }, 10)
   }
 
-  setMapInit(region) {
-    if (this.mapView) {
+  setMapInit() {
+    if (this.mapView)
       this.mapView.drawMap();
-    }
   }
 
-  setTableInit(region) {
-
+  setTableInit(boundary) {
+    if (this.tableView)
+      this.tableView.drawTable(boundary);
   }
 
   setResultRegion(region) {
@@ -92,11 +107,65 @@ export class ContentViewComponent {
       case "ward":
         this.resultRegion = "Result By Ward";
         break;
-      case "polling_station":
-        this.resultRegion = "Result By Polling Station";
+      case "polling_centre":
+        this.resultRegion = "Result By Polling Centre";
         break;
       default:
         break;
+    }
+  }
+
+  setGranularityList() {
+    this.nationAvailable = false;
+    this.districtAvailable = false;
+    this.constituencyAvailable = false;
+    this.wardAvailable = false;
+    this.pollingCentreAvailable = false;
+
+    if (this.type == "villageheadman") {
+      this.pollingCentreAvailable = true;
+    }
+    else {
+      if (this.year != '2018') {
+        switch (this.type) {
+          case "president":
+            this.nationAvailable = true;
+            this.districtAvailable = true;
+            if (this.region != "nation" && this.region != "district")
+              this.region = "nation";
+            break;
+          case "parliament":
+            this.constituencyAvailable = true;
+            if (this.region != "constituency")
+              this.region = "constituency";
+            break;
+          case "mayor":
+            this.districtAvailable = true;
+            if (this.region != "district")
+              this.region = "district"
+            break;
+          case "chairperson":
+            this.districtAvailable = true;
+            if (this.region != "district")
+              this.region = "district"
+            break;
+          case "councilor":
+            this.wardAvailable = true;
+            if (this.region != "ward")
+              this.region = "ward"
+            break;
+          default:
+            // code...
+            break;
+        }
+      }
+      else {
+        this.nationAvailable = true;
+        this.districtAvailable = true;
+        this.constituencyAvailable = true;
+        this.wardAvailable = true;
+        this.pollingCentreAvailable = true;
+      }
     }
   }
 }

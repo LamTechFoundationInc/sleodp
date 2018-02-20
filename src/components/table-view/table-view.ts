@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular/index';
 import { DataProvider } from '../../providers/data/data';
+import { PartyProfilePage } from '../../pages/party-profile/party-profile';
+import { CandidateProfilePage } from '../../pages/candidate-profile/candidate-profile';
 
 /**
  * Generated class for the TableViewComponent component.
@@ -17,44 +20,68 @@ export class TableViewComponent {
   @Input('region') region;
   @Input('type') type;
 
-  datas: any;
+  Parties: any;
+  Candidates: any;
+  total_results;
+  Results: any;
+  Boundaries: any;
+  isNation: boolean;
+  Boundary: number;
 
-  constructor(public dataService: DataProvider) {
-    this.datas = [{
-  		name: 'Kamara Samura',
-  		party: 'APC',
-  		votes: '640',
-  		percent: '40'
-  	},{
-  		name: 'Bio Julius',
-  		party: 'SLPP',
-  		votes: '480',
-  		percent: '30'
-  	},{
-  		name: 'Yumkella Kandeh',
-  		party: 'NGC',
-  		votes: '240',
-  		percent: '15'
-  	},{
-  		name: 'Manasaray Mohamed',
-  		party: 'ADP',
-  		votes: '120',
-  		percent: '7.5'
-  	},{
-  		name: 'Sam-Sumana Samuel',
-  		party: 'C4C',
-  		votes: '60',
-  		percent: '3.75'
-  	},{
-  		name: 'Maigai Charles',
-  		party: 'PMDC',
-  		votes: '16',
-  		percent: '1'
-  	}];
+  constructor(public dataService: DataProvider, public navCtrl: NavController) {
+    this.Results = [];
+    this.Boundaries = [];
+    this.Parties = {};
+    this.Candidates = {};
+    this.Boundary = 0;
   }
 
   ngAfterViewInit() {
-  	
+  }
+  
+  candidatesEnable() {
+    return this.Results.length > 0;
   }
 
+  gotoPartyDetail(acronym) {
+    var party = this.Parties[acronym];
+    this.navCtrl.push(PartyProfilePage, { party: party });
+  }
+
+  gotoCandidateDetail(candidate_id) {
+    this.navCtrl.push(CandidateProfilePage, { candidate: this.Candidates[candidate_id] });
+  }
+
+  drawTable(boundary) {
+    if (boundary != "")
+      this.Boundary = boundary;
+
+    var fields = {
+      year: this.year,
+      type: this.type,
+      region: this.region
+    }
+
+    this.isNation = this.region == 'nation';
+
+    var vm = this;
+    this.dataService.loadResultsByFields(fields).then(data => {
+      this.Parties = data['Parties'];
+      this.Candidates = data['Candidates'];
+      if (data['Boundaries'].length > 0) {
+        vm.Boundaries = [];
+        vm.total_results = data['Boundaries'];
+        vm.Results = data['Boundaries'][0].candidates;
+        for (let row of data['Boundaries']) {
+          vm.Boundaries.push(row.name);
+        }
+      }
+    });
+  }
+
+  onSelectChange(selectedValue: any) {
+    var Boundary = selectedValue;
+    if (this.total_results[Boundary])
+      this.Results = this.total_results[Boundary].candidates;
+  }
 }

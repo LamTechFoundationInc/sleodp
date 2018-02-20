@@ -24,11 +24,34 @@
     -o-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
     box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2)
 }
+.show-core {
+	display: block;
+}
+.show-tablet {
+	display: none;
+}
+.show-mobile {
+	display: none;
+}
 ion-header {
 	ion-toolbar {
 		border-bottom: 1px solid #fff;
 	}
+	ios-navbar {
+		
+	}
+	ion-content {
+		.fixed-content {
+			margin-top: 100px;
+		}
+		.scroll-content {
+			margin: 16px;
+			margin-top: 104px;
+			padding: 0 !important;
+		}
+	}
 	ion-navbar {
+		min-height: 44px !important;
 		.toolbar-content {
 			a {
 				color: white;
@@ -60,13 +83,26 @@ ion-content {
 		display: block;
 	}
 	.fixed-content {
-		margin-top: 112px;
+		margin-top: 100px;
 	}
 	.scroll-content {
-		margin-top: 112px;
+		margin: 16px;
+		margin-top: 104px;
+		padding: 0 !important;
 	}
 }
-.platform-mobile {
+@media only screen 
+	and (max-width: 760px),(min-device-width: 768px) 
+	and (max-device-width: 1024px) {
+	.show-core {
+		display: none;
+	}
+	.show-tablet {
+		display: block;
+	}
+	.show-mobile {
+		display: none;
+	}
 	ion-navbar {
 		min-height: 44px !important;
 	    padding-top: 0 !important;
@@ -81,37 +117,38 @@ ion-content {
 			margin: 1px;
 		}
 		.fixed-content {
-			margin-top: 102px;
+			margin-top: 96px;
 		}
 		.scroll-content {
-			margin-top: 102px;
-			padding-top: 4px !important;
+			margin: 10px;
+			margin-top: 96px;
+			padding: 0 !important;
 		}
 	}
 }
-.platform-ios {
+@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+	.show-core {
+		display: none;
+	}
+	.show-tablet {
+		display: none;
+	}
+	.show-mobile {
+		display: block;
+	}
 	ion-navbar {
 		min-height: 34px !important;
 	}
 	ion-content {
 		.fixed-content {
-			margin-top: 78px;
+			margin-top: 86px;
 		}
 		.scroll-content {
-			margin-top: 78px;
-		}
-	}
-}
-.platform-core {
-	ios-navbar {
-		min-height: 44px;
-	}
-	ion-content {
-		.fixed-content {
-			margin-top: 100px;
-		}
-		.scroll-content {
-			margin-top: 100px;
+			margin: 10px;
+			margin-top: 86px;
+			padding: 0 !important;
 		}
 	}
 }

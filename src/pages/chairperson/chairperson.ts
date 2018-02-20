@@ -1,4 +1,4 @@
-import { Component, ViewChildren } from '@angular/core';
+import { Component, ViewChildren, forwardRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ChairpersonPage {
   @ViewChild(Slides) slides: Slides;
-  @ViewChildren(ContentViewComponent) subPageViews: any;
+  @ViewChildren(forwardRef(() => ContentViewComponent)) subPageViews: any;
   subpages:    Array<{year: Number}>;
   totalPages:  Number;
   year:      Number;
@@ -31,7 +31,7 @@ export class ChairpersonPage {
   prevEnabled:  Boolean;
   nextEnabled:  Boolean;
   region = "district";
-  initialSlide = 4;
+  initialSlide: any;
   
   subscription: Subscription;
 
@@ -49,26 +49,18 @@ export class ChairpersonPage {
       { year: 2012},
       { year: 2018},
     ];
-    this.initialSlide = this.subpages.length - 1;
+    this.initialSlide = this.subpages.length > 1 ? this.subpages.length - 1 : 0;
     this.setPageInfo();
-
-    this.subscription = this.dataService.getGranularity().subscribe(granularity => { 
-      this.region = granularity;
-      let currentIndex = this.slides.getActiveIndex();
-      if (currentIndex == this.totalPages) return;
-      
-      this.subPageViews._results[currentIndex].setContentView(this.region);
-    });
   }
 
   ionViewDidLoad() {
-
   }
 
   ionViewDidEnter() {
-    if (this.subpages.length > 0) {
-      this.subPageViews._results[this.subPageViews._results.length - 1].setContentView(this.region);
-    }
+    this.subscription = this.dataService.getGranularity().subscribe(granularity => { 
+      this.region = granularity;
+      this.setSlideChanges();
+    });
   }
 
   setPageInfo() {
@@ -96,16 +88,25 @@ export class ChairpersonPage {
     let currentIndex = this.slides.getActiveIndex();
     if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0) return;
 
-    this.subPageViews._results[currentIndex].setContentView(this.region);
     this.prevEnabled = !this.slides.isBeginning();
     this.nextEnabled = !this.slides.isEnd();
 
     this.year = this.subpages[currentIndex].year;
     this.prevYear = this.prevEnabled ? this.subpages[currentIndex - 1].year : 0;
     this.nextYear = this.nextEnabled ? this.subpages[currentIndex + 1].year : 0;
+
+    this.setSlideChanges();
   }
 
   ionViewDidLeave() {
     this.subscription.unsubscribe();
+  }
+
+  setSlideChanges() {
+    let currentIndex = this.slides.getActiveIndex();
+    if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0) return;
+
+    this.subPageViews._results[currentIndex].setContentView();
+    this.dataService.setYear(this.year);
   }
 }

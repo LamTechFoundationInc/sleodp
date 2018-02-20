@@ -1,9 +1,9 @@
 <!-- Generated template for the RangeViewComponent component -->
 <ion-list>
 	<ion-list-header>Result Granularity</ion-list-header>
-	<button ion-item (click)="seletGranularity('nation')">National Results</button>
-	<button ion-item (click)="seletGranularity('district')">Results By District</button>
-	<button ion-item (click)="seletGranularity('constituency')">Results By Constituency</button>
-	<button ion-item (click)="seletGranularity('ward')">Results By Ward</button>
-	<button ion-item (click)="seletGranularity('polling_station')">Results By Polling Station</button>
+	<button ion-item (click)="seletGranularity('nation')" *ngIf="nationAvailable">National Results</button>
+	<button ion-item (click)="seletGranularity('district')" *ngIf="districtAvailable">Results By District</button>
+	<button ion-item (click)="seletGranularity('constituency')" *ngIf="constituencyAvailable">Results By Constituency</button>
+	<button ion-item (click)="seletGranularity('ward')" *ngIf="wardAvailable">Results By Ward</button>
+	<button ion-item (click)="seletGranularity('polling_centre')" *ngIf="pollingCentreAvailable">Results By Polling Centre</button>
 </ion-list>

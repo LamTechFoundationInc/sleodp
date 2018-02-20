@@ -25687,8 +25687,34 @@ ion-navbar.toolbar {
   box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.2);
 }
 
+.show-core {
+  display: block;
+}
+
+.show-tablet {
+  display: none;
+}
+
+.show-mobile {
+  display: none;
+}
+
 ion-header ion-toolbar {
   border-bottom: 1px solid #fff;
+}
+
+ion-header ion-content .fixed-content {
+  margin-top: 100px;
+}
+
+ion-header ion-content .scroll-content {
+  margin: 16px;
+  margin-top: 104px;
+  padding: 0 !important;
+}
+
+ion-header ion-navbar {
+  min-height: 44px !important;
 }
 
 ion-header ion-navbar .toolbar-content a {
@@ -25721,59 +25747,68 @@ ion-content .swiper-slide {
 }
 
 ion-content .fixed-content {
-  margin-top: 112px;
+  margin-top: 100px;
 }
 
 ion-content .scroll-content {
-  margin-top: 112px;
+  margin: 16px;
+  margin-top: 104px;
+  padding: 0 !important;
 }
 
-.platform-mobile ion-navbar {
-  min-height: 44px !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  .show-core {
+    display: none;
+  }
+  .show-tablet {
+    display: block;
+  }
+  .show-mobile {
+    display: none;
+  }
+  ion-navbar {
+    min-height: 44px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  ion-navbar .toolbar-title {
+    font-weight: 300;
+    font-size: 14px;
+  }
+  ion-content ion-slides {
+    margin: 1px;
+  }
+  ion-content .fixed-content {
+    margin-top: 96px;
+  }
+  ion-content .scroll-content {
+    margin: 10px;
+    margin-top: 96px;
+    padding: 0 !important;
+  }
 }
 
-.platform-mobile ion-navbar .toolbar-title {
-  font-weight: 300;
-  font-size: 14px;
-}
-
-.platform-mobile ion-content ion-slides {
-  margin: 1px;
-}
-
-.platform-mobile ion-content .fixed-content {
-  margin-top: 102px;
-}
-
-.platform-mobile ion-content .scroll-content {
-  margin-top: 102px;
-  padding-top: 4px !important;
-}
-
-.platform-ios ion-navbar {
-  min-height: 34px !important;
-}
-
-.platform-ios ion-content .fixed-content {
-  margin-top: 78px;
-}
-
-.platform-ios ion-content .scroll-content {
-  margin-top: 78px;
-}
-
-.platform-core ios-navbar {
-  min-height: 44px;
-}
-
-.platform-core ion-content .fixed-content {
-  margin-top: 100px;
-}
-
-.platform-core ion-content .scroll-content {
-  margin-top: 100px;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .show-core {
+    display: none;
+  }
+  .show-tablet {
+    display: none;
+  }
+  .show-mobile {
+    display: block;
+  }
+  ion-navbar {
+    min-height: 34px !important;
+  }
+  ion-content .fixed-content {
+    margin-top: 86px;
+  }
+  ion-content .scroll-content {
+    margin: 10px;
+    margin-top: 86px;
+    padding: 0 !important;
+  }
 }
 
 content-view .viewModeToolbar {
@@ -25787,7 +25822,7 @@ content-view .viewModeToolbar .toolbar-background {
 }
 
 content-view .viewModeToolbar .toolbar-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 content-view .viewModeToolbar .modeButton {
@@ -25861,6 +25896,25 @@ content-view .granularity-list a:hover .box {
   box-shadow: 0 0 4px 1px #009bff;
 }
 
+content-view .content {
+  position: absolute;
+  right: 0;
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  content-view .content {
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  content-view ion-title {
+    padding: 0;
+  }
+  content-view ion-title .toolbar-title {
+    font-size: 1.5rem;
+  }
+}
+
 header-view .logo-icon {
   color: white;
   font-size: 24px;
@@ -25900,13 +25954,26 @@ header-view .page-links ion-segment-button:hover, header-view .page-links ion-se
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
 }
 
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  header-view .show-mobile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 map-view .small {
   font-size: 1rem;
 }
 
+map-view i {
+  color: green;
+}
+
 map-view .view-container .map {
   position: unset !important;
-  height: 50vh;
+  height: 35vh;
 }
 
 map-view .view-container .map canvas {
@@ -25939,7 +26006,7 @@ map-view .view-container .election-details .election-competitors {
 
 map-view .view-container .election-details .election-competitors ion-col {
   padding: 0;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 map-view .view-container .election-details .election-competitors ion-col .card {
@@ -25948,43 +26015,46 @@ map-view .view-container .election-details .election-competitors ion-col .card {
   height: 20px;
   line-height: 16px;
   position: relative;
+  font-size: 1rem;
 }
 
 map-view .view-container .election-details .election-competitors ion-col .card img {
-  width: 80px;
+  width: 60px;
   max-height: none;
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
+map-view .view-container .election-details .election-competitors ion-col .card a {
+  color: #fff;
+  display: block;
+}
+
 map-view .view-container .election-details .election-competitors ion-col:last-child .card {
   border-right: 2px solid #000;
 }
 
-.platform-mobile map-view .view-container .election-details .small {
-  font-size: 0.8rem;
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  map-view .view-container .map {
+    height: 40vh;
+  }
 }
 
-.platform-mobile map-view .view-container .election-details .election-competitors ion-col img {
-  width: 60px;
-}
-
-.platform-mobile map-view .view-container .election-details .election-competitors ion-col:first-child img {
-  left: 0;
-}
-
-.platform-mobile map-view .view-container .election-details .election-competitors ion-col:last-child img {
-  right: 0;
-  left: unset;
-}
-
-.platform-tablet map-view .view-container .map {
-  height: 35vh;
-}
-
-.platform-core .view-container .map {
-  height: 35vh;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  map-view .view-container .map {
+    height: 45vh;
+  }
+  map-view .view-container .election-details .election-competitors ion-col {
+    padding-top: 30px;
+  }
+  map-view .view-container .election-details .election-competitors ion-col:first-child img {
+    left: 0;
+  }
+  map-view .view-container .election-details .election-competitors ion-col:last-child img {
+    right: 0;
+    left: unset;
+  }
 }
 
 range-view ion-list ion-list-header ion-label {
@@ -25994,4 +26064,91 @@ range-view ion-list ion-list-header ion-label {
 
 range-view ion-list button ion-label {
   font-size: 0.8em;
+}
+
+table-view ion-select {
+  width: 100%;
+  max-width: 100%;
+}
+
+table-view ion-select .item-cover {
+  height: 0;
+}
+
+table-view table {
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+table-view table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+table-view table th {
+  display: none;
+}
+
+table-view table td {
+  display: block;
+}
+
+table-view table td:first-child {
+  padding-top: .5em;
+}
+
+table-view table td:last-child {
+  padding-bottom: .5em;
+}
+
+table-view table td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 6.5em;
+  display: inline-block;
+}
+
+@media (min-width: 320px) {
+  table-view table td:before {
+    display: none;
+  }
+}
+
+table-view table td i {
+  color: green;
+}
+
+table-view table th, table-view table td {
+  text-align: left;
+}
+
+@media (min-width: 320px) {
+  table-view table th, table-view table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  table-view table th:first-child, table-view table td:first-child {
+    padding-left: 0;
+  }
+  table-view table th:last-child, table-view table td:last-child {
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  table-view table th, table-view table td {
+    font-size: 1.2rem;
+  }
+}
+
+page-candidate-profile .candidate-logo {
+  width: 50%;
+}
+
+page-party-profile .party-logo {
+  width: 50%;
+}
+
+page-party-profile .party-color {
+  height: 50px;
 }

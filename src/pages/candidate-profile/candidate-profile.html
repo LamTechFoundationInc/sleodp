@@ -1,0 +1,65 @@
+<!--
+  Generated template for the CandidateProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header-view #headerview>
+  <ion-navbar color="dark" sub-navbar>
+    <ion-title>
+      Candidate Details
+    </ion-title>
+  </ion-navbar>
+</header-view>
+
+
+<ion-content padding>
+	<div class="" *ngIf="candidate">
+		<ion-grid class="show-core">
+			<ion-row>
+				<ion-col col-4 text-center>
+					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">
+				</ion-col>
+				<ion-col col-8>
+					<h2>{{ getCandidateName() }}</h2>
+					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
+					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
+					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-grid class="show-tablet">
+			<ion-row>
+				<ion-col text-center>
+					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h2>{{ getCandidateName() }}</h2>
+					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
+					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
+					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-grid class="show-mobile">
+			<ion-row>
+				<ion-col text-center>
+					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h2>{{ getCandidateName() }}</h2>
+					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
+					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
+					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+	<div class="empty-info" padding-top *ngIf="!candidate">
+		There is no information about this candidate.
+	</div>
+</ion-content>

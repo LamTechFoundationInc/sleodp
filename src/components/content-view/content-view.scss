@@ -7,7 +7,7 @@ content-view {
 			background: transparent;
 		}
 		.toolbar-title {
-			font-size: 1.5rem;
+			font-size: 2rem;
 		}
 		.modeButton {
 			background: transparent !important;
@@ -72,6 +72,27 @@ content-view {
 				.box {
 					box-shadow: 0 0 4px 1px rgba(0,155,255,1);
 				}
+			}
+		}
+	}
+	.content {
+		position: absolute; right: 0
+	}
+}
+
+@media only screen 
+and (max-width: 760px),(min-device-width: 768px) 
+and (max-device-width: 1024px) {
+	content-view {
+		.content {
+			left: 0;
+			width: 100%;
+			max-width: 100%;
+		}
+		ion-title {
+			padding: 0;
+			.toolbar-title {
+				font-size: 1.5rem;
 			}
 		}
 	}

@@ -1,3 +1,72 @@
 table-view {
+	$breakpoint-alpha: 320px; // adjust to your needs
+	ion-select {
+		width: 100%;
+		max-width: 100%;
+		.item-cover {
+			height: 0;
+		}
+	}
+	table {
+		width: 100%;
+		font-size: 1.8rem;
+		tr {
+			border-top: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+		}
 
+		th {
+			display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
+		}
+
+		td {
+			display: block; 
+
+			&:first-child {
+				padding-top: .5em;
+			}
+			&:last-child {
+				padding-bottom: .5em;
+			}
+
+			&:before {
+				content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+				font-weight: bold;
+
+				// optional stuff to make it look nicer
+				width: 6.5em; // magic number :( adjust according to your own content
+				display: inline-block;
+				// end options
+
+				@media (min-width: $breakpoint-alpha) {
+				display: none;
+				}
+			}
+			i {
+				color: green;
+			}
+		}
+
+		th, td {
+			text-align: left;
+
+			@media (min-width: $breakpoint-alpha) {
+				display: table-cell;
+				padding: .25em .5em;
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+			@media only screen
+			and (min-device-width : 320px)
+			and (max-device-width : 480px) {
+				font-size: 1.2rem
+			}
+		}
+	}
 }

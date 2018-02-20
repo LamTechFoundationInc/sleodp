@@ -2,84 +2,99 @@
 <div class="view-container">
 	<div id="{{year}}_map" class="map box">
 	</div>
-	<div class="election-details">
-		<div class="election-info">
-			<ion-grid no-padding>
-				<ion-row>
-					<ion-col text-left class="small">
-						Total Registered Votes: {{ result.TotalVotes }}<br>
-						Result Status: {{ result.ResultStatus }}
-					</ion-col>
-					<ion-col text-right class="small">
-						Total Valid Votes: {{ result.ValidVotes }}<br>
-						Total Invalid Votes: {{ result.InvalidVotes }}
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</div>
-		<div class="election-parties">
-			<ion-grid no-padding>
-				<ion-row>
-					<ion-col *ngFor="let party of result.Parties">
-						<small>{{ party.Acronym }}</small>
-						<div class="party-card" [style.background-color]="colorFilter(party.Color)"></div>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</div>
-		<div class="election-competitors">
-			<ion-grid hideWhen="core,tablet" padding-top>
-				<ion-row *ngIf="result.Candidates.length > 1">
-					<ion-col>
-						<div padding-bottom text-right>
-							{{ result.Candidates[0].percent }} %
-						</div>
-						<div class="card" [style.background-color]="colorFilter(result.Candidates[0].color)">
-							<img src="/assets/imgs/avatar.png" *ngIf="!result.Candidates[0].photo">
-							<img src="{{ setPhotoUrl(result.Candidates[0].photo) }}" *ngIf="result.Candidates[0].photo">
-						</div>
-					</ion-col>
-					<ion-col width-25 text-center>
-						<div padding-bottom>{{ currentPercent(result.Candidates) }} %</div>
-						<div class="card">All Others</div>
-					</ion-col>
-					<ion-col>
-						<div padding-bottom text-left>
-							{{ result.Candidates[1].percent }} %
-						</div>
-						<div class="card" [style.background-color]="colorFilter(result.Candidates[1].color)">
-							<img src="/assets/imgs/avatar.png" *ngIf="!result.Candidates[1].photo">
-							<img src="{{ setPhotoUrl(result.Candidates[1].photo) }}" *ngIf="result.Candidates[1].photo">
-						</div>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-			<ion-grid showWhen="tablet">
-				<ion-row *ngFor="let row of transform2d(result.Candidates, 3, 6)">
-					<ion-col *ngFor="let candidate of row;">
-						<div padding-bottom>
-							{{ candidate.percent }} %
-						</div>
-						<div class="card" [style.background-color]="colorFilter(candidate.color)">
-							<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.photo">
-							<img src="{{ setPhotoUrl(candidate.photo) }}" padding-left *ngIf="candidate.photo">
-						</div>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-			<ion-grid showWhen="core">
-				<ion-row *ngFor="let row of transform2d(result.Candidates, 4, 12)">
-					<ion-col *ngFor="let candidate of row;" col-3>
-						<div padding-bottom>
-							{{ candidate.percent }} %
-						</div>
-						<div class="card" [style.background-color]="colorFilter(candidate.color)">
-							<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.photo">
-							<img src="{{ setPhotoUrl(candidate.photo) }}" padding-left *ngIf="candidate.photo">
-						</div>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
+	<div *ngIf="!candidatesEnable()" padding-top>
+		There are no election datas
+	</div>
+	<div *ngIf="candidatesEnable()">
+		<div class="election-details">
+			<div class="election-info">
+				<ion-grid no-padding>
+					<ion-row>
+						<ion-col text-left class="small">
+							Total Registered Votes: {{ result.TotalVotes }}<br>
+							Result Status: {{ result.ResultStatus }}
+						</ion-col>
+						<ion-col text-right class="small">
+							Total Valid Votes: {{ result.ValidVotes }}<br>
+							Total Invalid Votes: {{ result.InvalidVotes }}
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+			<div class="election-parties">
+				<ion-grid no-padding>
+					<ion-row>
+						<ion-col *ngFor="let acronym of result.Parties | party" (click)="gotoPartyDetail(acronym.value)">
+							<div class="small">{{ acronym.key }}</div>
+							<div class="party-card" [style.background-color]="colorFilter(acronym.value.Color)"></div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
+			<div class="election-competitors">
+				<ion-grid class="show-mobile" padding-top>
+					<ion-row *ngIf="result.ElectionResults.length > 1">
+						<ion-col>
+							<div class="small" padding-bottom text-right>
+								{{ result.ElectionResults[0].ValidVotesPercentage }} % 
+								<i class="fa fa-check-circle"></i>
+							</div>
+							<a (click)="gotoCandidateDetail(result.ElectionResults[0].Candidate_SLEOP_ID)">
+							<div class="card" [style.background-color]="colorFilter(result.ElectionResults[0].CandidatePoliticalPartyColor)">
+								<img src="/assets/imgs/avatar.png" *ngIf="!result.ElectionResults[0].CandidatePhoto">
+								<img src="{{ setPhotoUrl(result.ElectionResults[0].CandidatePhoto) }}" *ngIf="result.ElectionResults[0].CandidatePhoto">
+							</div>
+							<span pull-right>{{ result.ElectionResults[0].CandidateFullName }}</span></a>
+						</ion-col>
+						<ion-col width-25 text-center>
+							<div class="small" padding-bottom>{{ otherPercent(result.ElectionResults) }} %</div>
+							<div class="card">All Others</div>
+						</ion-col>
+						<ion-col>
+							<div class="small" padding-bottom text-left>
+								{{ result.ElectionResults[1].ValidVotesPercentage }} %
+							</div>
+							<div class="card" [style.background-color]="colorFilter(result.ElectionResults[1].CandidatePoliticalPartyColor)">
+								<img src="/assets/imgs/avatar.png" *ngIf="!result.ElectionResults[1].CandidatePhoto">
+								<img src="{{ setPhotoUrl(result.ElectionResults[1].CandidatePhoto) }}" *ngIf="result.ElectionResults[1].CandidatePhoto">
+							</div>
+							<a (click)="gotoCandidateDetail(result.ElectionResults[1].Candidate_SLEOP_ID)"><span pull-right>{{ result.ElectionResults[1].CandidateFullName }}</span></a>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+				<ion-grid class="show-tablet">
+					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 3, 6); let i = index">
+						<ion-col *ngFor="let candidate of row; let j = index">
+							<div padding-bottom>
+								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0"></i>
+							</div>
+							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>
+								<a (click)="gotoCandidateDetail(candidate.candidate)">
+									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
+									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">
+									<span pull-right>{{ candidate.CandidateFullName }}</span>
+								</a>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+				<ion-grid class="show-core">
+					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 4, 12); let i = index">
+						<ion-col *ngFor="let candidate of row; let j = index" col-3>
+							<div padding-bottom>
+								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0"></i>
+							</div>
+							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>
+								<a (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">
+									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
+									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">
+									<span pull-right>{{ candidate.CandidateFullName }}</span>
+								</a>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</div>
 		</div>
 	</div>
 </div>
