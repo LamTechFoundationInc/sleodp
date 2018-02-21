@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
-    "mapbox-gl": "^0.44.0",
+    "mapbox-gl": "^0.44.1",
     "typescript": "2.4.2"
   },
   "description": "An Ionic project",
