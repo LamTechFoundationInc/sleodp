@@ -33,6 +33,9 @@ import { DataProvider } from '../providers/data/data';
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
 
+// Select2 Component
+import { Select2Component } from 'ng2-select2/ng2-select2';
+
 @NgModule({
   declarations: [
   // App
@@ -51,7 +54,9 @@ import { PipesModule } from '../pipes/pipes.module';
     RangeViewComponent,
     ContentViewComponent,
     MapViewComponent,
-    TableViewComponent
+    TableViewComponent,
+  // Select2Component
+    Select2Component
   ],
   imports: [
     BrowserModule,

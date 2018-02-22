@@ -26,14 +26,15 @@ export class TableViewComponent {
   Results: any;
   Boundaries: any;
   isNation: boolean;
-  Boundary: number;
+  Boundary: string;
+  noWinner: boolean;
 
   constructor(public dataService: DataProvider, public navCtrl: NavController) {
     this.Results = [];
     this.Boundaries = [];
     this.Parties = {};
     this.Candidates = {};
-    this.Boundary = 0;
+    this.noWinner = true;
   }
 
   ngAfterViewInit() {
@@ -72,6 +73,8 @@ export class TableViewComponent {
         vm.Boundaries = [];
         vm.total_results = data['Boundaries'];
         vm.Results = data['Boundaries'][0].candidates;
+        if (vm.Results[0]['ValidVotes'] > 0)
+          vm.noWinner = false;
         for (let row of data['Boundaries']) {
           vm.Boundaries.push(row.name);
         }
@@ -80,8 +83,15 @@ export class TableViewComponent {
   }
 
   onSelectChange(selectedValue: any) {
-    var Boundary = selectedValue;
-    if (this.total_results[Boundary])
-      this.Results = this.total_results[Boundary].candidates;
+    var vm = this;
+    this.total_results.forEach(function(data) {
+      if (data.name == selectedValue.value) {
+        vm.Results = data.candidates;
+        if (vm.Results[0]['ValidVotes'] > 0)
+          vm.noWinner = false;
+        else
+          vm.noWinner = true;
+      }
+    });
   }
 }

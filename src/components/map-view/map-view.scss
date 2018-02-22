@@ -15,6 +15,9 @@ map-view {
 			.mapboxgl-ctrl-logo {
 				display: none;
 			}
+			.mapboxgl-ctrl {
+				margin-top: 50px;
+			}
 		}
 		.election-details {
 			bottom: 0;
@@ -84,7 +87,6 @@ map-view {
 			.election-details {
 				.election-competitors {
 					ion-col {
-						padding-top: 30px;
 						&:first-child {
 							img {
 								left: 0

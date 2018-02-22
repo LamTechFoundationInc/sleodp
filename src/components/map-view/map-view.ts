@@ -23,7 +23,8 @@ export class MapViewComponent {
 	@Input('type') type;
 
 	result: any;
-	
+
+	noWinner: boolean;
 	isLoaded: Boolean;
 	
 	constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public dataService: DataProvider, public events: Events) {
@@ -37,6 +38,7 @@ export class MapViewComponent {
 			'Boundaries': [],
 			'ElectionResults': []
 		};
+		this.noWinner = true;
 	}
 
 	ngAfterViewInit() {
@@ -123,8 +125,14 @@ export class MapViewComponent {
 				vm.result.ElectionResults = vm.result.Boundaries[0].candidates;
 				vm.result.TotalVotes = vm.result.Boundaries[0].votes;
 				vm.result.ValidVotes = vm.result.Boundaries[0].votes;
-				vm.events.publish('boundary:select', 0);
+				vm.events.publish('boundary:select', vm.result.Boundaries[0].name);
 				vm.result.Parties = {};
+				if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
+					vm.noWinner = false;
+				}
+				else {
+					vm.noWinner = true;
+				}
 				for (let candidate of vm.result.Boundaries[0].candidates) {
 					vm.result.Parties[candidate['CandidatePoliticalParty']] = Parties[candidate['CandidatePoliticalParty']];
 				}
@@ -215,7 +223,9 @@ export class MapViewComponent {
 							    vm.result.ElectionResults = boundary.candidates;
 							    vm.result.TotalVotes = boundary.votes;
 							    vm.result.ValidVotes = boundary.votes;
-							    vm.events.publish('boundary:select', count);
+							    if (boundary.votes > 0) vm.noWinner = false;
+							    else vm.noWinner = true;
+							    vm.events.publish('boundary:select', boundary.name);
 							    return memo;
 							}, ['in', 'Name']);
 
@@ -245,7 +255,9 @@ export class MapViewComponent {
 							vm.result.ElectionResults = marker.candidates;
 						    vm.result.TotalVotes = marker.votes;
 						    vm.result.ValidVotes = marker.votes;
-						    vm.events.publish('boundary:select', index);
+						    if (marker.votes > 0) vm.noWinner = false;
+							else vm.noWinner = true;
+						    vm.events.publish('boundary:select', marker.name);
 						});
 
 
@@ -256,6 +268,8 @@ export class MapViewComponent {
 							.addTo(map);
 					});
 				}
+
+				map.addControl(new mapboxgl.NavigationControl());
 
 				loadingPopup.dismiss();
 			});

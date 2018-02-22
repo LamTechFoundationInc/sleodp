@@ -1,11 +1,7 @@
 table-view {
 	$breakpoint-alpha: 320px; // adjust to your needs
-	ion-select {
-		width: 100%;
-		max-width: 100%;
-		.item-cover {
-			height: 0;
-		}
+	.select2-container {
+		width: 100% !important;
 	}
 	table {
 		width: 100%;

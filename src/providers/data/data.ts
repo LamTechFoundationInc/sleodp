@@ -204,11 +204,8 @@ export class DataProvider {
     
     var result_temp_boundaries = {}, temp_candidates = {}, temp_parties = {};
     var missing_parties = [], missing_names = [];
+    var party, CandidateFullName, CandidateKey, BoundaryName, BoundaryKey, Votes, Latitude, Longitude, PollingCentreKey;
 
-    var party, CandidateFullName, CandidateKey, BoundaryName, BoundaryKey, Votes, Latitude, Longitude, PollingCentreCode;
-
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxx');
-    console.log(election_results);
     for (let election_result of boundary_results) {
       party = election_result['CandidatePoliticalParty'];
       CandidateFullName = election_result['CandidateFirstName'].trim() + ' ' + election_result['CandidateSurname'].trim();
@@ -225,9 +222,11 @@ export class DataProvider {
       Votes = Number(election_result['ValidVotes']);
       BoundaryName = this.getBoundaryName(election_result, fields);
       BoundaryKey = this.makeKey(BoundaryName);
-      PollingCentreCode = election_result['PollingCentreCode'];
-      Latitude = this.polling_centres_json[PollingCentreCode] ? this.polling_centres_json[PollingCentreCode.trim()]['PollingCentreLatitude'] : "";
-      Longitude = this.polling_centres_json[PollingCentreCode] ? this.polling_centres_json[PollingCentreCode.trim()]['PollingCentreLongitude'] : "";
+      if (election_result['PollingCentreName'] && election_result['PollingCentreName'] != "")
+        PollingCentreKey = this.makeKey(election_result['PollingCentreName']);
+
+      Latitude = this.polling_centres_json[PollingCentreKey] ? this.polling_centres_json[PollingCentreKey]['PollingCentreLatitude'] : "";
+      Longitude = this.polling_centres_json[PollingCentreKey] ? this.polling_centres_json[PollingCentreKey]['PollingCentreLongitude'] : "";
 
       if (BoundaryName != "") {
         if (!result_temp_boundaries[BoundaryKey]) {
@@ -333,9 +332,10 @@ export class DataProvider {
   }
 
   toPollingCentresJson(polling_centres) {
-    var polling_centres_json = {};
+    var polling_centres_json = {}, PollingCentreKey;
     for(let polling_centre of polling_centres) {
-      polling_centres_json[polling_centre['PollingCentreCode'].trim()] = polling_centre;
+      PollingCentreKey = this.makeKey(polling_centre['PollingCentreName']);
+      polling_centres_json[PollingCentreKey] = polling_centre;
     }
     return polling_centres_json;
   }

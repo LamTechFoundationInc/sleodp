@@ -1,9 +1,8 @@
 <!-- Generated template for the TableViewComponent component -->
 <div>
-	<ion-select [(ngModel)]="Boundary" (ionChange)="onSelectChange($event)" interface="popover" *ngIf="!isNation">
-		<ion-option *ngFor="let boundary of Boundaries; let i=index" [value]="i">{{ boundary }}</ion-option>
-	</ion-select>
-	<table>
+	<select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)"></select2>
+
+	<table margin-top>
 		<thead>
 			<tr>
 				<th>Candidate</th>
@@ -14,7 +13,7 @@
 		</thead>
 		<tbody *ngIf="candidatesEnable()">
 			<tr *ngFor="let result of Results; let i = index">
-				<td><a (click)="gotoCandidateDetail(result['Candidate_SLEOP_ID'])">{{ result['CandidateFullName'] }} <i class="fa fa-check-circle" *ngIf="i == 0"></i></a></td>
+				<td><a (click)="gotoCandidateDetail(result['Candidate_SLEOP_ID'])">{{ result['CandidateFullName'] }} <i class="fa fa-check-circle" *ngIf="i == 0 && !noWinner"></i></a></td>
 				<td><a (click)="gotoPartyDetail(result['CandidatePoliticalParty'])">{{ result['CandidatePoliticalParty'] }}</a></td>
 				<td>{{ result['ValidVotes'] }}</td>
 				<td>{{ result['ValidVotesPercentage'] }}</td>

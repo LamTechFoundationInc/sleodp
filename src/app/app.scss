@@ -81,6 +81,8 @@ ion-header {
 ion-content {
 	.swiper-slide {
 		display: block;
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 	.fixed-content {
 		margin-top: 100px;
@@ -89,6 +91,7 @@ ion-content {
 		margin: 16px;
 		margin-top: 104px;
 		padding: 0 !important;
+		overflow: hidden;
 	}
 }
 @media only screen 
