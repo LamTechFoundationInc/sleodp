@@ -126,6 +126,7 @@ export class MapViewComponent {
 				vm.result.TotalVotes = vm.result.Boundaries[0].votes;
 				vm.result.ValidVotes = vm.result.Boundaries[0].votes;
 				vm.events.publish('boundary:select', vm.result.Boundaries[0].name);
+				console.log(data);
 				vm.result.Parties = {};
 				if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
 					vm.noWinner = false;

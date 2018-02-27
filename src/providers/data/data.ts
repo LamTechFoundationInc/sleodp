@@ -54,6 +54,9 @@ export class DataProvider {
         this.parties_json = this.toPartiesJson(data);
         resolve(this.parties_json);
       }, error => {
+        var parties = require('../../assets/results/political-parties-all.json');
+        this.parties_json = this.toCandidatesJson(parties);
+        resolve(this.parties_json);
         console.log("Error with Data");
       });
     });
@@ -69,6 +72,9 @@ export class DataProvider {
         this.candidates_json = this.toCandidatesJson(data);
         resolve(this.candidates_json);
       }, error => {
+        var candidates = require('../../assets/results/sierra-leone-candidates.json');
+        this.candidates_json = this.toCandidatesJson(candidates);
+        resolve(this.candidates_json);
         console.log("Error with Data");
       });
     });
@@ -84,6 +90,9 @@ export class DataProvider {
         this.polling_centres_json = this.toPollingCentresJson(data);
         resolve(this.polling_centres_json);
       }, error => {
+        var polling_centres = require('../../assets/results/sierra-leone-polling-centres.json');
+        this.polling_centres_json = this.toCandidatesJson(polling_centres);
+        resolve(this.polling_centres_json);
         console.log("Error with Data");
       });
     });
@@ -97,7 +106,15 @@ export class DataProvider {
       this.http.get(url).subscribe (data => {
         resolve(data);
       }, error => {
-        resolve([]);
+        if (fields.type == "president" && fields.year == "2018") {
+          var polling_centre_result = require('../../assets/results/all-sierraleone-president-election-results-by-polling-centre.json');
+          resolve(polling_centre_result);
+        }
+        else {
+          resolve([]);
+        }
+        
+        console.log("Error with Data");
       });
     });
   }
