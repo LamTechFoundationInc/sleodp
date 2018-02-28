@@ -73,7 +73,7 @@ export class MapViewComponent {
 	}
 
 	setPhotoUrl(photo) {
-		return "https://dev.electiondata.io/" + photo;
+		return "assets/imgs/candidate/" + photo;
 	}
 
 	colorFilter(_color) {

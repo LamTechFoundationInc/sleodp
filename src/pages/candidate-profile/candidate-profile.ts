@@ -27,7 +27,7 @@ export class CandidateProfilePage {
 	}
 
 	sourceUrl(url) {
-		return "http://dev.electiondata.io" + url;
+		return "assets/imgs/candidate/" + url;
 	}
 
 	getCandidateName() {

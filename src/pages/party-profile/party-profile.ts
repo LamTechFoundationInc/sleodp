@@ -29,7 +29,7 @@ export class PartyProfilePage {
 	}
 
 	sourceUrl(url) {
-		return "http://dev.electiondata.io" + url;
+		return "assets/imgs/party/" + url;
 	}
 
 	colorFilter(color) {
