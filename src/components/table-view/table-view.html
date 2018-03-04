@@ -1,0 +1,28 @@
+<!-- Generated template for the TableViewComponent component -->
+<div>
+	<select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)" *ngIf="!isNation"></select2>
+
+	<table margin-top>
+		<thead>
+			<tr>
+				<th>Candidate</th>
+				<th>Political Party</th>
+				<th>Valid Votes Obtained</th>
+				<th>Percentage</th>
+			</tr>
+		</thead>
+		<tbody *ngIf="candidatesEnable()">
+			<tr *ngFor="let result of Results; let i = index">
+				<td><a (click)="gotoCandidateDetail(result['Candidate_SLEOP_ID'])">{{ result['CandidateFullName'] }} <i class="fa fa-check-circle" *ngIf="i == 0 && !noWinner"></i></a></td>
+				<td><a (click)="gotoPartyDetail(result['CandidatePoliticalParty'])">{{ result['CandidatePoliticalParty'] }}</a></td>
+				<td>{{ result['ValidVotes'] }}</td>
+				<td>{{ result['ValidVotesPercentage'] }}</td>
+			</tr>
+		</tbody>
+		<tbody *ngIf="!candidatesEnable()">
+			<tr>
+				<td colspan="4">There are no election datas</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,157 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.box {
+	background: white;
+    border: 1px solid #dadada;
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -ms-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    -o-box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2);
+    box-shadow: 0px 0px 4px 1px rgba(50%,50%,50%,0.2)
+}
+.show-core {
+	display: block;
+}
+.show-tablet {
+	display: none;
+}
+.show-mobile {
+	display: none;
+}
+ion-header {
+	ion-toolbar {
+		border-bottom: 1px solid #fff;
+	}
+	ios-navbar {
+		
+	}
+	ion-content {
+		.fixed-content {
+			margin-top: 100px;
+		}
+		.scroll-content {
+			margin: 16px;
+			margin-top: 104px;
+			padding: 0 !important;
+		}
+	}
+	ion-navbar {
+		min-height: 44px !important;
+		.toolbar-content {
+			a {
+				color: white;
+			}
+			ion-title {
+			    left: 0;
+			    top: 0;
+			    padding: 0 90px 1px;
+			    position: absolute;
+			    width: 100%;
+			    height: 100%;
+			    -webkit-transform: translateZ(0);
+			    transform: translateZ(0);
+			    pointer-events: none;
+
+			    .toolbar-title {
+			    	text-align: center;
+				}
+			}
+			ion-icon {
+				font-size: 3.4rem;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+ion-content {
+	.swiper-slide {
+		display: block;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.fixed-content {
+		margin-top: 100px;
+	}
+	.scroll-content {
+		margin: 16px;
+		margin-top: 104px;
+		padding: 0 !important;
+		overflow: hidden;
+	}
+}
+@media only screen 
+	and (max-width: 760px),(min-device-width: 768px) 
+	and (max-device-width: 1024px) {
+	.show-core {
+		display: none;
+	}
+	.show-tablet {
+		display: block;
+	}
+	.show-mobile {
+		display: none;
+	}
+	ion-navbar {
+		min-height: 44px !important;
+	    padding-top: 0 !important;
+    	padding-bottom: 0 !important;
+    	.toolbar-title {
+    		font-weight: 300;
+			font-size: 14px;
+    	}
+	}
+	ion-content {
+		ion-slides {
+			margin: 1px;
+		}
+		.fixed-content {
+			margin-top: 96px;
+		}
+		.scroll-content {
+			margin: 10px;
+			margin-top: 96px;
+			padding: 0 !important;
+		}
+	}
+}
+@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+	.show-core {
+		display: none;
+	}
+	.show-tablet {
+		display: none;
+	}
+	.show-mobile {
+		display: block;
+	}
+	ion-navbar {
+		min-height: 34px !important;
+	}
+	ion-content {
+		.fixed-content {
+			margin-top: 86px;
+		}
+		.scroll-content {
+			margin: 10px;
+			margin-top: 86px;
+			padding: 0 !important;
+		}
+	}
+}

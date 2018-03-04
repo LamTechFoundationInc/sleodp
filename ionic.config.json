@@ -1,0 +1,13 @@
+{
+  "name": "sleodp",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+  {
+    "path": "/api",
+    "proxyUrl": "https://electiondata.io/"
+  }]
+}

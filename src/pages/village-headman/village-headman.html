@@ -1,0 +1,30 @@
+<!--
+  Generated template for the VillageheadmanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<header-view type="villageheadman">
+  <ion-navbar color="dark" sub-navbar>
+    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>
+      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}
+    </a>
+
+    <ion-title>
+      {{year}} Village Headman Elections
+    </ion-title>
+    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>
+      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>
+    </a>
+  </ion-navbar>
+</header-view>
+
+<ion-content padding>
+  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">
+
+    <ion-slide *ngFor="let p of subpages; let i = index">
+      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

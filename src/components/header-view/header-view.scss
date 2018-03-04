@@ -1,0 +1,44 @@
+header-view {
+	.logo-icon {
+		color: white;
+		font-size: 24px;
+		text-decoration: none;
+		box-shadow: none;
+		img {
+			vertical-align: middle;
+		}
+	}
+	.page-links {
+		width: 60%;
+		ion-title {
+			padding-right: 130px;
+		}
+		ion-segment-button {
+			border: 1px solid #999 !important;
+			font-size: 16px;
+			background-color: #fff !important;
+			opacity: 1 !important;
+			color: #333 !important;
+			height: 3.2rem !important;
+			line-height: 3rem !important;
+			&:hover, &.active {
+				color: #999 !important;
+				background-color: #333 !important;
+				-webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+				-moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+				-ms-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+				-o-box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+				box-shadow: 0 0 4px rgba(255, 255, 255, 0.7) inset;
+			}
+		}
+	}
+}
+@media only screen 
+and (max-width: 760px),(min-device-width: 768px) 
+and (max-device-width: 1024px) {
+	header-view {
+		.show-mobile {
+			display: flex;
+		}
+	}
+}

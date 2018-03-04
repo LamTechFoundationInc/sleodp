@@ -1,0 +1,6 @@
+ {
+    "name": "Sloedp",
+    "description": "Open Election Results from Sierra Leone Open Elections Data Platform by LAM-TECH Consulting",
+    "repository": "https://github.com/LamTechFoundationInc/sleodp.git",
+    "keywords": ["ionic4", "heroku"]
+}

@@ -1,0 +1,76 @@
+<!-- Generated template for the ContentViewComponent component -->
+<div>
+	<ion-grid>
+		<ion-row>
+			<ion-col class="granularity-list show-core" col-4>
+				<a *ngIf="region != 'nation' && nationAvailable" (click)="seletGranularity('nation')">
+					<div class="senate">
+						<div class="box">
+							<h2>National Results</h2>
+							<div class="box-content">
+								<img src="assets/imgs/map.png">
+							</div>
+						</div>
+					</div>
+				</a>
+				<a *ngIf="region != 'district' && districtAvailable" (click)="seletGranularity('district')">
+					<div class="senate">
+						<div class="box">
+							<h2>Results by district</h2>
+							<div class="box-content">
+								<img src="assets/imgs/map.png">
+							</div>
+						</div>
+					</div>
+				</a>
+				<a *ngIf="region != 'constituency' && constituencyAvailable" (click)="seletGranularity('constituency')">
+					<div class="senate">
+						<div class="box">
+							<h2>Results by constituency</h2>
+							<div class="box-content">
+								<img src="assets/imgs/map.png">
+							</div>
+						</div>
+					</div>
+				</a>
+				<a *ngIf="region != 'ward' && wardAvailable" (click)="seletGranularity('ward')">
+					<div class="senate">
+						<div class="box">
+							<h2>Results by ward</h2>
+							<div class="box-content">
+								<img src="assets/imgs/map.png">
+							</div>
+						</div>
+					</div>
+				</a>
+				<a *ngIf="region != 'polling_centre' && pollingCentreAvailable" (click)="seletGranularity('polling_centre')">
+					<div class="senate">
+						<div class="box">
+							<h2>Results by Polling Centre</h2>
+							<div class="box-content">
+								<img src="assets/imgs/map.png">
+							</div>
+						</div>
+					</div>
+				</a>
+			</ion-col>
+			<ion-col class="content" col-8>
+				<ion-toolbar class="viewModeToolbar">
+					<button ion-button (click)="setMapMode(true)" [ngClass]="{'active': mapMode}" class="modeButton" float-left>
+						Map&nbsp;<i class="fa fa-globe"></i>
+					</button>
+					<ion-title text-center>{{ resultRegion }}</ion-title>
+					<ion-buttons end>
+						<button ion-button (click)="setMapMode(false)" [ngClass]="{'active': !mapMode}" class="modeButton">
+							<i class="fa fa-table"></i>&nbsp;Table
+						</button>
+					</ion-buttons>
+				</ion-toolbar>
+				<map-view *ngIf="mapMode" [year]="year" [region]="region" [type]="type" (boundarySelect)="boundarySelect($event)" #mapview>
+				</map-view>
+				<table-view *ngIf="!mapMode" [year]="year" [region]="region" [type]="type" #tableview>
+				</table-view>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</div>

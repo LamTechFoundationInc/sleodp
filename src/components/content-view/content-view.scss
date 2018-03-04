@@ -1,0 +1,99 @@
+content-view {
+	.viewModeToolbar {
+		padding: 0;
+		padding-bottom: 8px;
+		min-height: auto;
+		.toolbar-background {
+			background: transparent;
+		}
+		.toolbar-title {
+			font-size: 2rem;
+		}
+		.modeButton {
+			background: transparent !important;
+			border: 2px solid #666 !important;
+			border-radius: 0 !important;
+			color: #666 !important;
+		    padding: 5px 10px !important;
+		    margin: 0 !important;
+			height: auto !important;
+			font-size: 14px !important;
+			&.active {
+				background-color: #666 !important;
+				color: #fff !important;
+			}
+		}
+	}
+	.granularity-list {
+		position: absolute;
+		left: 0;
+		height: 100%;
+		a {
+			cursor: pointer;
+			.senate {
+				position: relative;
+				height: 25%;
+				margin: 0;
+				padding: 5px;
+				.box {
+					position: relative;
+    				height: 100%;
+					h2 {
+						display: block;
+						padding: 5px;
+						margin: 0;
+						line-height: normal;
+						font-size: 16px;
+						text-transform: uppercase;
+						background: #eee;
+						color: #333;
+						-webkit-box-shadow: inset 0 -3px 3px -2px rgba(50%,50%,50%,0.2);
+						-moz-box-shadow: inset 0 -3px 3px -2px rgba(50%,50%,50%,0.2);
+						-ms-box-shadow: inset 0 -3px 3px -2px rgba(50%,50%,50%,0.2);
+						-o-box-shadow: inset 0 -3px 3px -2px rgba(50%,50%,50%,0.2);
+						box-shadow: inset 0 -3px 3px -2px rgba(50%,50%,50%,0.2);
+					}
+				    .box-content {
+				    	top: 35px;
+				    	bottom: 0;
+				    	position: absolute;
+				    	width: 100%;
+				    	padding: 5px;
+				    	text-align: center;
+				    }
+				}
+			}
+			&:first-child {
+				.senate {
+					padding-top: 0;
+				}
+			}
+			&:hover {
+				.box {
+					box-shadow: 0 0 4px 1px rgba(0,155,255,1);
+				}
+			}
+		}
+	}
+	.content {
+		position: absolute; right: 0
+	}
+}
+
+@media only screen 
+and (max-width: 760px),(min-device-width: 768px) 
+and (max-device-width: 1024px) {
+	content-view {
+		.content {
+			left: 0;
+			width: 100%;
+			max-width: 100%;
+		}
+		ion-title {
+			padding: 0;
+			.toolbar-title {
+				font-size: 1.5rem;
+			}
+		}
+	}
+}
