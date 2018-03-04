@@ -19,12 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 var urls = {
 	polling_centre: "www/assets/resources/polling-centres/",
-	president: "www/assets/results/all-president-election-results.json",
-    parliament: "www/assets/results/all-parliamentary-election-results.json",
-    mayor: "www/assets/results/all-mayor-election-results.json",
-    chairperson: "www/assets/results/all-chairperson-election-results.json",
-    councilor: "www/assets/results/all-councilor-election-results.json",
-    villageheadman: "www/assets/results/all-village-headman-election-results",
+	president: "www/assets/results/all-president-election-results/",
+    parliament: "www/assets/results/all-parliamentary-election-results/",
+    mayor: "www/assets/results/all-mayor-election-results/",
+    chairperson: "www/assets/results/all-chairperson-election-results/",
+    villageheadman: "www/assets/results/all-village-headman-election-results/",
+    councilor: "www/assets/results/all-councilor-election-results/",
     president_2018: "www/assets/results/all-president-polling-centre-results-2018/",
     parliament_2018: "www/assets/results/all-parliamentary-polling-centre-results-2018/",
     mayor_2018: "www/assets/results/all-mayor-polling-centre-results-2018/",
@@ -54,31 +54,27 @@ app.get('/polling_centres', function(req, res, next) {
 
 app.post('/election_results', function(req, res, next) {
 	var fields = req.body;
+	var url = fields.type;
 	if (Number(fields.year) >=2018) {
-		fs.readdir(urls[fields.type + '_' + fields.year], function(err, names) {
-			async.map(names, function(name, callback) {
-				fs.readFile(urls[fields.type + '_' + fields.year] + name, 'utf8', function(err, contents) {
-					callback(null, JSON.parse(contents));
-				});
-			}, function(err, results) {
-				if (err) res.send([]);
-
-				var election_results = [];
-				results.forEach(function(items) {
-					election_results = election_results.concat(items);
-				});
-
-				res.send(election_results);
-			})
-		});
+		url += '_' + fields.year;
 	}
-	else {
-		fs.readFile(urls[fields.type], 'utf8', function(err, contents) {
+
+	fs.readdir(urls[url], function(err, names) {
+		async.map(names, function(name, callback) {
+			fs.readFile(urls[url] + name, 'utf8', function(err, contents) {
+				callback(null, JSON.parse(contents));
+			});
+		}, function(err, results) {
 			if (err) res.send([]);
 
-			res.send(JSON.parse(contents));
-		});
-	}
+			var election_results = [];
+			results.forEach(function(items) {
+				election_results = election_results.concat(items);
+			});
+
+			res.send(election_results);
+		})
+	});
 });
 
 app.set('port', process.env.PORT || 5000);
