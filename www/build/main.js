@@ -108,7 +108,7 @@ var MayorPage = (function () {
     ], MayorPage.prototype, "subPageViews", void 0);
     MayorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-mayor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="mayor">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Mayoral Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\mayor\mayor.html"*/,
+            selector: 'page-mayor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\mayor\mayor.html"*/'<!--\n  Generated template for the MayorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="mayor">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Mayoral Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="mayor" [year]="p.year" [region]="region" #mayor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\mayor\mayor.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], MayorPage);
@@ -496,10 +496,9 @@ var DataProvider = (function () {
     };
     DataProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */]])
     ], DataProvider);
     return DataProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=data.js.map
@@ -511,43 +510,43 @@ var DataProvider = (function () {
 
 var map = {
 	"../pages/candidate-profile/candidate-profile.module": [
-		401,
+		410,
 		9
 	],
 	"../pages/chairperson/chairperson.module": [
-		402,
+		408,
 		8
 	],
 	"../pages/councilor/councilor.module": [
-		403,
+		401,
 		7
 	],
 	"../pages/mayor/mayor.module": [
-		404,
+		407,
 		6
 	],
 	"../pages/pariament/pariament.module": [
-		405,
+		402,
 		1
 	],
 	"../pages/parliament/parliament.module": [
-		406,
+		403,
 		5
 	],
 	"../pages/party-profile/party-profile.module": [
-		407,
+		404,
 		4
 	],
 	"../pages/president-national/president-national.module": [
-		408,
+		405,
 		0
 	],
 	"../pages/president/president.module": [
-		409,
+		406,
 		3
 	],
 	"../pages/village-headman/village-headman.module": [
-		410,
+		409,
 		2
 	]
 };
@@ -567,98 +566,7 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 195:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RangeViewComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(19);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the RangeViewComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
-var RangeViewComponent = (function () {
-    function RangeViewComponent(viewCtrl, dataService, navParams) {
-        this.viewCtrl = viewCtrl;
-        this.dataService = dataService;
-        this.navParams = navParams;
-        this.nationAvailable = false;
-        this.districtAvailable = false;
-        this.constituencyAvailable = false;
-        this.wardAvailable = false;
-        this.pollingCentreAvailable = false;
-        var year = dataService.getYear();
-        var type = this.navParams.data.type;
-        if (type == "villageheadman") {
-            this.pollingCentreAvailable = true;
-        }
-        else {
-            if (year != '2018') {
-                switch (type) {
-                    case "president":
-                        this.nationAvailable = true;
-                        this.districtAvailable = true;
-                        break;
-                    case "parliament":
-                        this.constituencyAvailable = true;
-                        break;
-                    case "mayor":
-                        this.districtAvailable = true;
-                        break;
-                    case "chairperson":
-                        this.districtAvailable = true;
-                        break;
-                    case "councilor":
-                        this.wardAvailable = true;
-                        break;
-                    default:
-                        // code...
-                        break;
-                }
-            }
-            else {
-                this.nationAvailable = true;
-                this.districtAvailable = true;
-                this.constituencyAvailable = true;
-                this.wardAvailable = true;
-                this.pollingCentreAvailable = true;
-            }
-        }
-    }
-    RangeViewComponent.prototype.seletGranularity = function (granularity) {
-        this.dataService.setGranularity(granularity);
-        this.viewCtrl.dismiss();
-    };
-    RangeViewComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'range-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')" *ngIf="nationAvailable">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')" *ngIf="districtAvailable">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')" *ngIf="constituencyAvailable">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')" *ngIf="wardAvailable">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_centre\')" *ngIf="pollingCentreAvailable">Results By Polling Centre</button>\n</ion-list>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\range-view\range-view.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
-    ], RangeViewComponent);
-    return RangeViewComponent;
-}());
-
-//# sourceMappingURL=range-view.js.map
-
-/***/ }),
-
-/***/ 197:
+/***/ 196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -667,8 +575,8 @@ var RangeViewComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js__ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mapbox_gl_dist_mapbox_gl_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_party_profile_party_profile__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_candidate_profile_candidate_profile__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_party_profile_party_profile__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_candidate_profile_candidate_profile__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -781,7 +689,6 @@ var MapViewComponent = (function () {
                 vm.result.TotalVotes = vm.result.Boundaries[0].votes;
                 vm.result.ValidVotes = vm.result.Boundaries[0].votes;
                 vm.events.publish('boundary:select', vm.result.Boundaries[0].name);
-                console.log(data);
                 vm.result.Parties = {};
                 if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
                     vm.noWinner = false;
@@ -938,15 +845,105 @@ var MapViewComponent = (function () {
     ], MapViewComponent.prototype, "type", void 0);
     MapViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'map-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map box">\n	</div>\n	<div *ngIf="!candidatesEnable()" padding-top>\n		There are no election datas\n	</div>\n	<div *ngIf="candidatesEnable()">\n		<div class="election-details">\n			<div class="election-info">\n				<ion-grid no-padding>\n					<ion-row>\n						<ion-col text-left class="small">\n							Total Registered Votes: {{ result.TotalVotes }}<br>\n							Result Status: {{ result.ResultStatus }}\n						</ion-col>\n						<ion-col text-right class="small">\n							Total Valid Votes: {{ result.ValidVotes }}<br>\n							Total Invalid Votes: {{ result.InvalidVotes }}\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n			<div class="election-parties">\n				<ion-grid no-padding>\n					<ion-row>\n						<ion-col *ngFor="let acronym of result.Parties | party" (click)="gotoPartyDetail(acronym.value)">\n							<div class="small">{{ acronym.key }}</div>\n							<div class="party-card" [style.background-color]="colorFilter(acronym.value.Color)"></div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n			<div class="election-competitors">\n				<ion-grid class="show-mobile" padding-top>\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 2, result.ElectionResults.length); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index">\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (click)="gotoCandidateDetail(candidate.candidate)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n				<ion-grid class="show-tablet">\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 3, 6); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index">\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (click)="gotoCandidateDetail(candidate.candidate)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n				<ion-grid class="show-core">\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 4, 12); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index" col-3>\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n		</div>\n	</div>\n</div>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\map-view\map-view.html"*/
+            selector: 'map-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\map-view\map-view.html"*/'<!-- Generated template for the MapViewComponent component -->\n<div class="view-container">\n	<div id="{{year}}_map" class="map box">\n	</div>\n	<div *ngIf="!candidatesEnable()" padding-top>\n		There are no election datas\n	</div>\n	<div *ngIf="candidatesEnable()">\n		<div class="election-details">\n			<div class="election-info">\n				<ion-grid no-padding>\n					<ion-row>\n						<ion-col text-left class="small">\n							Total Registered Votes: {{ result.TotalVotes }}<br>\n							Result Status: {{ result.ResultStatus }}\n						</ion-col>\n						<ion-col text-right class="small">\n							Total Valid Votes: {{ result.ValidVotes }}<br>\n							Total Invalid Votes: {{ result.InvalidVotes }}\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n			<div class="election-parties">\n				<ion-grid no-padding>\n					<ion-row>\n						<ion-col *ngFor="let acronym of result.Parties | party" (click)="gotoPartyDetail(acronym.value)">\n							<div class="small">{{ acronym.key }}</div>\n							<div class="party-card" [style.background-color]="colorFilter(acronym.value.Color)"></div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n			<div class="election-competitors">\n				<ion-grid class="show-mobile" padding-top>\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 2, result.ElectionResults.length); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index">\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (click)="gotoCandidateDetail(candidate.candidate)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n				<ion-grid class="show-tablet">\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 3, 6); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index">\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (click)="gotoCandidateDetail(candidate.candidate)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n				<ion-grid class="show-core">\n					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 4, 12); let i = index">\n						<ion-col *ngFor="let candidate of row; let j = index" col-3>\n							<div padding-bottom>\n								{{ candidate.ValidVotesPercentage }} % <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i>\n							</div>\n							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)" padding-right text-center>\n								<a (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">\n									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">\n									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" padding-left *ngIf="candidate.CandidatePhoto">\n									<span pull-right>{{ candidate.CandidateFullName }}</span>\n								</a>\n							</div>\n						</ion-col>\n					</ion-row>\n				</ion-grid>\n			</div>\n		</div>\n	</div>\n</div>'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\map-view\map-view.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["a" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["a" /* Events */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["a" /* Events */]])
     ], MapViewComponent);
     return MapViewComponent;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=map-view.js.map
+
+/***/ }),
+
+/***/ 197:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RangeViewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(19);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the RangeViewComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var RangeViewComponent = (function () {
+    function RangeViewComponent(viewCtrl, dataService, navParams) {
+        this.viewCtrl = viewCtrl;
+        this.dataService = dataService;
+        this.navParams = navParams;
+        this.nationAvailable = false;
+        this.districtAvailable = false;
+        this.constituencyAvailable = false;
+        this.wardAvailable = false;
+        this.pollingCentreAvailable = false;
+        var year = dataService.getYear();
+        var type = this.navParams.data.type;
+        if (type == "villageheadman") {
+            this.pollingCentreAvailable = true;
+        }
+        else {
+            if (year != '2018') {
+                switch (type) {
+                    case "president":
+                        this.nationAvailable = true;
+                        this.districtAvailable = true;
+                        break;
+                    case "parliament":
+                        this.constituencyAvailable = true;
+                        break;
+                    case "mayor":
+                        this.districtAvailable = true;
+                        break;
+                    case "chairperson":
+                        this.districtAvailable = true;
+                        break;
+                    case "councilor":
+                        this.wardAvailable = true;
+                        break;
+                    default:
+                        // code...
+                        break;
+                }
+            }
+            else {
+                this.nationAvailable = true;
+                this.districtAvailable = true;
+                this.constituencyAvailable = true;
+                this.wardAvailable = true;
+                this.pollingCentreAvailable = true;
+            }
+        }
+    }
+    RangeViewComponent.prototype.seletGranularity = function (granularity) {
+        this.dataService.setGranularity(granularity);
+        this.viewCtrl.dismiss();
+    };
+    RangeViewComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'range-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\range-view\range-view.html"*/'<!-- Generated template for the RangeViewComponent component -->\n<ion-list>\n	<ion-list-header>Result Granularity</ion-list-header>\n	<button ion-item (click)="seletGranularity(\'nation\')" *ngIf="nationAvailable">National Results</button>\n	<button ion-item (click)="seletGranularity(\'district\')" *ngIf="districtAvailable">Results By District</button>\n	<button ion-item (click)="seletGranularity(\'constituency\')" *ngIf="constituencyAvailable">Results By Constituency</button>\n	<button ion-item (click)="seletGranularity(\'ward\')" *ngIf="wardAvailable">Results By Ward</button>\n	<button ion-item (click)="seletGranularity(\'polling_centre\')" *ngIf="pollingCentreAvailable">Results By Polling Centre</button>\n</ion-list>'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\range-view\range-view.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], RangeViewComponent);
+    return RangeViewComponent;
+}());
+
+//# sourceMappingURL=range-view.js.map
 
 /***/ }),
 
@@ -958,8 +955,8 @@ var MapViewComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_party_profile_party_profile__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_candidate_profile_candidate_profile__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_party_profile_party_profile__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_candidate_profile_candidate_profile__ = __webpack_require__(69);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1055,7 +1052,7 @@ var TableViewComponent = (function () {
     ], TableViewComponent.prototype, "type", void 0);
     TableViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'table-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)" *ngIf="!isNation"></select2>\n\n	<table margin-top>\n		<thead>\n			<tr>\n				<th>Candidate</th>\n				<th>Political Party</th>\n				<th>Valid Votes Obtained</th>\n				<th>Percentage</th>\n			</tr>\n		</thead>\n		<tbody *ngIf="candidatesEnable()">\n			<tr *ngFor="let result of Results; let i = index">\n				<td><a (click)="gotoCandidateDetail(result[\'Candidate_SLEOP_ID\'])">{{ result[\'CandidateFullName\'] }} <i class="fa fa-check-circle" *ngIf="i == 0 && !noWinner"></i></a></td>\n				<td><a (click)="gotoPartyDetail(result[\'CandidatePoliticalParty\'])">{{ result[\'CandidatePoliticalParty\'] }}</a></td>\n				<td>{{ result[\'ValidVotes\'] }}</td>\n				<td>{{ result[\'ValidVotesPercentage\'] }}</td>\n			</tr>\n		</tbody>\n		<tbody *ngIf="!candidatesEnable()">\n			<tr>\n				<td colspan="4">There are no election datas</td>\n			</tr>\n		</tbody>\n	</table>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\table-view\table-view.html"*/
+            selector: 'table-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\table-view\table-view.html"*/'<!-- Generated template for the TableViewComponent component -->\n<div>\n	<select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)" *ngIf="!isNation"></select2>\n\n	<table margin-top>\n		<thead>\n			<tr>\n				<th>Candidate</th>\n				<th>Political Party</th>\n				<th>Valid Votes Obtained</th>\n				<th>Percentage</th>\n			</tr>\n		</thead>\n		<tbody *ngIf="candidatesEnable()">\n			<tr *ngFor="let result of Results; let i = index">\n				<td><a (click)="gotoCandidateDetail(result[\'Candidate_SLEOP_ID\'])">{{ result[\'CandidateFullName\'] }} <i class="fa fa-check-circle" *ngIf="i == 0 && !noWinner"></i></a></td>\n				<td><a (click)="gotoPartyDetail(result[\'CandidatePoliticalParty\'])">{{ result[\'CandidatePoliticalParty\'] }}</a></td>\n				<td>{{ result[\'ValidVotes\'] }}</td>\n				<td>{{ result[\'ValidVotesPercentage\'] }}</td>\n			</tr>\n		</tbody>\n		<tbody *ngIf="!candidatesEnable()">\n			<tr>\n				<td colspan="4">There are no election datas</td>\n			</tr>\n		</tbody>\n	</table>\n</div>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\table-view\table-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular_index__["h" /* NavController */]])
     ], TableViewComponent);
@@ -1094,18 +1091,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__ = __webpack_require__(386);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_president_president__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_president_president__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_parliament_parliament__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_mayor_mayor__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_chairperson_chairperson__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_councilor_councilor__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_village_headman_village_headman__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_party_profile_party_profile__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_candidate_profile_candidate_profile__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_header_view_header_view__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_range_view_range_view__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_councilor_councilor__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_village_headman_village_headman__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_party_profile_party_profile__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_candidate_profile_candidate_profile__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_header_view_header_view__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_range_view_range_view__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_content_view_content_view__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_map_view_map_view__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_map_view_map_view__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_table_view_table_view__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_data_data__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pipes_pipes_module__ = __webpack_require__(397);
@@ -1179,16 +1176,16 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/candidate-profile/candidate-profile.module#CandidateProfilePageModule', name: 'CandidateProfilePage', segment: 'candidate-profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/chairperson/chairperson.module#ChairpersonPageModule', name: 'ChairpersonPage', segment: 'chairperson', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/councilor/councilor.module#CouncilorPageModule', name: 'CouncilorPage', segment: 'councilor', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/mayor/mayor.module#MayorPageModule', name: 'MayorPage', segment: 'mayor', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pariament/pariament.module#PariamentPageModule', name: 'PariamentPage', segment: 'pariament', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/parliament/parliament.module#ParliamentPageModule', name: 'ParliamentPage', segment: 'parliament', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/party-profile/party-profile.module#PartyProfilePageModule', name: 'PartyProfilePage', segment: 'party-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/president-national/president-national.module#PresidentNationalPageModule', name: 'PresidentNationalPage', segment: 'president-national', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/president/president.module#PresidentPageModule', name: 'PresidentPage', segment: 'president', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/village-headman/village-headman.module#VillageHeadmanPageModule', name: 'VillageHeadmanPage', segment: 'village-headman', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/mayor/mayor.module#MayorPageModule', name: 'MayorPage', segment: 'mayor', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/chairperson/chairperson.module#ChairpersonPageModule', name: 'ChairpersonPage', segment: 'chairperson', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/village-headman/village-headman.module#VillageHeadmanPageModule', name: 'VillageHeadmanPage', segment: 'village-headman', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/candidate-profile/candidate-profile.module#CandidateProfilePageModule', name: 'CandidateProfilePage', segment: 'candidate-profile', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
@@ -1236,7 +1233,7 @@ module.exports = [{"SLoepID":"7","Name":"All Peoples Congress (APC)","Descriptio
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_map_view_map_view__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_map_view_map_view__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_table_view_table_view__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_data_data__ = __webpack_require__(19);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1422,7 +1419,7 @@ var ContentViewComponent = (function () {
     ], ContentViewComponent.prototype, "region", void 0);
     ContentViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'content-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-grid>\n		<ion-row>\n			<ion-col class="granularity-list show-core" col-4>\n				<a *ngIf="region != \'nation\' && nationAvailable" (click)="seletGranularity(\'nation\')">\n					<div class="senate">\n						<div class="box">\n							<h2>National Results</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'district\' && districtAvailable" (click)="seletGranularity(\'district\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by district</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'constituency\' && constituencyAvailable" (click)="seletGranularity(\'constituency\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by constituency</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'ward\' && wardAvailable" (click)="seletGranularity(\'ward\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by ward</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'polling_centre\' && pollingCentreAvailable" (click)="seletGranularity(\'polling_centre\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by Polling Centre</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n			</ion-col>\n			<ion-col class="content" col-8>\n				<ion-toolbar class="viewModeToolbar">\n					<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n						Map&nbsp;<i class="fa fa-globe"></i>\n					</button>\n					<ion-title text-center>{{ resultRegion }}</ion-title>\n					<ion-buttons end>\n						<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton">\n							<i class="fa fa-table"></i>&nbsp;Table\n						</button>\n					</ion-buttons>\n				</ion-toolbar>\n				<map-view *ngIf="mapMode" [year]="year" [region]="region" [type]="type" (boundarySelect)="boundarySelect($event)" #mapview>\n				</map-view>\n				<table-view *ngIf="!mapMode" [year]="year" [region]="region" [type]="type" #tableview>\n				</table-view>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</div>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\content-view\content-view.html"*/
+            selector: 'content-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\content-view\content-view.html"*/'<!-- Generated template for the ContentViewComponent component -->\n<div>\n	<ion-grid>\n		<ion-row>\n			<ion-col class="granularity-list show-core" col-4>\n				<a *ngIf="region != \'nation\' && nationAvailable" (click)="seletGranularity(\'nation\')">\n					<div class="senate">\n						<div class="box">\n							<h2>National Results</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'district\' && districtAvailable" (click)="seletGranularity(\'district\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by district</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'constituency\' && constituencyAvailable" (click)="seletGranularity(\'constituency\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by constituency</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'ward\' && wardAvailable" (click)="seletGranularity(\'ward\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by ward</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n				<a *ngIf="region != \'polling_centre\' && pollingCentreAvailable" (click)="seletGranularity(\'polling_centre\')">\n					<div class="senate">\n						<div class="box">\n							<h2>Results by Polling Centre</h2>\n							<div class="box-content">\n								<img src="assets/imgs/map.png">\n							</div>\n						</div>\n					</div>\n				</a>\n			</ion-col>\n			<ion-col class="content" col-8>\n				<ion-toolbar class="viewModeToolbar">\n					<button ion-button (click)="setMapMode(true)" [ngClass]="{\'active\': mapMode}" class="modeButton" float-left>\n						Map&nbsp;<i class="fa fa-globe"></i>\n					</button>\n					<ion-title text-center>{{ resultRegion }}</ion-title>\n					<ion-buttons end>\n						<button ion-button (click)="setMapMode(false)" [ngClass]="{\'active\': !mapMode}" class="modeButton">\n							<i class="fa fa-table"></i>&nbsp;Table\n						</button>\n					</ion-buttons>\n				</ion-toolbar>\n				<map-view *ngIf="mapMode" [year]="year" [region]="region" [type]="type" (boundarySelect)="boundarySelect($event)" #mapview>\n				</map-view>\n				<table-view *ngIf="!mapMode" [year]="year" [region]="region" [type]="type" #tableview>\n				</table-view>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</div>'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\content-view\content-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_data_data__["a" /* DataProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */]])
     ], ContentViewComponent);
@@ -1449,12 +1446,12 @@ module.exports = [{"CandidateSLEOP_ID":"5351","Prefix":"Mr.","FirstName":"Kennet
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_president_president__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_president_president__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_parliament_parliament__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_mayor_mayor__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_chairperson_chairperson__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_councilor_councilor__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_village_headman_village_headman__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_councilor_councilor__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_village_headman_village_headman__ = __webpack_require__(68);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1510,7 +1507,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\app\app.html"*/'<ion-menu [content]="content" type="overlay">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Election Type</ion-title>\n      <button ion-button menuToggle text-right end color="dark">\n        <i class="fa fa-navicon"></i>\n      </button>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1655,10 +1652,129 @@ var GranularityPipe = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CouncilorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the CouncilorPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CouncilorPage = (function () {
+    function CouncilorPage(navCtrl, navParams, dataService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.dataService = dataService;
+        this.region = "ward";
+        this.prevEnabled = false;
+        this.nextEnabled = false;
+        this.year = 0;
+        this.prevYear = 0;
+        this.nextYear = 0;
+        this.subpages = [
+            { year: 1996 },
+            { year: 2002 },
+            { year: 2007 },
+            { year: 2012 },
+            { year: 2018 },
+        ];
+        this.initialSlide = this.subpages.length > 1 ? this.subpages.length - 1 : 0;
+        this.setPageInfo();
+    }
+    CouncilorPage.prototype.ionViewDidLoad = function () {
+    };
+    CouncilorPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
+            _this.region = granularity;
+            _this.setSlideChanges();
+        });
+    };
+    CouncilorPage.prototype.setPageInfo = function () {
+        this.totalPages = this.subpages.length;
+        if (this.totalPages > 0) {
+            this.year = this.subpages[0].year;
+        }
+        if (this.totalPages > 1) {
+            this.nextEnabled = true;
+            this.nextYear = this.subpages[1].year;
+        }
+    };
+    // Page Setting
+    CouncilorPage.prototype.setPrevPage = function () {
+        this.slides.slideTo(this.slides.getActiveIndex() - 1, 500);
+    };
+    CouncilorPage.prototype.setNextPage = function () {
+        this.slides.slideTo(this.slides.getActiveIndex() + 1, 500);
+    };
+    CouncilorPage.prototype.slideChanged = function () {
+        var currentIndex = this.slides.getActiveIndex();
+        if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0)
+            return;
+        this.prevEnabled = !this.slides.isBeginning();
+        this.nextEnabled = !this.slides.isEnd();
+        this.year = this.subpages[currentIndex].year;
+        this.prevYear = this.prevEnabled ? this.subpages[currentIndex - 1].year : 0;
+        this.nextYear = this.nextEnabled ? this.subpages[currentIndex + 1].year : 0;
+        this.setSlideChanges();
+    };
+    CouncilorPage.prototype.ionViewDidLeave = function () {
+        this.subscription.unsubscribe();
+    };
+    CouncilorPage.prototype.setSlideChanges = function () {
+        var currentIndex = this.slides.getActiveIndex();
+        if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0)
+            return;
+        this.subPageViews._results[currentIndex].setContentView();
+        this.dataService.setYear(this.year);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Slides */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Slides */])
+    ], CouncilorPage.prototype, "slides", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChildren"])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__["a" /* ContentViewComponent */]; })),
+        __metadata("design:type", Object)
+    ], CouncilorPage.prototype, "subPageViews", void 0);
+    CouncilorPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-councilor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\councilor\councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="councilor">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\councilor\councilor.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
+    ], CouncilorPage);
+    return CouncilorPage;
+}());
+
+//# sourceMappingURL=councilor.js.map
+
+/***/ }),
+
+/***/ 64:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PartyProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__ = __webpack_require__(97);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1672,45 +1788,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the CandidateProfilePage page.
+ * Generated class for the PartyProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var CandidateProfilePage = (function () {
-    function CandidateProfilePage(navCtrl, navParams) {
+var PartyProfilePage = (function () {
+    function PartyProfilePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.candidate = navParams.get('candidate');
+        this.party = navParams.get('party');
     }
-    CandidateProfilePage.prototype.ionViewDidLoad = function () {
+    PartyProfilePage.prototype.ionViewDidLoad = function () {
         this.headerview.isGranularityEnabled = false;
     };
-    CandidateProfilePage.prototype.sourceUrl = function (url) {
-        return "assets/imgs/candidate/" + url;
+    PartyProfilePage.prototype.sourceUrl = function (url) {
+        return "assets/imgs/party/" + url;
     };
-    CandidateProfilePage.prototype.getCandidateName = function () {
-        return this.candidate.Prefix + " " + this.candidate.FirstName + " " + this.candidate.MiddleName + " " + this.candidate.SurName;
+    PartyProfilePage.prototype.colorFilter = function (color) {
+        var default_color = "#999";
+        var colors = ["Pink", "Orange", "Green", "Red", "Blue", "Purple", "Yellow"];
+        if (!color)
+            return default_color;
+        if (color.split(', ').length > 1) {
+            return color.split(', ')[0];
+        }
+        if (colors.indexOf(color.charAt(0).toUpperCase() + color.slice(1)) > -1) {
+            return color;
+        }
+        return "#" + color;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */]; })),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */]) === "function" && _a || Object)
-    ], CandidateProfilePage.prototype, "headerview", void 0);
-    CandidateProfilePage = __decorate([
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */])
+    ], PartyProfilePage.prototype, "headerview", void 0);
+    PartyProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-candidate-profile',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\candidate-profile\candidate-profile.html"*/'<!--\n  Generated template for the CandidateProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view #headerview>\n  <ion-navbar color="dark" sub-navbar>\n    <ion-title>\n      Candidate Details\n    </ion-title>\n  </ion-navbar>\n</header-view>\n\n\n<ion-content padding>\n	<div class="" *ngIf="candidate">\n		<ion-grid class="show-core">\n			<ion-row>\n				<ion-col col-4 text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n				<ion-col col-8>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n		<ion-grid class="show-tablet">\n			<ion-row>\n				<ion-col text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n		<ion-grid class="show-mobile">\n			<ion-row>\n				<ion-col text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</div>\n	<div class="empty-info" padding-top *ngIf="!candidate">\n		There is no information about this candidate.\n	</div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\candidate-profile\candidate-profile.html"*/,
+            selector: 'page-party-profile',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\party-profile\party-profile.html"*/'<!--\n  Generated template for the PartyProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <ion-title>\n      Party Details\n    </ion-title>\n  </ion-navbar>\n</header-view>\n\n\n<ion-content padding>\n	<ion-grid class="show-core">\n		<ion-row>\n			<ion-col col-4 text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n			<ion-col col-8>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-grid class="show-tablet">\n		<ion-row>\n			<ion-col col-4 text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n			<ion-col col-8>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-grid class="show-mobile">\n		<ion-row>\n			<ion-col text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\party-profile\party-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _c || Object])
-    ], CandidateProfilePage);
-    return CandidateProfilePage;
-    var _a, _b, _c;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], PartyProfilePage);
+    return PartyProfilePage;
 }());
 
-//# sourceMappingURL=candidate-profile.js.map
+//# sourceMappingURL=party-profile.js.map
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1818,7 +1943,7 @@ var PresidentPage = (function () {
     ], PresidentPage.prototype, "subPageViews", void 0);
     PresidentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-president',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="president">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\president\president.html"*/,
+            selector: 'page-president',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\president\president.html"*/'<!--\n  Generated template for the PresidentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="president">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Presidential Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="president" [year]="p.year" [region]="region" #president_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\president\president.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], PresidentPage);
@@ -1826,75 +1951,6 @@ var PresidentPage = (function () {
 }());
 
 //# sourceMappingURL=president.js.map
-
-/***/ }),
-
-/***/ 65:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PartyProfilePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__ = __webpack_require__(96);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the PartyProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var PartyProfilePage = (function () {
-    function PartyProfilePage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.party = navParams.get('party');
-    }
-    PartyProfilePage.prototype.ionViewDidLoad = function () {
-        this.headerview.isGranularityEnabled = false;
-    };
-    PartyProfilePage.prototype.sourceUrl = function (url) {
-        return "assets/imgs/party/" + url;
-    };
-    PartyProfilePage.prototype.colorFilter = function (color) {
-        var default_color = "#999";
-        var colors = ["Pink", "Orange", "Green", "Red", "Blue", "Purple", "Yellow"];
-        if (!color)
-            return default_color;
-        if (color.split(', ').length > 1) {
-            return color.split(', ')[0];
-        }
-        if (colors.indexOf(color.charAt(0).toUpperCase() + color.slice(1)) > -1) {
-            return color;
-        }
-        return "#" + color;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */]; })),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */]) === "function" && _a || Object)
-    ], PartyProfilePage.prototype, "headerview", void 0);
-    PartyProfilePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-party-profile',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\party-profile\party-profile.html"*/'<!--\n  Generated template for the PartyProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view>\n  <ion-navbar color="dark" sub-navbar>\n    <ion-title>\n      Party Details\n    </ion-title>\n  </ion-navbar>\n</header-view>\n\n\n<ion-content padding>\n	<ion-grid class="show-core">\n		<ion-row>\n			<ion-col col-4 text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n			<ion-col col-8>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-grid class="show-tablet">\n		<ion-row>\n			<ion-col col-4 text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n			<ion-col col-8>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n	<ion-grid class="show-mobile">\n		<ion-row>\n			<ion-col text-center>\n				<img class="party-logo" [src]="sourceUrl(party.Logo)">\n			</ion-col>\n		</ion-row>\n		<ion-row>\n			<ion-col>\n				<h2><a [href]="party.Website" target="_blank">{{ party.Name }}</a></h2>\n				<p><strong>Founders:</strong> {{ party.Founders }}</p>\n				<p><strong>Date Founded:</strong> {{ party.DateFounded }}</p>\n				<p><strong>Description:</strong></p> <div [innerHTML]="party.Description"></div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\party-profile\party-profile.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _c || Object])
-    ], PartyProfilePage);
-    return PartyProfilePage;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=party-profile.js.map
 
 /***/ }),
 
@@ -2006,7 +2062,7 @@ var ParliamentPage = (function () {
     ], ParliamentPage.prototype, "subPageViews", void 0);
     ParliamentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-parliament',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="parliament">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\parliament\parliament.html"*/,
+            selector: 'page-parliament',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\parliament\parliament.html"*/'<!--\n  Generated template for the ParliamentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="parliament">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Parliamentary Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="parliament" [year]="p.year" [region]="region" #parliament_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\parliament\parliament.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], ParliamentPage);
@@ -2125,7 +2181,7 @@ var ChairpersonPage = (function () {
     ], ChairpersonPage.prototype, "subPageViews", void 0);
     ChairpersonPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-chairperson',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="chairperson">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\chairperson\chairperson.html"*/,
+            selector: 'page-chairperson',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\chairperson\chairperson.html"*/'<!--\n  Generated template for the ChairpersonPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="chairperson">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Chairperson Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="chairperson" [year]="p.year" [region]="region" #chairperson_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\chairperson\chairperson.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], ChairpersonPage);
@@ -2137,125 +2193,6 @@ var ChairpersonPage = (function () {
 /***/ }),
 
 /***/ 68:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CouncilorPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__ = __webpack_require__(36);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the CouncilorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CouncilorPage = (function () {
-    function CouncilorPage(navCtrl, navParams, dataService) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.dataService = dataService;
-        this.region = "ward";
-        this.prevEnabled = false;
-        this.nextEnabled = false;
-        this.year = 0;
-        this.prevYear = 0;
-        this.nextYear = 0;
-        this.subpages = [
-            { year: 1996 },
-            { year: 2002 },
-            { year: 2007 },
-            { year: 2012 },
-            { year: 2018 },
-        ];
-        this.initialSlide = this.subpages.length > 1 ? this.subpages.length - 1 : 0;
-        this.setPageInfo();
-    }
-    CouncilorPage.prototype.ionViewDidLoad = function () {
-    };
-    CouncilorPage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.subscription = this.dataService.getGranularity().subscribe(function (granularity) {
-            _this.region = granularity;
-            _this.setSlideChanges();
-        });
-    };
-    CouncilorPage.prototype.setPageInfo = function () {
-        this.totalPages = this.subpages.length;
-        if (this.totalPages > 0) {
-            this.year = this.subpages[0].year;
-        }
-        if (this.totalPages > 1) {
-            this.nextEnabled = true;
-            this.nextYear = this.subpages[1].year;
-        }
-    };
-    // Page Setting
-    CouncilorPage.prototype.setPrevPage = function () {
-        this.slides.slideTo(this.slides.getActiveIndex() - 1, 500);
-    };
-    CouncilorPage.prototype.setNextPage = function () {
-        this.slides.slideTo(this.slides.getActiveIndex() + 1, 500);
-    };
-    CouncilorPage.prototype.slideChanged = function () {
-        var currentIndex = this.slides.getActiveIndex();
-        if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0)
-            return;
-        this.prevEnabled = !this.slides.isBeginning();
-        this.nextEnabled = !this.slides.isEnd();
-        this.year = this.subpages[currentIndex].year;
-        this.prevYear = this.prevEnabled ? this.subpages[currentIndex - 1].year : 0;
-        this.nextYear = this.nextEnabled ? this.subpages[currentIndex + 1].year : 0;
-        this.setSlideChanges();
-    };
-    CouncilorPage.prototype.ionViewDidLeave = function () {
-        this.subscription.unsubscribe();
-    };
-    CouncilorPage.prototype.setSlideChanges = function () {
-        var currentIndex = this.slides.getActiveIndex();
-        if (!this.totalPages || currentIndex == this.totalPages || this.totalPages == 0)
-            return;
-        this.subPageViews._results[currentIndex].setContentView();
-        this.dataService.setYear(this.year);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Slides */])
-    ], CouncilorPage.prototype, "slides", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChildren"])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return __WEBPACK_IMPORTED_MODULE_3__components_content_view_content_view__["a" /* ContentViewComponent */]; })),
-        __metadata("design:type", Object)
-    ], CouncilorPage.prototype, "subPageViews", void 0);
-    CouncilorPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-councilor',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/'<!--\n  Generated template for the CouncilorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="councilor">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Council Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="councilor" [year]="p.year" [region]="region" #councilor_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\councilor\councilor.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
-    ], CouncilorPage);
-    return CouncilorPage;
-}());
-
-//# sourceMappingURL=councilor.js.map
-
-/***/ }),
-
-/***/ 69:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2363,7 +2300,7 @@ var VillageHeadmanPage = (function () {
     ], VillageHeadmanPage.prototype, "subPageViews", void 0);
     VillageHeadmanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-village-headman',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/'<!--\n  Generated template for the VillageheadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="villageheadman">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Village Headman Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\pages\village-headman\village-headman.html"*/,
+            selector: 'page-village-headman',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\village-headman\village-headman.html"*/'<!--\n  Generated template for the VillageheadmanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view type="villageheadman">\n  <ion-navbar color="dark" sub-navbar>\n    <a float-left *ngIf="prevEnabled" (click)="setPrevPage()" padding-left>\n      <ion-icon name="arrow-back" item-start></ion-icon> {{prevYear}}\n    </a>\n\n    <ion-title>\n      {{year}} Village Headman Elections\n    </ion-title>\n    <a float-right *ngIf="nextEnabled" (click)="setNextPage()" padding-right>\n      {{nextYear}} <ion-icon name="arrow-forward" item-start></ion-icon>\n    </a>\n  </ion-navbar>\n</header-view>\n\n<ion-content padding>\n  <ion-slides (ionSlideDidChange)="slideChanged()" [initialSlide]="initialSlide">\n\n    <ion-slide *ngFor="let p of subpages; let i = index">\n      <content-view type="villageheadman" [year]="p.year" [region]="region" #villageheadman_{{i}}></content-view>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\village-headman\village-headman.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
     ], VillageHeadmanPage);
@@ -2374,19 +2311,77 @@ var VillageHeadmanPage = (function () {
 
 /***/ }),
 
-/***/ 96:
+/***/ 69:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__ = __webpack_require__(97);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the CandidateProfilePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CandidateProfilePage = (function () {
+    function CandidateProfilePage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.candidate = navParams.get('candidate');
+    }
+    CandidateProfilePage.prototype.ionViewDidLoad = function () {
+        this.headerview.isGranularityEnabled = false;
+    };
+    CandidateProfilePage.prototype.sourceUrl = function (url) {
+        return "assets/imgs/candidate/" + url;
+    };
+    CandidateProfilePage.prototype.getCandidateName = function () {
+        return this.candidate.Prefix + " " + this.candidate.FirstName + " " + this.candidate.MiddleName + " " + this.candidate.SurName;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["forwardRef"])(function () { return __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */]; })),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_header_view_header_view__["a" /* HeaderViewComponent */])
+    ], CandidateProfilePage.prototype, "headerview", void 0);
+    CandidateProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-candidate-profile',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\candidate-profile\candidate-profile.html"*/'<!--\n  Generated template for the CandidateProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<header-view #headerview>\n  <ion-navbar color="dark" sub-navbar>\n    <ion-title>\n      Candidate Details\n    </ion-title>\n  </ion-navbar>\n</header-view>\n\n\n<ion-content padding>\n	<div class="" *ngIf="candidate">\n		<ion-grid class="show-core">\n			<ion-row>\n				<ion-col col-4 text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n				<ion-col col-8>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n		<ion-grid class="show-tablet">\n			<ion-row>\n				<ion-col text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n		<ion-grid class="show-mobile">\n			<ion-row>\n				<ion-col text-center>\n					<img class="candidate-logo" [src]="sourceUrl(candidate.Photo)">\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<h2>{{ getCandidateName() }}</h2>\n					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>\n					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>\n					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</div>\n	<div class="empty-info" padding-top *ngIf="!candidate">\n		There is no information about this candidate.\n	</div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\pages\candidate-profile\candidate-profile.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], CandidateProfilePage);
+    return CandidateProfilePage;
+}());
+
+//# sourceMappingURL=candidate-profile.js.map
+
+/***/ }),
+
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderViewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__range_view_range_view__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_president_president__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__range_view_range_view__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_president_president__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_parliament_parliament__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_chairperson_chairperson__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_councilor_councilor__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_village_headman_village_headman__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_councilor_councilor__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_village_headman_village_headman__ = __webpack_require__(68);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2465,7 +2460,7 @@ var HeaderViewComponent = (function () {
     ], HeaderViewComponent.prototype, "type", void 0);
     HeaderViewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'header-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark" class="show-mobile">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end *ngIf="isGranularityEnabled">\n			<button ion-button class="bar-button-menutoggle-md" (click)="selectRange($event)">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ion-toolbar color="dark" class="show-core" style="padding: 10px;">\n		<button ion-button href="/" class="bar-button-menutoggle-md bar-button-default-md disable-hover logo-icon" float-left>\n			<img src="assets/imgs/logo.png" width="35"> &nbsp;SLOEDP\n		</button>\n		<ion-title text-uppercase text-center>\n			<ion-segment class="page-links" color="primary" width-50>\n				<ion-segment-button class="PresidentPage" (ionSelect)="selectedType(\'president\')">\n				President\n				</ion-segment-button>\n				<ion-segment-button class="ParliamentPage" (ionSelect)="selectedType(\'parliament\')">\n				Member of Parliament\n				</ion-segment-button>\n				<ion-segment-button class="ChairpersonPage" (ionSelect)="selectedType(\'chairperson\')">\n				Mayor/Chairperson\n				</ion-segment-button>\n				<ion-segment-button class="CouncilorPage" (ionSelect)="selectedType(\'councilor\')">\n				Councilor\n				</ion-segment-button>\n				<ion-segment-button class="VillageHeadmanPage" (ionSelect)="selectedType(\'villageheadman\')">\n				Village Headman\n				</ion-segment-button>\n			</ion-segment>\n		</ion-title>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>'/*ion-inline-end:"C:\Users\VM-3\Documents\sleodp_project\sleodp\src\components\header-view\header-view.html"*/
+            selector: 'header-view',template:/*ion-inline-start:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\header-view\header-view.html"*/'<!-- Generated template for the HeaderViewComponent component -->\n<ion-header>\n	<ion-toolbar color="dark" class="show-mobile">\n		<button ion-button menuToggle>\n			<i class="fa fa-navicon"></i>\n		</button>\n		<ion-title text-uppercase text-center>sloedp</ion-title>\n\n		<ion-buttons end *ngIf="isGranularityEnabled">\n			<button ion-button class="bar-button-menutoggle-md" (click)="selectRange($event)">\n				<i class="fa fa-ellipsis-h"></i>\n			</button>\n		</ion-buttons>\n	</ion-toolbar>\n	<ion-toolbar color="dark" class="show-core" style="padding: 10px;">\n		<button ion-button href="/" class="bar-button-menutoggle-md bar-button-default-md disable-hover logo-icon" float-left>\n			<img src="assets/imgs/logo.png" width="35"> &nbsp;SLOEDP\n		</button>\n		<ion-title text-uppercase text-center>\n			<ion-segment class="page-links" color="primary" width-50>\n				<ion-segment-button class="PresidentPage" (ionSelect)="selectedType(\'president\')">\n				President\n				</ion-segment-button>\n				<ion-segment-button class="ParliamentPage" (ionSelect)="selectedType(\'parliament\')">\n				Member of Parliament\n				</ion-segment-button>\n				<ion-segment-button class="ChairpersonPage" (ionSelect)="selectedType(\'chairperson\')">\n				Mayor/Chairperson\n				</ion-segment-button>\n				<ion-segment-button class="CouncilorPage" (ionSelect)="selectedType(\'councilor\')">\n				Councilor\n				</ion-segment-button>\n				<ion-segment-button class="VillageHeadmanPage" (ionSelect)="selectedType(\'villageheadman\')">\n				Village Headman\n				</ion-segment-button>\n			</ion-segment>\n		</ion-title>\n	</ion-toolbar>\n	<ng-content select="[sub-navbar]"></ng-content>\n</ion-header>'/*ion-inline-end:"C:\Users\VM-3\Documents\GitHub\sleodp\src\components\header-view\header-view.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]])
     ], HeaderViewComponent);
