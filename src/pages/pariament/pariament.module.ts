@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PariamentPage } from './pariament';
 
@@ -9,5 +9,6 @@ import { PariamentPage } from './pariament';
   imports: [
     IonicPageModule.forChild(PariamentPage),
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PariamentPageModule {}

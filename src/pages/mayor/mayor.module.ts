@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MayorPage } from './mayor';
 
@@ -9,5 +9,6 @@ import { MayorPage } from './mayor';
   imports: [
     IonicPageModule.forChild(MayorPage),
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class MayorPageModule {}
