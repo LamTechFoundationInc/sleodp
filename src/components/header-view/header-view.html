@@ -18,6 +18,9 @@
 		</button>
 		<ion-title text-uppercase text-center>
 			<ion-segment class="page-links" color="primary" width-50>
+				<ion-segment-button (ionSelect)="selectedType('electiondataplatform')">
+				SLOEDP Platform
+				</ion-segment-button>
 				<ion-segment-button class="PresidentPage" (ionSelect)="selectedType('president')">
 				President
 				</ion-segment-button>

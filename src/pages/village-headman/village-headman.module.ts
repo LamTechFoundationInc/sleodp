@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { VillageHeadmanPage } from './village-headman';
 
@@ -9,5 +9,6 @@ import { VillageHeadmanPage } from './village-headman';
   imports: [
     IonicPageModule.forChild(VillageHeadmanPage),
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class VillageHeadmanPageModule {}

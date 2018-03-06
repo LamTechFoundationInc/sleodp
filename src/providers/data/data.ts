@@ -22,6 +22,7 @@ export class DataProvider {
   candidates_json: any;
   polling_centres_json: any;
   results = {};
+  whole_results = {};
 
   year: any;
 
@@ -44,17 +45,19 @@ export class DataProvider {
     return this.year ? this.year: "";
   }
 
-  loadPollingCentres() {
-    if (this.polling_centres_json)
-      return Promise.resolve(this.polling_centres_json);
-
-    return new Promise(resolve => {
-      this.http.get('/polling_centres')
-        .subscribe(response => {
-          this.polling_centres_json = this.toPollingCentresJson(JSON.parse(response['_body']));
-          resolve(this.polling_centres_json);
+  loadWholeResults() {
+    if ( Object.keys(this.whole_results).length > 0 ) {
+      return Promise.resolve(this.whole_results)
+    }
+    else {
+      return new Promise(resolve => {
+        this.http.get('/election_results').subscribe (response => {
+          this.whole_results = JSON.parse(response['_body'])
+          this.polling_centres_json = this.toPollingCentresJson(this.whole_results['polling_centre']);
+          resolve(this.whole_results);
         });
-    });
+      })
+    }
   }
 
   loadResultsByType(fields) {
@@ -62,11 +65,12 @@ export class DataProvider {
       return Promise.resolve(this.results[fields.type][fields.year]['all']);
 
     return new Promise(resolve => {
-      this.http.post('/election_results', fields).subscribe (response => {
+      this.loadWholeResults().then(data => {
+        var type_results = Number(fields.year) >= 2018 ? data[fields.type+'_'+fields.year] : data[fields.type];
         this.results[fields.type][fields.year] = {};
-        this.results[fields.type][fields.year]['all'] = this.getResultsByYear(JSON.parse(response['_body']), fields.year);
+        this.results[fields.type][fields.year]['all'] = this.getResultsByYear(type_results, fields.year)
         resolve('ok');
-      });
+      })
     });
   }
 
@@ -75,11 +79,6 @@ export class DataProvider {
 
     return new Promise(resolve => {
       waterfall([
-        function(callback) {
-          vm.loadPollingCentres().then(data => {
-            callback(null)
-          });
-        },
         function(callback) {
           if (!(vm.results[fields.type] && vm.results[fields.type][fields.year])) {
             if (!vm.results[fields.type]) 
@@ -112,6 +111,7 @@ export class DataProvider {
           }
           
           callback(null, {
+            ValidVotes: vm.results[fields.type][fields.year]['nation'][0]['votes'],
             Parties: vm.parties_json,
             Candidates: vm.candidates_json,
             Boundaries: vm.results[fields.type][fields.year][fields.region]
@@ -251,7 +251,22 @@ export class DataProvider {
         temp_candidate_ary.push(row[key2]);
       }
 
-      temp_candidate_ary.sort((a, b) => a.ValidVotes > b.ValidVotes ? -1 : a.ValidVotes < b.ValidVotes ? 1 : 0);
+      temp_candidate_ary.sort((a, b) => {
+        var nameA = a.CandidatePoliticalParty.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.CandidatePoliticalParty.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      })
+      temp_candidate_ary.sort((a, b) => b.ValidVotes - a.ValidVotes);
+
+      if (temp_candidate_ary[0].ValidVotes == 0) temp_candidate_ary[0].CandidatePoliticalPartyColor = '999'
       result_temp_boundaries[key1]['candidates'] = temp_candidate_ary;
     }
 

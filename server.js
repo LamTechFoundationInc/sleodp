@@ -1,17 +1,11 @@
 var express = require('express'),
 cors = require('cors'),
-herokuProxy = require('heroku-proxy'),
 fs = require('fs'),
 async = require('async'),
 bodyParser = require('body-parser'),
 app = express();
 app.use(cors());
 app.options('*', cors());
-app.use(herokuProxy({
-	hostname: 'electiondata.io',
-	prefix  : 'api',
-	protocol: 'https'
-}));
 app.use(express.static('www'));
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -33,49 +27,31 @@ var urls = {
     villageheadman_2018: "www/assets/results/all-villageheadman-polling-centre-results-2018/"
 }
 
-app.get('/polling_centres', function(req, res, next) {
-	fs.readdir(urls['polling_centre'], function(err, names) {
-		async.map(names, function(name, callback) {
-			fs.readFile(urls['polling_centre'] + name, 'utf8', function(err, contents) {
-				callback(null, JSON.parse(contents));
-			});
-		}, function(err, results) {
-			if (err) res.send([]);
+var _whole_results = {};
 
-			var polling_centres = [];
-			results.forEach(function(items) {
-				polling_centres = polling_centres.concat(items);
-			});
+app.get('/election_results', function(req, res, next) {
+	async.forEachOf(urls, function(url, key, callback) {
+		fs.readdir(url, function(err, names) {
+			async.map(names, function(name, callback) {
+				fs.readFile(url + name, 'utf8', function(err, contents) {
+					callback(null, contents == "" ? [] : JSON.parse(contents));
+				});
+			}, function(err, results) {
+				if (err) res.send([]);
 
-			res.send(polling_centres);
+				var election_results = [];
+				results.forEach(function(items) {
+					election_results = election_results.concat(items);
+				});
+
+				_whole_results[key] = election_results;
+				callback(null)
+			})
 		})
-	});
-});
-
-app.post('/election_results', function(req, res, next) {
-	var fields = req.body;
-	var url = fields.type;
-	if (Number(fields.year) >=2018) {
-		url += '_' + fields.year;
-	}
-
-	fs.readdir(urls[url], function(err, names) {
-		async.map(names, function(name, callback) {
-			fs.readFile(urls[url] + name, 'utf8', function(err, contents) {
-				callback(null, JSON.parse(contents));
-			});
-		}, function(err, results) {
-			if (err) res.send([]);
-
-			var election_results = [];
-			results.forEach(function(items) {
-				election_results = election_results.concat(items);
-			});
-
-			res.send(election_results);
-		})
-	});
-});
+	}, function(err) {
+		res.send(_whole_results)
+	})
+})
 
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {

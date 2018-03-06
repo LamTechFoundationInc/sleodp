@@ -8,7 +8,7 @@ map-view {
 	.view-container {
 		.map {
 			position: unset !important;
-			height: 35vh;
+			height: 55vh;
 			canvas {
 				left: 0;
 			}
@@ -33,31 +33,58 @@ map-view {
 			.election-competitors {
 				font-size: 14px;
 				padding-top: 0;
+				ion-row {
+					margin-top: 70px;
+				}
 				ion-col {
 					padding: 0;
-					padding-top: 15px;
 					.card {
 						border: 2px solid #000;
 						border-right: none;
 						height: 20px;
-						line-height: 16px;
-						position: relative;
-						font-size: 1rem;
-						img {
-							width: 60px;
-							max-height: none;
-							position: absolute;
-							bottom: 0;
-							left: 0;
-						}
+					}
+					.img-wrapper {
+						position:  absolute;
+						bottom:  0;
+						width:  100%;
 						a {
+							font-size: 1rem;
+							line-height: 16px;
 							color: #fff;
-							display: block;
+						}
+						span {
+							position: absolute;
+							left: 0;
+							bottom: 0;
+							padding-left: 85px;
+							width: 100%;
+							text-align: left;
+							text-shadow: 2px 0px 3px rgba(0,0,0,0.5);
+						}
+						span.votes {
+							bottom: 40px;
+						}
+						img {
+							width: 80px;
+							height: 80px;
+							padding: 0;
+							float: left;
 						}
 					}
 					&:last-child {
 						.card {
 							border-right: 2px solid #000;
+						}
+						.img-wrapper {
+							span {
+								text-align: right;
+								right: 0;
+								padding-left: 0;
+								padding-right: 85px;
+							}
+							img {
+								float: right
+							}
 						}
 					}
 				}
@@ -87,15 +114,21 @@ map-view {
 			.election-details {
 				.election-competitors {
 					ion-col {
-						&:first-child {
+						.img-wrapper {
+							span {
+								padding-left: 75px !important;
+							}
 							img {
-								left: 0
+								width: 70px !important;
+								height: 70px !important;
 							}
 						}
 						&:last-child {
-							img {
-								right: 0;
-								left: unset;
+							.img-wrapper {
+								span {
+									padding-left: 0 !important;
+									padding-right: 75px !important;
+								}
 							}
 						}
 					}

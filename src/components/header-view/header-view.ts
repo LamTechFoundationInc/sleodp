@@ -46,6 +46,9 @@ export class HeaderViewComponent {
 
   selectedType(type) {
     switch (type) {
+      case "electiondataplatform":
+        location.href = "https://electiondata.io"
+        break;
       case "president":
         this.navCtrl.setRoot(PresidentPage)
         break;

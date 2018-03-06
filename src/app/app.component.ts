@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+// import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 import { PresidentPage } from '../pages/president/president';
 import { ParliamentPage } from '../pages/parliament/parliament';
@@ -41,7 +42,18 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+  
+      // this.ga.startTrackerWithId('UA-110727945-1')
+      //   .then(() => {
+      //    console.log('Google analytics is ready now');
+      //       this.ga.trackView('test');
+      //    // Tracker is ready
+      //    // You can now track pages or set additional information such as AppVersion or UserId
+      //   })
+      //   .catch(e => console.log('Error starting GoogleAnalytics', e));
+
     });
+
   }
 
   openPage(page) {

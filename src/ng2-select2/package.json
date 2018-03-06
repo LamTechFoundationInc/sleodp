@@ -1,0 +1,63 @@
+{
+  "_args": [
+    [
+      "ng2-select2@1.0.0-beta.11",
+      "C:\\Users\\VM-3\\Documents\\GitHub\\sleodp"
+    ]
+  ],
+  "_from": "ng2-select2@1.0.0-beta.11",
+  "_id": "ng2-select2@1.0.0-beta.11",
+  "_inBundle": false,
+  "_integrity": "sha512-GPhX8pzPa2gDb1bouerIQkyx23c0trw23lh5MiuCnreN9xsWbYTw3mcu1CccaAagDckC3OtVE1dCDT7LbteAgA==",
+  "_location": "/ng2-select2",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "ng2-select2@1.0.0-beta.11",
+    "name": "ng2-select2",
+    "escapedName": "ng2-select2",
+    "rawSpec": "1.0.0-beta.11",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0-beta.11"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng2-select2/-/ng2-select2-1.0.0-beta.11.tgz",
+  "_spec": "1.0.0-beta.11",
+  "_where": "C:\\Users\\VM-3\\Documents\\GitHub\\sleodp",
+  "author": {
+    "name": "Nejc Zdovc",
+    "email": "nejc.zdovc@3zsistemi.si"
+  },
+  "bugs": {
+    "url": "https://github.com/NejcZdovc/ng2-select2/issues"
+  },
+  "dependencies": {
+    "@types/jquery": "^2.0.39",
+    "@types/select2": "^4.0.31"
+  },
+  "description": "Angular2 wrapper for select2",
+  "homepage": "https://github.com/NejcZdovc/ng2-select2",
+  "jsnext:main": "ng2-select2.js",
+  "keywords": [
+    "angular2",
+    "select2",
+    "wrap"
+  ],
+  "license": "MIT",
+  "main": "ng2-select2.bundle.js",
+  "module": "ng2-select2.js",
+  "name": "ng2-select2",
+  "peerDependencies": {
+    "@angular/core": ">=2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NejcZdovc/ng2-select2.git"
+  },
+  "types": "ng2-select2.d.ts",
+  "typings": "ng2-select2.d.ts",
+  "version": "1.0.0-beta.11"
+}

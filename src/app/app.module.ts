@@ -11,52 +11,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Pages
 import { MyApp } from './app.component';
-import { PresidentPage } from '../pages/president/president';
-import { ParliamentPage } from '../pages/parliament/parliament';
-import { MayorPage } from '../pages/mayor/mayor';
-import { ChairpersonPage } from '../pages/chairperson/chairperson';
-import { CouncilorPage } from '../pages/councilor/councilor';
-import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
-import { PartyProfilePage } from '../pages/party-profile/party-profile';
-import { CandidateProfilePage } from '../pages/candidate-profile/candidate-profile';
+import { PresidentPageModule } from '../pages/president/president.module';
+import { ParliamentPageModule } from '../pages/parliament/parliament.module';
+import { MayorPageModule } from '../pages/mayor/mayor.module';
+import { ChairpersonPageModule } from '../pages/chairperson/chairperson.module';
+import { CouncilorPageModule } from '../pages/councilor/councilor.module';
+import { VillageHeadmanPageModule } from '../pages/village-headman/village-headman.module';
+import { PartyProfilePageModule } from '../pages/party-profile/party-profile.module';
+import { CandidateProfilePageModule } from '../pages/candidate-profile/candidate-profile.module';
 
 // Components
-import { HeaderViewComponent } from '../components/header-view/header-view';
-import { RangeViewComponent } from '../components/range-view/range-view';
-import { ContentViewComponent } from '../components/content-view/content-view';
-import { MapViewComponent } from '../components/map-view/map-view';
-import { TableViewComponent } from '../components/table-view/table-view';
+import { ComponentsModule } from '../components/components.module'
 
 // Providers
 import { DataProvider } from '../providers/data/data';
 
-// Pipes
-import { PipesModule } from '../pipes/pipes.module';
-
-// Select2 Component
-import { Select2Component } from 'ng2-select2/ng2-select2';
-
 @NgModule({
   declarations: [
   // App
-    MyApp,
-  // Pages
-    PresidentPage,
-    ParliamentPage,
-    MayorPage,
-    ChairpersonPage,
-    CouncilorPage,
-    VillageHeadmanPage,
-    PartyProfilePage,
-    CandidateProfilePage,
-  // Components
-    HeaderViewComponent,
-    RangeViewComponent,
-    ContentViewComponent,
-    MapViewComponent,
-    TableViewComponent,
-  // Select2Component
-    Select2Component
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -64,20 +37,19 @@ import { Select2Component } from 'ng2-select2/ng2-select2';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     NgbModule.forRoot(),
-    PipesModule
+    PresidentPageModule,
+    ParliamentPageModule,
+    MayorPageModule,
+    ChairpersonPageModule,
+    CouncilorPageModule,
+    VillageHeadmanPageModule,
+    PartyProfilePageModule,
+    CandidateProfilePageModule,
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    PresidentPage,
-    ParliamentPage,
-    MayorPage,
-    ChairpersonPage,
-    CouncilorPage,
-    VillageHeadmanPage,
-    PartyProfilePage,
-    CandidateProfilePage,
-    RangeViewComponent
+    MyApp
   ],
   providers: [
     StatusBar,
