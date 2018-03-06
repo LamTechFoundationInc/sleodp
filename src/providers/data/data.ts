@@ -22,6 +22,7 @@ export class DataProvider {
   candidates_json: any;
   polling_centres_json: any;
   results = {};
+  whole_results = {};
 
   year: any;
 
@@ -44,17 +45,19 @@ export class DataProvider {
     return this.year ? this.year: "";
   }
 
-  loadPollingCentres() {
-    if (this.polling_centres_json)
-      return Promise.resolve(this.polling_centres_json);
-
-    return new Promise(resolve => {
-      this.http.get('/polling_centres')
-        .subscribe(response => {
-          this.polling_centres_json = this.toPollingCentresJson(JSON.parse(response['_body']));
-          resolve(this.polling_centres_json);
+  loadWholeResults() {
+    if ( Object.keys(this.whole_results).length > 0 ) {
+      return Promise.resolve(this.whole_results)
+    }
+    else {
+      return new Promise(resolve => {
+        this.http.get('/election_results').subscribe (response => {
+          this.whole_results = JSON.parse(response['_body'])
+          this.polling_centres_json = this.toPollingCentresJson(this.whole_results['polling_centre']);
+          resolve(this.whole_results);
         });
-    });
+      })
+    }
   }
 
   loadResultsByType(fields) {
@@ -62,11 +65,12 @@ export class DataProvider {
       return Promise.resolve(this.results[fields.type][fields.year]['all']);
 
     return new Promise(resolve => {
-      this.http.post('/election_results', fields).subscribe (response => {
+      this.loadWholeResults().then(data => {
+        var type_results = Number(fields.year) >= 2018 ? data[fields.type+'_'+fields.year] : data[fields.type];
         this.results[fields.type][fields.year] = {};
-        this.results[fields.type][fields.year]['all'] = this.getResultsByYear(JSON.parse(response['_body']), fields.year);
+        this.results[fields.type][fields.year]['all'] = this.getResultsByYear(type_results, fields.year)
         resolve('ok');
-      });
+      })
     });
   }
 
@@ -75,11 +79,6 @@ export class DataProvider {
 
     return new Promise(resolve => {
       waterfall([
-        function(callback) {
-          vm.loadPollingCentres().then(data => {
-            callback(null)
-          });
-        },
         function(callback) {
           if (!(vm.results[fields.type] && vm.results[fields.type][fields.year])) {
             if (!vm.results[fields.type]) 

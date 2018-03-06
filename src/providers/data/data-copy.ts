@@ -1,8 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import waterfall from 'async/waterfall';
+
+let parties = require('../../assets/resources/all-political-parties.json');
+let candidates = require('../../assets/resources/all-candidates.json');
 
 /*
   Generated class for the DataProvider provider.
@@ -12,18 +18,6 @@ import waterfall from 'async/waterfall';
 */
 @Injectable()
 export class DataProvider {
-  urls = {
-    president: "api/results/presidential/all.json",
-    president_2018: "api/results/presidential/polling-centre-results.json",
-    parliament: "api/results/parliamentary/all.json",
-    mayor: "api/results/mayor/all.json",
-    chairperson: "api/results/chairperson/all.json",
-    councilor: "api/results/local-council/all.json",
-    villageheadman: "api/results/village-headman/all.json",
-    parties: "api/resources/political-parties/all",
-    candidates: "api/resources/candidates/all.json",
-    polling_centres: "api/resources/polling-centres/all.json"
-  };
   parties_json: any;
   candidates_json: any;
   polling_centres_json: any;
@@ -33,7 +27,13 @@ export class DataProvider {
 
   private granularitySubject = new Subject<any>();
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
+    this.parties_json = this.toPartiesJson(parties);
+    this.candidates_json = this.toCandidatesJson(candidates);
+  }
+
+  getFileStatus(path: string) {
+    
   }
 
   setYear(year) {
@@ -44,77 +44,28 @@ export class DataProvider {
     return this.year ? this.year: "";
   }
 
-  loadParties() {
-    if (this.parties_json) {
-      return Promise.resolve(this.parties_json);
-    }
-
-    return new Promise(resolve => {
-      this.http.get(this.urls.parties).subscribe (data => {
-        this.parties_json = this.toPartiesJson(data);
-        resolve(this.parties_json);
-      }, error => {
-        var parties = require('../../assets/results/political-parties-all.json');
-        this.parties_json = this.toCandidatesJson(parties);
-        resolve(this.parties_json);
-        console.log("Error with Data");
-      });
-    });
-  }
-
-  loadCandidates() {
-    if (this.candidates_json) {
-      return Promise.resolve(this.candidates_json);
-    }
-
-    return new Promise(resolve => {
-      this.http.get(this.urls.candidates).subscribe (data => {
-        this.candidates_json = this.toCandidatesJson(data);
-        resolve(this.candidates_json);
-      }, error => {
-        var candidates = require('../../assets/results/sierra-leone-candidates.json');
-        this.candidates_json = this.toCandidatesJson(candidates);
-        resolve(this.candidates_json);
-        console.log("Error with Data");
-      });
-    });
-  }
-
   loadPollingCentres() {
-    if (this.polling_centres_json) {
+    if (this.polling_centres_json)
       return Promise.resolve(this.polling_centres_json);
-    }
 
     return new Promise(resolve => {
-      this.http.get(this.urls.polling_centres).subscribe (data => {
-        this.polling_centres_json = this.toPollingCentresJson(data);
-        resolve(this.polling_centres_json);
-      }, error => {
-        var polling_centres = require('../../assets/results/sierra-leone-polling-centres.json');
-        this.polling_centres_json = this.toCandidatesJson(polling_centres);
-        resolve(this.polling_centres_json);
-        console.log("Error with Data");
-      });
+      this.http.get('/polling_centres')
+        .subscribe(response => {
+          this.polling_centres_json = this.toPollingCentresJson(JSON.parse(response['_body']));
+          resolve(this.polling_centres_json);
+        });
     });
   }
 
   loadResultsByType(fields) {
-    var url = this.urls[fields.type];
-    if (Number(fields.year) >= 2018)
-      url = this.urls[fields.type+'_'+fields.year];
+    if (this.results[fields.type][fields.year] && this.results[fields.type][fields.year]['all'])
+      return Promise.resolve(this.results[fields.type][fields.year]['all']);
+
     return new Promise(resolve => {
-      this.http.get(url).subscribe (data => {
-        resolve(data);
-      }, error => {
-        if (fields.type == "president" && fields.year == "2018") {
-          var polling_centre_result = require('../../assets/results/all-sierraleone-president-election-results-by-polling-centre.json');
-          resolve(polling_centre_result);
-        }
-        else {
-          resolve([]);
-        }
-        
-        console.log("Error with Data");
+      this.http.post('/election_results', fields).subscribe (response => {
+        this.results[fields.type][fields.year] = {};
+        this.results[fields.type][fields.year]['all'] = this.getResultsByYear(JSON.parse(response['_body']), fields.year);
+        resolve('ok');
       });
     });
   }
@@ -125,32 +76,20 @@ export class DataProvider {
     return new Promise(resolve => {
       waterfall([
         function(callback) {
+          vm.loadPollingCentres().then(data => {
+            callback(null)
+          });
+        },
+        function(callback) {
           if (!(vm.results[fields.type] && vm.results[fields.type][fields.year])) {
             if (!vm.results[fields.type]) 
               vm.results[fields.type] = {};
             vm.loadResultsByType(fields).then(data => {
-              vm.results[fields.type][fields.year] = {};
-              vm.results[fields.type][fields.year]['all'] = vm.getResultsByYear(data, fields.year);
               callback(null);
             });
           }
           else
             callback(null);
-        },
-        function(callback) {
-          vm.loadParties().then(data => {
-            callback(null);
-          })
-        },
-        function(callback) {
-          vm.loadCandidates().then(data => {
-            callback(null);
-          })
-        },
-        function(callback) {
-          vm.loadPollingCentres().then(data => {
-            callback(null);
-          })
         },
         function(callback) {
           if (!vm.results[fields.type][fields.year][fields.region]) {
@@ -277,7 +216,7 @@ export class DataProvider {
         BoundaryName = this.getBoundaryName(election_result, fields);
         BoundaryKey = this.makeKey(BoundaryName);
 
-        if (!result_temp_boundaries[BoundaryKey]['candidates'][party]) {
+        if (result_temp_boundaries[BoundaryKey] && !result_temp_boundaries[BoundaryKey]['candidates'][party]) {
           result_temp_boundaries[BoundaryKey]['candidates'][party] = Object.assign({}, election_result);
           result_temp_boundaries[BoundaryKey]['candidates'][party]['ValidVotes'] = Votes;
           result_temp_boundaries[BoundaryKey]['candidates'][party]['CandidateFullName'] = CandidateFullName;
@@ -293,7 +232,7 @@ export class DataProvider {
         BoundaryName = this.getBoundaryName(election_result, fields);
         BoundaryKey = this.makeKey(BoundaryName);
 
-        if (!result_temp_boundaries[BoundaryKey]['candidates'][party]) {
+        if (result_temp_boundaries[BoundaryKey] && !result_temp_boundaries[BoundaryKey]['candidates'][party]) {
           result_temp_boundaries[BoundaryKey]['candidates'][party] = Object.assign({}, election_result);
           result_temp_boundaries[BoundaryKey]['candidates'][party]['ValidVotes'] = Votes;
           result_temp_boundaries[BoundaryKey]['candidates'][party]['CandidateFullName'] = CandidateFullName;
