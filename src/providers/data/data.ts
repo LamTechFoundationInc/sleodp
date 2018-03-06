@@ -111,6 +111,7 @@ export class DataProvider {
           }
           
           callback(null, {
+            ValidVotes: vm.results[fields.type][fields.year]['nation'][0]['votes'],
             Parties: vm.parties_json,
             Candidates: vm.candidates_json,
             Boundaries: vm.results[fields.type][fields.year][fields.region]
@@ -250,7 +251,22 @@ export class DataProvider {
         temp_candidate_ary.push(row[key2]);
       }
 
-      temp_candidate_ary.sort((a, b) => a.ValidVotes > b.ValidVotes ? -1 : a.ValidVotes < b.ValidVotes ? 1 : 0);
+      temp_candidate_ary.sort((a, b) => {
+        var nameA = a.CandidatePoliticalParty.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.CandidatePoliticalParty.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      })
+      temp_candidate_ary.sort((a, b) => b.ValidVotes - a.ValidVotes);
+
+      if (temp_candidate_ary[0].ValidVotes == 0) temp_candidate_ary[0].CandidatePoliticalPartyColor = '999'
       result_temp_boundaries[key1]['candidates'] = temp_candidate_ary;
     }
 

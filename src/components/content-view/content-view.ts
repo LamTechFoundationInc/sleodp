@@ -23,7 +23,6 @@ export class ContentViewComponent {
   @Input('region') region;
 
   mapMode: boolean;
-  firstTime: boolean;
   resultRegion: string;
 
   results: any;
@@ -35,10 +34,9 @@ export class ContentViewComponent {
   pollingCentreAvailable: boolean;
 
   boundary: string;
+  mapDisabled: boolean;
 
   constructor(public dataService: DataProvider, public events: Events) {
-    this.firstTime = true;
-    this.setMapMode(true);
     events.subscribe('boundary:select', (boundary) => {
       this.boundary = boundary;
     });
@@ -49,24 +47,20 @@ export class ContentViewComponent {
 
   setMapMode(mode) {
     if (this.mapMode == mode) return;
+    if (mode == true && this.mapDisabled) return;
 
   	this.mapMode = mode;
-    if (this.firstTime) {
-      this.firstTime = false;
+    if (this.mapMode && !this.mapDisabled) {
+      setTimeout((...args: any[]) => {
+        if (this.mapView)
+          this.setMapInit();
+      }, 10);
     }
     else {
-      if (this.mapMode) {
-        setTimeout((...args: any[]) => {
-          if (this.mapView)
-            this.setMapInit();
-        }, 10);
-      }
-      else {
-        setTimeout((...args: any[]) => {
-          if (this.tableView)
-            this.setTableInit(this.boundary);
-        }, 10);
-      }
+      setTimeout((...args: any[]) => {
+        if (this.tableView)
+          this.setTableInit(this.boundary);
+      }, 10);
     }
   }
 
@@ -76,9 +70,10 @@ export class ContentViewComponent {
 
   setContentView() {
     setTimeout((...args: any[]) => {
+      this.mapDisabled = false;
+      if (this.region == 'constituency' || this.region == 'ward') this.mapDisabled = true;
       this.setGranularityList();
-      this.setMapInit();
-      this.setTableInit(this.boundary);
+      this.setMapMode(!this.mapDisabled);
       this.setResultRegion(this.region);
     }, 10)
   }

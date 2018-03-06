@@ -29,12 +29,23 @@ export class TableViewComponent {
   Boundary: string;
   noWinner: boolean;
 
+  result: any;
+
   constructor(public dataService: DataProvider, public navCtrl: NavController) {
     this.Results = [];
     this.Boundaries = [];
     this.Parties = {};
     this.Candidates = {};
     this.noWinner = true;
+    this.result = {
+      'VotesCandidate': "Total",
+      'PecentageCandidate': '100%',
+      'ResultStatus': "",
+      'TotalVotes': "",
+      'ValidVotes': "",
+      'InvalidVotes': "",
+      'VotesPecentage': ""
+    };
   }
 
   ngAfterViewInit() {
@@ -69,6 +80,19 @@ export class TableViewComponent {
     this.dataService.loadResultsByFields(fields).then(data => {
       this.Parties = data['Parties'];
       this.Candidates = data['Candidates'];
+
+      vm.result.TotalVotes = this.year == '2018' ? 3178902 : data['ValidVotes'];
+      vm.result.ValidVotes = data['ValidVotes'];
+      if (this.year == '2018')
+        if (vm.result.TotalVotes == 0)
+          vm.result.VotesPecentage = "0%"
+        else
+          ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2)
+      else
+        vm.result.VotesPecentage = "100%"
+      vm.result.InvalidVotes = this.year == '2018' ? vm.result.TotalVotes - vm.result.ValidVotes : 0;
+      vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
+
       if (data['Boundaries'].length > 0) {
         vm.Boundaries = [];
         vm.total_results = data['Boundaries'];
