@@ -87,7 +87,7 @@ export class TableViewComponent {
         if (vm.result.TotalVotes == 0)
           vm.result.VotesPecentage = "0%"
         else
-          ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2)
+          vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
       else
         vm.result.VotesPecentage = "100%"
       vm.result.InvalidVotes = this.year == '2018' ? vm.result.TotalVotes - vm.result.ValidVotes : 0;
