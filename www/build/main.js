@@ -691,7 +691,7 @@ var MapViewComponent = (function () {
         });
     };
     MapViewComponent.prototype.applyMap = function (layers) {
-        layers.push(Object(__WEBPACK_IMPORTED_MODULE_5_leaflet__["tileLayer"])('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }));
+        layers.push(Object(__WEBPACK_IMPORTED_MODULE_5_leaflet__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }));
         this.layers = layers;
         return false;
     };

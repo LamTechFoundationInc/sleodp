@@ -268,7 +268,7 @@ export class MapViewComponent {
 	}
 
 	applyMap(layers) {
-		layers.push(tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }))
+		layers.push(tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }))
 		this.layers = layers;
 		return false;
 	}
