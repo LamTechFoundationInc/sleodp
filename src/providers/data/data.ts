@@ -110,8 +110,11 @@ export class DataProvider {
             }
           }
           
+          var total_votes = 0;
+          if (vm.results[fields.type][fields.year]['nation'].length > 0)
+            total_votes = vm.results[fields.type][fields.year]['nation'][0]['votes']
           callback(null, {
-            ValidVotes: vm.results[fields.type][fields.year]['nation'][0]['votes'],
+            ValidVotes: total_votes,
             Parties: vm.parties_json,
             Candidates: vm.candidates_json,
             Boundaries: vm.results[fields.type][fields.year][fields.region]

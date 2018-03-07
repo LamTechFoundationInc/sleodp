@@ -29,8 +29,6 @@ export class MapViewComponent {
 	
 	constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public dataService: DataProvider, public events: Events) {
 		this.result = {
-			'VotesCandidate': "Total",
-			'PecentageCandidate': '100%',
 			'ResultStatus': "",
 			'TotalVotes': "",
 			'ValidVotes': "",
@@ -123,21 +121,22 @@ export class MapViewComponent {
 			vm.result.Candidates = data['Candidates'];
 			vm.result.Boundaries = data['Boundaries'];
 			vm.result.TotalVotes = this.year == '2018' ? 3178902 : data['ValidVotes'];
-			vm.result.ValidVotes = data['ValidVotes'];
-			if (this.year == '2018')
-		        if (vm.result.TotalVotes == 0)
-		          vm.result.VotesPecentage = "0%"
-		        else
-		          vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
-		      else
-		        vm.result.VotesPecentage = "100%"
-			vm.result.InvalidVotes = this.year == '2018' ? vm.result.TotalVotes - vm.result.ValidVotes : 0;
+			
+			vm.result.InvalidVotes = 0;
 			vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
 			
 			vm.result.ElectionResults = [];
 			if (vm.result.Boundaries.length > 0) {
 				if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
 					vm.noWinner = false;
+					vm.result.ValidVotes = vm.result.Boundaries[0].votes;
+					if (vm.year == '2018')
+						if (vm.result.TotalVotes == 0)
+							vm.result.VotesPecentage = "0%"
+						else
+							vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+					else
+						vm.result.VotesPecentage = "100%"
 				}
 				else {
 					vm.noWinner = true;
@@ -163,7 +162,7 @@ export class MapViewComponent {
 		    // Map Init
 		  	mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW5qaW4iLCJhIjoiY2pkaXFleWJrMG9rNDJxcHJrNXNnN2d4NiJ9.sRB7ZJ05xbMZYyw5YvO7SQ';
 			var map = new mapboxgl.Map({
-				style: 'mapbox://styles/mapbox/light-v9',
+				style: 'mapbox://styles/mapbox/light-v9?optimize=true',
 				center: [-11.779889, 8.460555],
 				zoom: 6,
 				attributionControl: false,
@@ -235,6 +234,14 @@ export class MapViewComponent {
 							filter = features.reduce(function(memo, feature) {
 							    memo.push(feature.properties.Name);
 							    vm.result.ElectionResults = boundary.candidates;
+								vm.result.ValidVotes = boundary.votes;
+								if (vm.year == '2018')
+									if (vm.result.TotalVotes == 0)
+										vm.result.VotesPecentage = "0%"
+									else
+										vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+								else
+									vm.result.VotesPecentage = "100%"
 							    if (boundary.votes > 0) vm.noWinner = false;
 							    else vm.noWinner = true;
 							    vm.events.publish('boundary:select', boundary.name);
@@ -265,6 +272,15 @@ export class MapViewComponent {
 						el.style.height = '30px';
 						el.addEventListener('click', function() {
 							vm.result.ElectionResults = marker.candidates;
+							vm.result.ValidVotes = vm.result.Boundaries[0].votes;
+							if (vm.year == '2018')
+								if (vm.result.TotalVotes == 0)
+									vm.result.VotesPecentage = "0%"
+								else {
+									vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+								}
+							else
+								vm.result.VotesPecentage = "100%"
 						    if (marker.votes > 0) vm.noWinner = false;
 							else vm.noWinner = true;
 						    vm.events.publish('boundary:select', marker.name);
