@@ -21,6 +21,9 @@ import { Select2Module } from '../ng2-select2/ng2-select2';
     TableViewComponent,
     HeaderViewComponent,
     RangeViewComponent],
+    entryComponents: [
+        RangeViewComponent
+    ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class ComponentsModule {}
