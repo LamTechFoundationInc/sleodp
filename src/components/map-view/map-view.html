@@ -1,6 +1,9 @@
 <!-- Generated template for the MapViewComponent component -->
 <div class="view-container">
-	<div id="{{year}}_map" class="map box">
+	<div class="map"
+		leaflet
+		[leafletLayers]="layers"
+		[leafletOptions]="mapOptions">
 	</div>
 	<div *ngIf="!candidatesEnable()" padding-top>
 		There are no election datas

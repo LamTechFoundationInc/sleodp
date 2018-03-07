@@ -7,17 +7,7 @@ map-view {
     }
 	.view-container {
 		.map {
-			position: unset !important;
 			height: 50vh;
-			canvas {
-				left: 0;
-			}
-			.mapboxgl-ctrl-logo {
-				display: none;
-			}
-			.mapboxgl-ctrl {
-				margin-top: 50px;
-			}
 		}
 		.election-details {
 			bottom: 0;

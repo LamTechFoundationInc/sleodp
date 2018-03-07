@@ -111,8 +111,12 @@ export class DataProvider {
           }
           
           var total_votes = 0;
-          if (vm.results[fields.type][fields.year]['nation'].length > 0)
-            total_votes = vm.results[fields.type][fields.year]['nation'][0]['votes']
+          if (vm.results[fields.type][fields.year][fields.region].length > 0)
+          {
+            vm.results[fields.type][fields.year][fields.region].forEach(function(value) {
+              total_votes += value['votes']
+            })
+          }
           callback(null, {
             ValidVotes: total_votes,
             Parties: vm.parties_json,

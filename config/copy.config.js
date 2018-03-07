@@ -22,6 +22,10 @@ module.exports = {
     src: ['{{ROOT}}/node_modules/font-awesome/css/font-awesome.min.css'],
     dest: '{{WWW}}/assets/css'
   },
+  copyLeafletCss: {
+    src: [ '{{ROOT}}/node_modules/leaflet/dist/leaflet.css' ],
+    dest: '{{WWW}}/assets/css'
+  },
   copyPolyfills: {
     src: [`{{ROOT}}/node_modules/ionic-angular/polyfills/${process.env.IONIC_POLYFILL_FILE_NAME}`],
     dest: '{{BUILD}}'

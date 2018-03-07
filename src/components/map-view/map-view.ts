@@ -1,10 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { NavController, LoadingController, Events } from 'ionic-angular/index';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
 import { PartyProfilePage } from '../../pages/party-profile/party-profile';
 import { CandidateProfilePage } from '../../pages/candidate-profile/candidate-profile';
 import { DataProvider } from '../../providers/data/data';
+
+import { icon, latLng, Layer, marker, geoJSON, tileLayer } from 'leaflet';
+
+let nationGeoJSON = require("../../assets/maps/nation.json")
+let districtGeoJSON = require("../../assets/maps/district.json")
+let district2018GeoJSON = require("../../assets/maps/district-2018.json")
 
 /**
  * Generated class for the MapViewComponent component.
@@ -23,9 +28,17 @@ export class MapViewComponent {
 	@Input('type') type;
 
 	result: any;
+	boundary_json: any;
 
 	noWinner: boolean;
-	isLoaded: Boolean;
+
+	// Map Init
+  	mapOptions = {
+		zoom: 7,
+		center: latLng(8.460555,-11.779889)
+	};
+
+	layers: Layer[];
 	
 	constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public dataService: DataProvider, public events: Events) {
 		this.result = {
@@ -40,10 +53,10 @@ export class MapViewComponent {
 			'ElectionResults': []
 		};
 		this.noWinner = true;
-	}
+		this.applyMap([]);
+	}	
 
 	ngAfterViewInit() {
-		this.isLoaded = false;
 	}
 
 	gotoPartyDetail(party) {
@@ -95,8 +108,25 @@ export class MapViewComponent {
 		return value.toLowerCase().replace(/\ /gi, '_');
 	}
 
+	makeBoundaryJson(boundaries) {
+		var boundary_key;
+		var boundary_json = {};
+		var vm = this;
+		boundaries.forEach(function(boundary) {
+			boundary_key = vm.makeKey(boundary.name)
+			boundary_json[boundary_key] = boundary;
+		})
+
+		return boundary_json
+	}
+
 	otherPercent(candidates) {
 		return (100.0 - parseFloat(candidates[0].ValidVotesPercentage) - parseFloat(candidates[1].ValidVotesPercentage)).toFixed(2);
+	}
+
+	getBoundaryColor(boundary) {
+		var boundary_key = this.makeKey(boundary.name)
+		return this.colorFilter(this.boundary_json[boundary_key].candidates[0].CandidatePoliticalPartyColor)
 	}
 
 	drawMap() {
@@ -120,13 +150,14 @@ export class MapViewComponent {
 			var Parties = data['Parties'];
 			vm.result.Candidates = data['Candidates'];
 			vm.result.Boundaries = data['Boundaries'];
-			vm.result.TotalVotes = this.year == '2018' ? 3178902 : data['ValidVotes'];
+			vm.result.TotalVotes = this.year == '2018' ? 3178664 : data['ValidVotes'];
 			
 			vm.result.InvalidVotes = 0;
 			vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
 			
 			vm.result.ElectionResults = [];
 			if (vm.result.Boundaries.length > 0) {
+				vm.boundary_json = vm.makeBoundaryJson(vm.result.Boundaries)
 				if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
 					vm.noWinner = false;
 					vm.result.ValidVotes = vm.result.Boundaries[0].votes;
@@ -151,156 +182,94 @@ export class MapViewComponent {
 				}
 			}
 
-			let mapContainer = vm.year+"_map";
-
 		    var suffix = '';
 		    if (vm.year == '2018' && vm.region == 'district')
 		    	suffix = "-2018";
 
-		    let sourceUrl = 'assets/maps/' + vm.region + suffix + '.geojson';
+		    if (vm.region == "nation" || vm.region == "district") {
+		    	var geoData;
+		    	if (vm.region == 'nation') geoData = nationGeoJSON['features']
+		    	if (vm.region == 'district' && vm.year != '2018') geoData = districtGeoJSON['features']
+		    	if (vm.region == 'district' && vm.year == '2018') geoData = district2018GeoJSON['features']
 
-		    // Map Init
-		  	mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW5qaW4iLCJhIjoiY2pkaXFleWJrMG9rNDJxcHJrNXNnN2d4NiJ9.sRB7ZJ05xbMZYyw5YvO7SQ';
-			var map = new mapboxgl.Map({
-				style: 'mapbox://styles/mapbox/light-v9?optimize=true',
-				center: [-11.779889, 8.460555],
-				zoom: 6,
-				attributionControl: false,
-				container: mapContainer
-			});
-
-			map.on('load', function () {
-				// Add a layer showing the state polygons.
-				if (vm.region == "nation" || vm.region == "district") {
-					map.addSource("map-layer", {
-						'type': 'geojson',
-						'data': sourceUrl
-					});
-
-					var color, key, count = 0, boundary_highlighted = "";
-					for(let boundary of vm.result.Boundaries) {
-						key = vm.makeKey(boundary.name);
-						color = vm.colorFilter(boundary.candidates[0].CandidatePoliticalPartyColor);
-						map.addLayer({
-							'id': key,
-							'type': 'fill',
-							'source': "map-layer",
-							'paint': {
-							    'fill-color': color,
-							    'fill-outline-color': 'rgba(255, 255, 255, 1)',
-							    "fill-opacity": 0.2,
-							},
-							"filter": ["in", "Name", boundary.name]
-						});
-
-						if (count == 0) {
-							boundary_highlighted = boundary.name;
-						}
-						map.addLayer({
-							"id": key + "-highlighted",
-							"type": "fill",
-							"source": "map-layer",
-							"paint": {
-							    'fill-color': color,
-							    'fill-outline-color': 'rgba(255, 255, 255, 0.5)',
-							    "fill-opacity": 0.5
-							},
-							"filter": ["in", "Name", boundary_highlighted]
-						});
-						count++;
-					}
-
-					map.addLayer({
-						'id': 'map-line',
-						'type': 'line',
-						'source': "map-layer",
-						'paint': {
-							'line-width': 2,
-							'line-color': 'rgba(255, 255, 255, 1)'
-						},
-					});
-
-					// When a click event occurs on a feature in the states layer, open a popup at the
-					// location of the click, with description HTML from its properties.
-					map.on('click', function(e) {
-						// set bbox as 5px reactangle area around clicked point
-						var features, filter;
-						
-						count = 0;
-						for(let boundary of vm.result.Boundaries) {
-							key = vm.makeKey(boundary.name);
-							features = map.queryRenderedFeatures(e.point, { layers: [key] });
-
-							filter = features.reduce(function(memo, feature) {
-							    memo.push(feature.properties.Name);
-							    vm.result.ElectionResults = boundary.candidates;
+		    	var geoJSONLayer = geoJSON(geoData, {
+		    		onEachFeature: (feature, layer) => {
+		    			console.log(feature)
+		    			layer.bindPopup(feature.properties.Name)
+		    			layer.on('click', function() {
+		    				var boundary_key = vm.makeKey(feature.properties.Name)
+		    				var boundary = vm.boundary_json[boundary_key]
+		    				if (boundary) {
+		    					vm.result.ElectionResults = boundary.candidates;
 								vm.result.ValidVotes = boundary.votes;
 								if (vm.year == '2018')
 									if (vm.result.TotalVotes == 0)
 										vm.result.VotesPecentage = "0%"
-									else
+									else {
 										vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+									}
 								else
 									vm.result.VotesPecentage = "100%"
 							    if (boundary.votes > 0) vm.noWinner = false;
-							    else vm.noWinner = true;
+								else vm.noWinner = true;
 							    vm.events.publish('boundary:select', boundary.name);
-							    return memo;
-							}, ['in', 'Name']);
-
-							map.setFilter(key+"-highlighted", filter);
-
-							if (features.length > 0)
-								new mapboxgl.Popup()
-									.setLngLat(e.lngLat)
-									.setHTML(features[0].properties.Name)
-									.addTo(map);
-							count++;
-						}
-					});
-				}
-				else {
-					vm.result.Boundaries.forEach(function(marker, index) {
-						var el = document.createElement('div');
-						var popup = new mapboxgl.Popup()
-							.setText(marker.name);
-						el.className = 'marker';
-						el.style.backgroundImage = 'url(https://static.tonicdev.com/assets/vendor/leaflet/images/marker-icon.png)';
-						el.style.backgroundRepeat = 'no-repeat';
-						el.style.backgroundSize = 'cover';
-						el.style.width = '20px';
-						el.style.height = '30px';
-						el.addEventListener('click', function() {
-							vm.result.ElectionResults = marker.candidates;
-							vm.result.ValidVotes = vm.result.Boundaries[0].votes;
-							if (vm.year == '2018')
-								if (vm.result.TotalVotes == 0)
-									vm.result.VotesPecentage = "0%"
-								else {
-									vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
-								}
-							else
-								vm.result.VotesPecentage = "100%"
-						    if (marker.votes > 0) vm.noWinner = false;
-							else vm.noWinner = true;
-						    vm.events.publish('boundary:select', marker.name);
-						});
-
-
-						// add marker to map
-						new mapboxgl.Marker(el)
-							.setLngLat([marker.longitude, marker.latitude])
-							.setPopup(popup)
-							.addTo(map);
-					});
-				}
-
-				map.addControl(new mapboxgl.NavigationControl());
-
-				map.addControl(new mapboxgl.FullscreenControl());
-
-				loadingPopup.dismiss();
-			});
+		    				}
+		    				else {
+		    					vm.result.ElectionResults = []
+		    					vm.result.ValidVotes = 0
+		    					vm.result.VotesPecentage = 0
+		    					vm.noWinner = true;
+		    				}
+		    			})
+		    		},
+		    		style: (feature) => {
+		    			var boundary_key = vm.makeKey(feature.properties.Name)
+		    			
+		    			if (vm.boundary_json[boundary_key])
+		    				return { color: vm.colorFilter(vm.boundary_json[boundary_key].candidates[0].CandidatePoliticalPartyColor) }
+		    			else
+		    				return { color: '#999' }
+		    			
+		    		}
+		    	})
+		    	vm.applyMap([geoJSONLayer])
+		    }
+		    else {
+		    	var markerBoundary;
+		    	var layers = [];
+		    	for(let boundary of vm.result.Boundaries) {
+		    		markerBoundary = marker([ boundary.latitude, boundary.longitude ], {
+						icon: icon({
+							iconSize: [ 25, 41 ],
+							iconAnchor: [ 13, 41 ],
+							iconUrl: '../../assets/imgs/marker.png',
+							shadowUrl: '../../assets/imgs/marker-shadow.png'
+						})
+					}).bindPopup(boundary.name).on('click', () => {
+	    				vm.result.ElectionResults = boundary.candidates;
+						vm.result.ValidVotes = boundary.votes;
+						if (vm.year == '2018')
+							if (vm.result.TotalVotes == 0)
+								vm.result.VotesPecentage = "0%"
+							else {
+								vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+							}
+						else
+							vm.result.VotesPecentage = "100%"
+					    if (boundary.votes > 0) vm.noWinner = false;
+						else vm.noWinner = true;
+					})
+					layers.push(markerBoundary)
+		    	}
+		    	vm.applyMap(layers)
+		    }
+			loadingPopup.dismiss();
 		});
+	}
+
+	applyMap(layers) {
+		layers.push(tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }))
+		this.layers = layers;
+		return false;
 	}
 }

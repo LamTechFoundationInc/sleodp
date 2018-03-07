@@ -8,6 +8,7 @@ import { TableViewComponent } from './table-view/table-view';
 import { HeaderViewComponent } from './header-view/header-view';
 import { RangeViewComponent } from './range-view/range-view';
 import { Select2Module } from '../ng2-select2/ng2-select2';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
 	declarations: [ContentViewComponent,
@@ -15,7 +16,7 @@ import { Select2Module } from '../ng2-select2/ng2-select2';
     TableViewComponent,
     HeaderViewComponent,
     RangeViewComponent],
-	imports: [CommonModule, IonicModule, PipesModule, Select2Module],
+	imports: [CommonModule, IonicModule, PipesModule, Select2Module, LeafletModule],
 	exports: [ContentViewComponent,
     MapViewComponent,
     TableViewComponent,

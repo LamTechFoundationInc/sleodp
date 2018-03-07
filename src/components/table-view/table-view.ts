@@ -81,7 +81,7 @@ export class TableViewComponent {
       this.Parties = data['Parties'];
       this.Candidates = data['Candidates'];
 
-      vm.result.TotalVotes = this.year == '2018' ? 3178902 : data['ValidVotes'];
+      vm.result.TotalVotes = this.year == '2018' ? 3178664 : data['ValidVotes'];
       vm.result.ValidVotes = data['ValidVotes'];
       if (this.year == '2018')
         if (vm.result.TotalVotes == 0)
