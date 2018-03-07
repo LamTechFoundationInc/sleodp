@@ -46,7 +46,6 @@ export class ContentViewComponent {
   }
 
   setMapMode(mode) {
-    if (this.mapMode == mode) return;
     if (mode == true && this.mapDisabled) return;
 
   	this.mapMode = mode;
