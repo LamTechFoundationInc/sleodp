@@ -7,7 +7,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PresidentPage } from '../pages/president/president';
 import { ParliamentPage } from '../pages/parliament/parliament';
 import { MayorPage } from '../pages/mayor/mayor';
-import { ChairpersonPage } from '../pages/chairperson/chairperson';
 import { CouncilorPage } from '../pages/councilor/councilor';
 import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
 
@@ -26,10 +25,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'SLOEDP Platform', component: "" },
       { title: 'President', component: PresidentPage },
       { title: 'Member of Parliament', component: ParliamentPage },
-      { title: 'Mayor', component: MayorPage },
-      { title: 'Chairperson', component: ChairpersonPage },
+      { title: 'Mayor/Chair', component: MayorPage },
       { title: 'Councilor', component: CouncilorPage },
       { title: 'VillageHeadman', component: VillageHeadmanPage }
     ];
@@ -59,6 +58,9 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if (page.title == 'SLOEDP Platform')
+      location.href = "https://electiondata.io"
+    else
+      this.nav.setRoot(page.component);
   }
 }

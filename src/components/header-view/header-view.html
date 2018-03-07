@@ -18,23 +18,8 @@
 		</button>
 		<ion-title text-uppercase text-center>
 			<ion-segment class="page-links" color="primary" width-50>
-				<ion-segment-button (ionSelect)="selectedType('electiondataplatform')">
-				SLOEDP Platform
-				</ion-segment-button>
-				<ion-segment-button class="PresidentPage" (ionSelect)="selectedType('president')">
-				President
-				</ion-segment-button>
-				<ion-segment-button class="ParliamentPage" (ionSelect)="selectedType('parliament')">
-				Member of Parliament
-				</ion-segment-button>
-				<ion-segment-button class="ChairpersonPage" (ionSelect)="selectedType('chairperson')">
-				Mayor/Chairperson
-				</ion-segment-button>
-				<ion-segment-button class="CouncilorPage" (ionSelect)="selectedType('councilor')">
-				Councilor
-				</ion-segment-button>
-				<ion-segment-button class="VillageHeadmanPage" (ionSelect)="selectedType('villageheadman')">
-				Village Headman
+				<ion-segment-button *ngFor="let p of pages" (ionSelect)="openPage(p)">
+					{{p.title}}
 				</ion-segment-button>
 			</ion-segment>
 		</ion-title>
