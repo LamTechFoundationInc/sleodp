@@ -14,13 +14,13 @@
 				<ion-grid no-padding>
 					<ion-row>
 						<ion-col text-left class="small">
-							Total Registered Voters = {{ result.TotalVotes }}<br>
+							Total Registered Voters = {{ result.TotalVotes | number }}<br>
 							Percentage of votes counted: {{ result.VotesPecentage }}<br>
 							Result Status: {{ result.ResultStatus }}
 						</ion-col>
 						<ion-col text-right class="small">
-							Total Valid Votes: {{ result.ValidVotes }}<br>
-							Total Invalid Votes: {{ result.InvalidVotes }}
+							Total Valid Votes: {{ result.ValidVotes | number }}<br>
+							Total Invalid Votes: {{ result.InvalidVotes | number }}
 						</ion-col>
 					</ion-row>
 				</ion-grid>
@@ -45,7 +45,7 @@
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>
 								</a>
-								<span class="votes">[{{ candidate.ValidVotes }} | {{ candidate.ValidVotesPercentage }}%] <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
+								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
 							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)">
 							</div>
@@ -61,7 +61,7 @@
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>
 								</a>
-								<span class="votes">[{{ candidate.ValidVotes }} | {{ candidate.ValidVotesPercentage }}%] <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
+								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
 							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)">
 							</div>
@@ -77,7 +77,7 @@
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>
 								</a>
-								<span class="votes">[{{ candidate.ValidVotes }} | {{ candidate.ValidVotesPercentage }}%] <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
+								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
 							<div class="card" [style.background-color]="colorFilter(candidate.CandidatePoliticalPartyColor)">
 							</div>

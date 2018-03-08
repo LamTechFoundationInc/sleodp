@@ -29,13 +29,13 @@
 		<ion-grid no-padding>
 			<ion-row>
 				<ion-col text-left class="small">
-					Total Registered Voters = {{ result.TotalVotes }}<br>
+					Total Registered Voters = {{ result.TotalVotes | number }}<br>
 					Percentage of votes counted: {{ result.VotesPecentage }}<br>
 					Result Status: {{ result.ResultStatus }}
 				</ion-col>
 				<ion-col text-right class="small">
-					Total Valid Votes: {{ result.ValidVotes }}<br>
-					Total Invalid Votes: {{ result.InvalidVotes }}
+					Total Valid Votes: {{ result.ValidVotes | number }}<br>
+					Total Invalid Votes: {{ result.InvalidVotes | number }}
 				</ion-col>
 			</ion-row>
 		</ion-grid>

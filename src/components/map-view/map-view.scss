@@ -49,10 +49,11 @@ map-view {
 							padding-left: 85px;
 							width: 100%;
 							text-align: left;
+							display: flex;
 							text-shadow: 2px 0px 3px rgba(0,0,0,0.5);
 						}
 						span.votes {
-							bottom: 40px;
+							bottom: 30px;
 						}
 						img {
 							width: 80px;
