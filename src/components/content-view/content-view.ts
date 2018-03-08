@@ -70,7 +70,7 @@ export class ContentViewComponent {
   setContentView() {
     setTimeout((...args: any[]) => {
       this.mapDisabled = false;
-      if (this.region == 'constituency' || this.region == 'ward') this.mapDisabled = true;
+      if (this.region == 'constituency' || this.region == 'ward' || this.region == 'polling_centre') this.mapDisabled = true;
       this.setGranularityList();
       this.setMapMode(!this.mapDisabled);
       this.setResultRegion(this.region);
