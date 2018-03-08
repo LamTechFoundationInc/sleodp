@@ -38,9 +38,9 @@
 			<div class="election-competitors">
 				<ion-grid class="show-mobile" no-padding>
 					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 2, result.ElectionResults.length); let i = index">
-						<ion-col *ngFor="let candidate of row; let j = index">
+						<ion-col *ngFor="let candidate of row; let j = index" (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">
 							<div class="img-wrapper">
-								<a (click)="gotoCandidateDetail(candidate.candidate)">
+								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>
@@ -54,9 +54,9 @@
 				</ion-grid>
 				<ion-grid class="show-tablet">
 					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 3, 6); let i = index">
-						<ion-col *ngFor="let candidate of row; let j = index">
+						<ion-col *ngFor="let candidate of row; let j = index" (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">
 							<div class="img-wrapper">
-								<a (click)="gotoCandidateDetail(candidate.candidate)">
+								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>
@@ -70,9 +70,9 @@
 				</ion-grid>
 				<ion-grid class="show-core">
 					<ion-row *ngFor="let row of transform2d(result.ElectionResults, 4, 12); let i = index">
-						<ion-col *ngFor="let candidate of row; let j = index">
+						<ion-col *ngFor="let candidate of row; let j = index" (tap)="gotoCandidateDetail(candidate.Candidate_SLEOP_ID)">
 							<div class="img-wrapper">
-								<a (click)="gotoCandidateDetail(candidate.candidate)">
+								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
 									<span>{{ candidate.CandidateFullName }}</span>

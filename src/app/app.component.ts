@@ -8,7 +8,7 @@ import { PresidentPage } from '../pages/president/president';
 import { ParliamentPage } from '../pages/parliament/parliament';
 import { MayorPage } from '../pages/mayor/mayor';
 import { CouncilorPage } from '../pages/councilor/councilor';
-import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
+// import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +30,7 @@ export class MyApp {
       { title: 'Member of Parliament', component: ParliamentPage },
       { title: 'Mayor/Chair', component: MayorPage },
       { title: 'Councilor', component: CouncilorPage },
-      { title: 'VillageHeadman', component: VillageHeadmanPage }
+      // { title: 'VillageHeadman', component: VillageHeadmanPage }
     ];
 
   }
