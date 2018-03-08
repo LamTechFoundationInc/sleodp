@@ -194,7 +194,6 @@ export class MapViewComponent {
 
 		    	var geoJSONLayer = geoJSON(geoData, {
 		    		onEachFeature: (feature, layer) => {
-		    			console.log(feature)
 		    			layer.bindPopup(feature.properties.Name)
 		    			layer.on('click', function() {
 		    				var boundary_key = vm.makeKey(feature.properties.Name)

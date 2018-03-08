@@ -612,7 +612,6 @@ var MapViewComponent = (function () {
                     geoData = district2018GeoJSON['features'];
                 var geoJSONLayer = Object(__WEBPACK_IMPORTED_MODULE_5_leaflet__["geoJSON"])(geoData, {
                     onEachFeature: function (feature, layer) {
-                        console.log(feature);
                         layer.bindPopup(feature.properties.Name);
                         layer.on('click', function () {
                             var boundary_key = vm.makeKey(feature.properties.Name);
