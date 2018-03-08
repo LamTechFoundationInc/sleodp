@@ -29,8 +29,6 @@ map-view {
 				ion-col {
 					padding: 0;
 					.card {
-						border: 2px solid #000;
-						border-right: none;
 						height: 20px;
 					}
 					.img-wrapper {
@@ -41,6 +39,9 @@ map-view {
 							font-size: 1rem;
 							line-height: 16px;
 							color: #fff;
+							span {
+								font-weight: bold;
+							}
 						}
 						span {
 							position: absolute;
