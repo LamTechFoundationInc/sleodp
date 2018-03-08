@@ -14,7 +14,6 @@ import { MyApp } from './app.component';
 import { PresidentPageModule } from '../pages/president/president.module';
 import { ParliamentPageModule } from '../pages/parliament/parliament.module';
 import { MayorPageModule } from '../pages/mayor/mayor.module';
-import { ChairpersonPageModule } from '../pages/chairperson/chairperson.module';
 import { CouncilorPageModule } from '../pages/councilor/councilor.module';
 import { VillageHeadmanPageModule } from '../pages/village-headman/village-headman.module';
 import { PartyProfilePageModule } from '../pages/party-profile/party-profile.module';
@@ -40,7 +39,6 @@ import { DataProvider } from '../providers/data/data';
     PresidentPageModule,
     ParliamentPageModule,
     MayorPageModule,
-    ChairpersonPageModule,
     CouncilorPageModule,
     VillageHeadmanPageModule,
     PartyProfilePageModule,

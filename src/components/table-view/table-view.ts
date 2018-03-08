@@ -81,7 +81,7 @@ export class TableViewComponent {
       this.Parties = data['Parties'];
       this.Candidates = data['Candidates'];
 
-      vm.result.TotalVotes = this.year == '2018' ? 3178902 : data['ValidVotes'];
+      vm.result.TotalVotes = this.year == '2018' ? 3178664 : data['ValidVotes'];
       vm.result.ValidVotes = data['ValidVotes'];
       if (this.year == '2018')
         if (vm.result.TotalVotes == 0)
@@ -90,7 +90,7 @@ export class TableViewComponent {
           vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
       else
         vm.result.VotesPecentage = "100%"
-      vm.result.InvalidVotes = this.year == '2018' ? vm.result.TotalVotes - vm.result.ValidVotes : 0;
+      vm.result.InvalidVotes = 0;
       vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
 
       if (data['Boundaries'].length > 0) {

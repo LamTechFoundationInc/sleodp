@@ -16,13 +16,11 @@ var urls = {
 	president: "www/assets/results/all-president-election-results/",
     parliament: "www/assets/results/all-parliamentary-election-results/",
     mayor: "www/assets/results/all-mayor-election-results/",
-    chairperson: "www/assets/results/all-chairperson-election-results/",
     villageheadman: "www/assets/results/all-village-headman-election-results/",
     councilor: "www/assets/results/all-councilor-election-results/",
     president_2018: "www/assets/results/all-president-polling-centre-results-2018/",
     parliament_2018: "www/assets/results/all-parliamentary-polling-centre-results-2018/",
     mayor_2018: "www/assets/results/all-mayor-polling-centre-results-2018/",
-    chairperson_2018: "www/assets/results/all-chairperson-polling-centre-results-2018/",
     councilor_2018: "www/assets/results/all-councilor-polling-centre-results-2018/",
     villageheadman_2018: "www/assets/results/all-villageheadman-polling-centre-results-2018/"
 }

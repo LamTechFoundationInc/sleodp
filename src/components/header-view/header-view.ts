@@ -4,7 +4,6 @@ import { RangeViewComponent } from '../range-view/range-view';
 import { PresidentPage } from '../../pages/president/president';
 import { ParliamentPage } from '../../pages/parliament/parliament';
 import { MayorPage } from '../../pages/mayor/mayor';
-import { ChairpersonPage } from '../../pages/chairperson/chairperson';
 import { CouncilorPage } from '../../pages/councilor/councilor';
 import { VillageHeadmanPage } from '../../pages/village-headman/village-headman';
 
@@ -23,8 +22,19 @@ export class HeaderViewComponent {
 
   @Input('type') type;
 
+  pages: Array<{title: string, component: any}>;
+
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public el: ElementRef, public rd: Renderer2) {
     this.isGranularityEnabled = true;
+
+    this.pages = [
+      { title: 'SLOEDP Platform', component: "" },
+      { title: 'President', component: PresidentPage },
+      { title: 'Member of Parliament', component: ParliamentPage },
+      { title: 'Mayor/Chair', component: MayorPage },
+      { title: 'Councilor', component: CouncilorPage },
+      { title: 'VillageHeadman', component: VillageHeadmanPage }
+    ];
   }
 
   ngAfterViewInit() {
@@ -44,29 +54,12 @@ export class HeaderViewComponent {
     });
   }
 
-  selectedType(type) {
-    switch (type) {
-      case "electiondataplatform":
-        location.href = "https://electiondata.io"
-        break;
-      case "president":
-        this.navCtrl.setRoot(PresidentPage)
-        break;
-      case "parliament":
-        this.navCtrl.setRoot(ParliamentPage)
-        break;
-      case "chairperson":
-        this.navCtrl.setRoot(ChairpersonPage)
-        break;
-      case "councilor":
-        this.navCtrl.setRoot(CouncilorPage)
-        break;
-      case "villageheadman":
-        this.navCtrl.setRoot(VillageHeadmanPage)
-        break;
-      default:
-        // code...
-        break;
-    }
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    if (page.title == 'SLOEDP Platform')
+      location.href = "https://electiondata.io"
+    else
+      this.navCtrl.setRoot(page.component);
   }
 }

@@ -25,17 +25,15 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="election-info" padding-top>
+	<div class="election-info" padding-top *ngIf="candidatesEnable()">
 		<ion-grid no-padding>
 			<ion-row>
 				<ion-col text-left class="small">
-					Sum of valid votes obtained for all candidates: {{ result.VotesCandidate }}<br>
+					Total Registered Voters = {{ result.TotalVotes }}<br>
 					Percentage of votes counted: {{ result.VotesPecentage }}<br>
-					Total Registered Votes: {{ result.TotalVotes }}<br>
 					Result Status: {{ result.ResultStatus }}
 				</ion-col>
 				<ion-col text-right class="small">
-					Sum of percentage obtained for all candidates: {{ result.PecentageCandidate }}<br>
 					Total Valid Votes: {{ result.ValidVotes }}<br>
 					Total Invalid Votes: {{ result.InvalidVotes }}
 				</ion-col>

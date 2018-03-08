@@ -110,8 +110,15 @@ export class DataProvider {
             }
           }
           
+          var total_votes = 0;
+          if (vm.results[fields.type][fields.year][fields.region].length > 0)
+          {
+            vm.results[fields.type][fields.year][fields.region].forEach(function(value) {
+              total_votes += value['votes']
+            })
+          }
           callback(null, {
-            ValidVotes: vm.results[fields.type][fields.year]['nation'][0]['votes'],
+            ValidVotes: total_votes,
             Parties: vm.parties_json,
             Candidates: vm.candidates_json,
             Boundaries: vm.results[fields.type][fields.year][fields.region]
