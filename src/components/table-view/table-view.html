@@ -1,6 +1,11 @@
 <!-- Generated template for the TableViewComponent component -->
 <div>
-	<select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)" *ngIf="!isNation"></select2>
+	<ion-grid *ngIf="!isNation">
+		<ion-row>
+			<ion-col col-3>Filter: </ion-col>
+			<ion-col col-9><select2 [value]="Boundary" [data]="Boundaries" (valueChanged)="onSelectChange($event)"></select2></ion-col>
+		</ion-row>
+	</ion-grid>
 
 	<table margin-top>
 		<thead>
@@ -24,6 +29,14 @@
 				<td colspan="4">There are no election datas</td>
 			</tr>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td>Total</td>
+				<td></td>
+				<td>{{ result.ValidVotes | number }}</td>
+				<td>100%</td>
+			</tr>
+		</tfoot>
 	</table>
 	<div class="election-info" padding-top *ngIf="candidatesEnable()">
 		<ion-grid no-padding>
