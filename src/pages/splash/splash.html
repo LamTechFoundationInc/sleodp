@@ -1,0 +1,51 @@
+<!--
+  Generated template for the SplashPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-toolbar color="dark">
+		<ion-title text-uppercase text-center>sloedp</ion-title>
+
+		<ion-buttons end>
+			<button ion-button class="bar-button-menutoggle-md" (click)="gotoRoot()">
+				Elections <ion-icon name="arrow-forward" item-start></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-slides pager>
+
+		<ion-slide>
+			<h4 text-center>Thank you for choosing the SLOEDP Results App!</h4>
+			<div text-center><img src="assets/imgs/logo.png" width="35"></div>
+			<p>The Live and historical Election Results App.</p>
+			<p>Primarily used to visualize Sierra Leone Election results</p>
+		</ion-slide>
+
+		<ion-slide>
+			<ul>
+				<li>Click the "Harmbuger Menu" in the top left corner to "Navigate the various screens of the app"</li>
+				<li>Click the filter (...) located in the top right corner to "filter results by national, district, constituency, ward and polling centre"</li>
+				<li>Click on the <--Year or Year--> links or swipe left or right to view results for that election year</li>
+				<li>Click on MAP button located in the top left below the election year to view results on a map</li>
+			</ul>
+		</ion-slide>
+
+		<ion-slide>
+			<ul>
+				<li>Click the + symbol on the map to zoom into the map</li>
+				<li>Click the - symbol on the map to zoom out of the map</li>
+				<li>Click on Table button located in the top right below the election year to view results in table format</li>
+				<li>Click on a candidate name or photo to view their profile</li>
+				<li>Click on a political party name to view their profile</li>
+			</ul>
+		</ion-slide>
+
+	</ion-slides>
+
+</ion-content>

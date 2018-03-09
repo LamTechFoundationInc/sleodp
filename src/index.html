@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+  <script data-ionic="inject">
+    (function(w){var i=w.Ionic=w.Ionic||{};i.version='3.9.2';i.angular='5.0.3';i.staticDir='build/';})(window);
+  </script>
   <meta charset="UTF-8">
   <title>Sierra Leone Open Election Results</title>
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
@@ -18,15 +21,15 @@
    <!-- enable service worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
   </script>
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/select2.min.js"></script>
+  <link href="assets/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/leaflet.css">
   <link href="build/main.css" rel="stylesheet">

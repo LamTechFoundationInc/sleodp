@@ -82,14 +82,6 @@ export class TableViewComponent {
       this.Candidates = data['Candidates'];
 
       vm.result.TotalVotes = this.year == '2018' ? 3178664 : data['ValidVotes'];
-      vm.result.ValidVotes = data['ValidVotes'];
-      if (this.year == '2018')
-        if (vm.result.TotalVotes == 0)
-          vm.result.VotesPecentage = "0%"
-        else
-          vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
-      else
-        vm.result.VotesPecentage = "100%"
       vm.result.InvalidVotes = 0;
       vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
 
@@ -97,8 +89,17 @@ export class TableViewComponent {
         vm.Boundaries = [];
         vm.total_results = data['Boundaries'];
         vm.Results = data['Boundaries'][0].candidates;
-        if (vm.Results[0]['ValidVotes'] > 0)
-          vm.noWinner = false;
+        vm.result.ValidVotes = data['Boundaries'][0].votes;
+        if (vm.year == '2018')
+          if (vm.result.TotalVotes == 0)
+            vm.result.VotesPecentage = "0%"
+          else {
+            vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+          }
+        else
+          vm.result.VotesPecentage = "100%"
+        if (data['Boundaries'][0].votes > 0) vm.noWinner = false;
+        else vm.noWinner = true;
         for (let row of data['Boundaries']) {
           vm.Boundaries.push(row.name);
         }
@@ -111,6 +112,17 @@ export class TableViewComponent {
     this.total_results.forEach(function(data) {
       if (data.name == selectedValue.value) {
         vm.Results = data.candidates;
+        vm.result.ValidVotes = data.votes;
+        if (vm.year == '2018')
+          if (vm.result.TotalVotes == 0)
+            vm.result.VotesPecentage = "0%"
+          else {
+            vm.result.VotesPecentage = ((vm.result.ValidVotes / vm.result.TotalVotes) * 100).toFixed(2) + '%'
+          }
+        else
+          vm.result.VotesPecentage = "100%"
+        if (data.votes > 0) vm.noWinner = false;
+        else vm.noWinner = true;
         if (vm.Results[0]['ValidVotes'] > 0)
           vm.noWinner = false;
         else

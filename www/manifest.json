@@ -1,7 +1,7 @@
 {
   "name": "Sierra Leone Elections Results",
   "short_name": "SLOEDP Results",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "icons": [{
     "src": "assets/icon/favicon.png",

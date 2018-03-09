@@ -13,7 +13,7 @@
 </header-view>
 
 
-<ion-content padding>
+<ion-content padding class="no-scroll">
 	<div class="" *ngIf="candidate">
 		<ion-grid class="show-core">
 			<ion-row>
@@ -21,7 +21,7 @@
 					<img class="candidate-logo" [src]="sourceUrl(candidate.CandidatePhoto)">
 				</ion-col>
 				<ion-col col-8>
-					<h2>{{ getCandidateName() }}</h2>
+					<h4>{{ getCandidateName() }}</h4>
 					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
 					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
 					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>
@@ -36,7 +36,7 @@
 			</ion-row>
 			<ion-row>
 				<ion-col>
-					<h2>{{ getCandidateName() }}</h2>
+					<h4>{{ getCandidateName() }}</h4>
 					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
 					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
 					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>
@@ -51,7 +51,7 @@
 			</ion-row>
 			<ion-row>
 				<ion-col>
-					<h2>{{ getCandidateName() }}</h2>
+					<h4>{{ getCandidateName() }}</h4>
 					<p><strong>Political Party:</strong> {{ candidate.PoliticalParty }}</p>
 					<p><strong>Election Year:</strong> {{ candidate.ElectionYear }}</p>
 					<p><strong>Body:</strong></p> <div [innerHTML]="candidate.Body"></div>

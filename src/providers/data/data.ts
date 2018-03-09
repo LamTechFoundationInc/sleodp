@@ -109,7 +109,7 @@ export class DataProvider {
               vm.results[fields.type][fields.year][fields.region] = vm.makeResultsByBoundary(vm.results[fields.type][fields.year]['all'], fields);
             }
           }
-          
+
           var total_votes = 0;
           if (vm.results[fields.type][fields.year][fields.region].length > 0)
           {

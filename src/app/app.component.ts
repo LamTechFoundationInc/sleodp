@@ -4,10 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 // import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
+import { SplashPage } from '../pages/splash/splash';
 import { PresidentPage } from '../pages/president/president';
 import { ParliamentPage } from '../pages/parliament/parliament';
 import { MayorPage } from '../pages/mayor/mayor';
 import { CouncilorPage } from '../pages/councilor/councilor';
+import { AboutPage } from '../pages/about/about';
 // import { VillageHeadmanPage } from '../pages/village-headman/village-headman';
 
 @Component({
@@ -16,7 +18,7 @@ import { CouncilorPage } from '../pages/councilor/councilor';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PresidentPage;
+  rootPage: any = SplashPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -30,6 +32,7 @@ export class MyApp {
       { title: 'Member of Parliament', component: ParliamentPage },
       { title: 'Mayor/Chair', component: MayorPage },
       { title: 'Councilor', component: CouncilorPage },
+      { title: 'About this app', component: AboutPage },
       // { title: 'VillageHeadman', component: VillageHeadmanPage }
     ];
 
@@ -41,15 +44,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-  
-      // this.ga.startTrackerWithId('UA-110727945-1')
-      //   .then(() => {
-      //    console.log('Google analytics is ready now');
-      //       this.ga.trackView('test');
-      //    // Tracker is ready
-      //    // You can now track pages or set additional information such as AppVersion or UserId
-      //   })
-      //   .catch(e => console.log('Error starting GoogleAnalytics', e));
 
     });
 
