@@ -6,7 +6,9 @@ zlib = require('zlib'),
 imagemin = require('imagemin'),
 imageminJpegtran = require('imagemin-jpegtran'),
 imageminPngquant = require('imagemin-pngquant'),
+httpsRedirect = require('express-https-redirect'),
 app = express();
+app.use('/', httpsRedirect());
 app.use(cors());
 app.options('*', cors());
 
