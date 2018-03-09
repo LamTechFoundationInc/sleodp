@@ -40,6 +40,7 @@ wget $ppresident/all-president-polling-centre-results-04.json
 #wget -o $fpresident/all-president-polling-centre-results-04.json $ppresident/all-president-polling-centre-results-04.json
 
 #Download Parliamentary results
+cd /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-polling-centre-results-2018
 rm -rf all-parliamentary-polling-centre-results-*.json
 wget $pparliamentary/all-parliamentry-polling-centre-results-01.json
 #wget -o $fparliamentary/all-parliamentary-election-results.json $pparliamentary/all-parliamentary-election-results.json
