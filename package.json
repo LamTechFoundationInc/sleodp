@@ -45,6 +45,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-https-redirect": "^1.0.0",
     "express-static-gzip": "^0.3.2",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
