@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Pages
 import { MyApp } from './app.component';
+import { SplashPageModule } from '../pages/splash/splash.module';
 import { PresidentPageModule } from '../pages/president/president.module';
 import { ParliamentPageModule } from '../pages/parliament/parliament.module';
 import { MayorPageModule } from '../pages/mayor/mayor.module';
@@ -18,6 +19,7 @@ import { CouncilorPageModule } from '../pages/councilor/councilor.module';
 import { VillageHeadmanPageModule } from '../pages/village-headman/village-headman.module';
 import { PartyProfilePageModule } from '../pages/party-profile/party-profile.module';
 import { CandidateProfilePageModule } from '../pages/candidate-profile/candidate-profile.module';
+import { AboutPageModule } from '../pages/about/about.module';
 
 // Components
 import { ComponentsModule } from '../components/components.module'
@@ -36,6 +38,7 @@ import { DataProvider } from '../providers/data/data';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     NgbModule.forRoot(),
+    SplashPageModule,
     PresidentPageModule,
     ParliamentPageModule,
     MayorPageModule,
@@ -43,6 +46,7 @@ import { DataProvider } from '../providers/data/data';
     VillageHeadmanPageModule,
     PartyProfilePageModule,
     CandidateProfilePageModule,
+    AboutPageModule,
     ComponentsModule,
   ],
   bootstrap: [IonicApp],
