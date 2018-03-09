@@ -40,7 +40,8 @@ wget $ppresident/all-president-polling-centre-results-04.json
 #wget -o $fpresident/all-president-polling-centre-results-04.json $ppresident/all-president-polling-centre-results-04.json
 
 #Download Parliamentary results
-#wget -o $fparliamentary/all-parliamentary-polling-centre-results-01.json $pparliamentary/all-parliamentary-polling-centre-results-01.json
+rm -rf all-parliamentary-polling-centre-results-*.json
+wget $pparliamentary/all-parliamentry-polling-centre-results-01.json
 #wget -o $fparliamentary/all-parliamentary-election-results.json $pparliamentary/all-parliamentary-election-results.json
 
 #Download Mayor/Chair results
