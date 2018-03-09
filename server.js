@@ -3,24 +3,91 @@ cors = require('cors'),
 fs = require('fs'),
 async = require('async'),
 zlib = require('zlib'),
-compression = require('compression'),
-gzip = require('connect-gzip'),
+imagemin = require('imagemin'),
+imageminJpegtran = require('imagemin-jpegtran'),
+imageminPngquant = require('imagemin-pngquant'),
 app = express();
 app.use(cors());
 app.options('*', cors());
+
+// imagemin([__dirname + '/www/assets/imgs/*.{jpg,png}'], 'www/assets/imgs', {
+// 	plugins: [
+// 		imageminPngquant({quality: '65-80'})
+// 	]
+// }).then(files => {
+// });
+
+// imagemin([__dirname + '/www/assets/imgs/candidate/*.{jpg,png}'], 'www/assets/imgs/candidate', {
+// 	plugins: [
+// 		imageminPngquant({quality: '65-80'})
+// 	]
+// }).then(files => {
+// });
+
+// imagemin([__dirname + '/www/assets/imgs/party/*.{jpg,png}'], 'www/assets/imgs/party', {
+// 	plugins: [
+// 		imageminPngquant({quality: '65-80'})
+// 	]
+// }).then(files => {
+// });
+
+app.get('*.html', function (req, res, next) {
+	file = fs.readFile(__dirname + '/www' + req.url, 'utf8', function(err, data) {
+		zlib.gzip(data, function(_, file) {
+			res.writeHead(200, {'Content-Type': 'text/html', 'Content-Encoding': 'gzip'});
+			res.end(file);
+		})
+	})
+});
+
+app.get('*.js', function (req, res, next) {
+	file = fs.readFile(__dirname + '/www' + req.url, 'utf8', function(err, data) {
+		zlib.gzip(data, function(_, file) {
+			res.writeHead(200, {'Content-Type': 'text/javascript', 'Content-Encoding': 'gzip'});
+			res.end(file);
+		})
+	})
+});
+
+app.get('*.css', function (req, res, next) {
+	file = fs.readFile(__dirname + '/www' + req.url, 'utf8', function(err, data) {
+		zlib.gzip(data, function(_, file) {
+			res.writeHead(200, {'Content-Type': 'text/css', 'Content-Encoding': 'gzip'});
+			res.end(file);
+		})
+	})
+});
+
+app.get('*.woff2', function (req, res, next) {
+	file = fs.readFile(__dirname + '/www' + req.url, 'utf8', function(err, data) {
+		zlib.gzip(data, function(_, file) {
+			res.writeHead(200, {'Content-Type': 'font', 'Content-Encoding': 'gzip'});
+			res.end(file);
+		})
+	})
+});
+
+// app.get('*.jpg', function(req, res, next) {
+// 	imagemin([__dirname + '/www' + req.url], {
+// 		plugins: [
+// 			imageminJpegtran()
+// 		]
+// 	}).then(files => {
+// 		res.end(files[0].data);
+// 	});
+// })
+
+// app.get('*.png', function(req, res, next) {
+// 	imagemin([__dirname + '/www' + req.url], {
+// 		plugins: [
+// 			imageminPngquant({quality: '65-80'})
+// 		]
+// 	}).then(files => {
+// 		res.end(files[0].data);
+// 	});
+// })
+
 app.use(express.static('www'));
-
-app.use(compression({filter: shouldCompress, level: 9, memLevel: 9}));
-
-function shouldCompress (req, res) {
-  if (req.headers['x-no-compression']) {
-    // don't compress responses with this request header
-    return false
-  }
-
-  // fallback to standard filter function
-  return compression.filter(req, res)
-}
 
 var urls = {
 	polling_centre: "www/assets/resources/polling-centres/",
@@ -37,19 +104,6 @@ var urls = {
 }
 
 var _whole_results = {};
-
-// Only gzip javascript files:
-gzip.staticGzip(__dirname + '/public', { matchType: /javascript/ })
-
-// Only gzip css files:
-gzip.gzip({ matchType: /css/ })
-
-// Set a maxAge in milliseconds for browsers to cache files
-var oneDay = 86400000;
-gzip.staticGzip(__dirname + '/www', { maxAge: oneDay })
-
-// Use maximum compression:
-gzip.gzip({ flags: '--best' })
 
 app.get('/election_results', function(req, res, next) {
 	async.forEachOf(urls, function(url, key, callback) {

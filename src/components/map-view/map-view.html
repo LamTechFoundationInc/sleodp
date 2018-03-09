@@ -43,7 +43,7 @@
 								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
-									<span>{{ candidate.CandidateFullName }}</span>
+									<span [innerHtml]="candidate.CandidateFullName"></span>
 								</a>
 								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
@@ -59,7 +59,7 @@
 								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
-									<span>{{ candidate.CandidateFullName }}</span>
+									<span [innerHtml]="candidate.CandidateFullName"></span>
 								</a>
 								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
@@ -75,7 +75,7 @@
 								<a >
 									<img src="/assets/imgs/avatar.png" padding-left *ngIf="!candidate.CandidatePhoto">
 									<img src="{{ setPhotoUrl(candidate.CandidatePhoto) }}" *ngIf="candidate.CandidatePhoto">
-									<span>{{ candidate.CandidateFullName }}</span>
+									<span [innerHtml]="candidate.CandidateFullName"></span>
 								</a>
 								<span class="votes">{{ candidate.ValidVotes }} <br> {{ candidate.ValidVotesPercentage }}% <i class="fa fa-check-circle" *ngIf="i == 0 && j == 0 && !noWinner"></i></span>
 							</div>
