@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.electiondata.resultspwa" version="0.0.1" xmlns="https://www.w3.org/ns/widgets" xmlns:cdv="https://cordova.apache.org/ns/1.0">
+<widget id="io.electiondata.resultspwa" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>sleodp</name>
     <description>Sierra Leone Open Elections Data Platform Results Mobile App. The app visualizes election results on a map</description>
-    <author email="developer@lamtech.sl" href="https://lamtech.sl">LAM-TECH Consulting Team</author>
+    <author email="developer@lamtech.sl" href="http://lamtech.sl">LAM-TECH Consulting Team</author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-intent href="https://*/*" />
+    <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
