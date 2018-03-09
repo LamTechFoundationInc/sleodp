@@ -33,6 +33,8 @@
     "@types/select2": "^4.0.31",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "connect-gzip": "^0.1.6",
     "cordova-android": "7.0.0",
     "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^2.0.1",
@@ -53,11 +55,11 @@
     "leaflet": "^1.3.1",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
+    "zlib": "^1.0.5",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
-    "mapbox-gl": "^0.44.0",
     "typescript": "^2.4.2"
   },
   "description": "Sierra Leone Open Elections Data Platform Results Mobile App. The app visualizes election results on a map",

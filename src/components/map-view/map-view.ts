@@ -156,7 +156,9 @@ export class MapViewComponent {
 			vm.result.ResultStatus = this.year == '2018' ? "Provisional" : "Final"
 			
 			vm.result.ElectionResults = [];
+			vm.boundary_json = {};
 			if (vm.result.Boundaries.length > 0) {
+
 				vm.boundary_json = vm.makeBoundaryJson(vm.result.Boundaries)
 				if (vm.result.Boundaries[0].candidates[0]['ValidVotes'] > 0) {
 					vm.noWinner = false;

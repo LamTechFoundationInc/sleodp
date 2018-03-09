@@ -37,19 +37,29 @@ export class ContentViewComponent {
   mapDisabled: boolean;
 
   constructor(public dataService: DataProvider, public events: Events) {
+    this.mapMode = true;
     events.subscribe('boundary:select', (boundary) => {
       this.boundary = boundary;
     });
+
+    events.subscribe('mapMode', (mapMode) => {
+      this.mapMode = mapMode;
+    })
   }
 
   ngAfterViewInit() {
   }
 
   setMapMode(mode) {
-    if (mode == true && this.mapDisabled) return;
+    this.mapMode = mode;
+    this.mapDisabled = false;
+    if (this.region == 'constituency' || this.region == 'ward' || this.region == 'polling_centre') this.mapDisabled = true;
+    if (this.mapDisabled) this.mapMode = false
 
-  	this.mapMode = mode;
-    if (this.mapMode && !this.mapDisabled) {
+    if (this.mapMode == true && this.mapDisabled) return;
+
+    this.events.publish('mapMode', this.mapMode);
+    if (this.mapMode) {
       setTimeout((...args: any[]) => {
         if (this.mapView)
           this.setMapInit();
@@ -69,10 +79,8 @@ export class ContentViewComponent {
 
   setContentView() {
     setTimeout((...args: any[]) => {
-      this.mapDisabled = false;
-      if (this.region == 'constituency' || this.region == 'ward') this.mapDisabled = true;
       this.setGranularityList();
-      this.setMapMode(!this.mapDisabled);
+      this.setMapMode(this.mapMode);
       this.setResultRegion(this.region);
     }, 10)
   }

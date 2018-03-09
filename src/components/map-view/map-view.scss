@@ -29,8 +29,6 @@ map-view {
 				ion-col {
 					padding: 0;
 					.card {
-						border: 2px solid #000;
-						border-right: none;
 						height: 20px;
 					}
 					.img-wrapper {
@@ -41,6 +39,9 @@ map-view {
 							font-size: 1rem;
 							line-height: 16px;
 							color: #fff;
+							span {
+								font-weight: bold;
+							}
 						}
 						span {
 							position: absolute;
@@ -49,10 +50,11 @@ map-view {
 							padding-left: 85px;
 							width: 100%;
 							text-align: left;
+							display: flex;
 							text-shadow: 2px 0px 3px rgba(0,0,0,0.5);
 						}
 						span.votes {
-							bottom: 40px;
+							bottom: 30px;
 						}
 						img {
 							width: 80px;

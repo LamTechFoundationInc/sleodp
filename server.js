@@ -2,14 +2,25 @@ var express = require('express'),
 cors = require('cors'),
 fs = require('fs'),
 async = require('async'),
-bodyParser = require('body-parser'),
+zlib = require('zlib'),
+compression = require('compression'),
+gzip = require('connect-gzip'),
 app = express();
 app.use(cors());
 app.options('*', cors());
 app.use(express.static('www'));
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(compression({filter: shouldCompress, level: 9, memLevel: 9}));
+
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
 
 var urls = {
 	polling_centre: "www/assets/resources/polling-centres/",
@@ -26,6 +37,19 @@ var urls = {
 }
 
 var _whole_results = {};
+
+// Only gzip javascript files:
+gzip.staticGzip(__dirname + '/public', { matchType: /javascript/ })
+
+// Only gzip css files:
+gzip.gzip({ matchType: /css/ })
+
+// Set a maxAge in milliseconds for browsers to cache files
+var oneDay = 86400000;
+gzip.staticGzip(__dirname + '/www', { maxAge: oneDay })
+
+// Use maximum compression:
+gzip.gzip({ flags: '--best' })
 
 app.get('/election_results', function(req, res, next) {
 	async.forEachOf(urls, function(url, key, callback) {
@@ -47,7 +71,11 @@ app.get('/election_results', function(req, res, next) {
 			})
 		})
 	}, function(err) {
-		res.send(_whole_results)
+		res.writeHead(200, {'Content-Type': 'application/json', 'Content-Encoding': 'gzip'});
+		var buf = new Buffer(JSON.stringify(_whole_results), 'utf-8');
+		zlib.gzip(buf, function(_, result) {
+			res.end(result);
+		})
 	})
 })
 
