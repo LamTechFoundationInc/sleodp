@@ -28,21 +28,23 @@ fpollingcentre=/Users/tamba.s.lamin/DEV/sloedp/src/assets/resources/polling-cent
 ppollingcentre=
 
 #Download Presidential results
-cd /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018
-rm -rf all-president-polling-centre-results-*.json
+rm -rf /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-president-polling-centre-results-2018/all-president-polling-centre-results-*.json
+rm -rf /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/all-president-polling-centre-results-*.json
+cd /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-president-polling-centre-results-2018
 wget $ppresident/all-president-polling-centre-results-01.json
 wget $ppresident/all-president-polling-centre-results-02.json
 wget $ppresident/all-president-polling-centre-results-03.json
 wget $ppresident/all-president-polling-centre-results-04.json
-cp all-president-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-president-polling-centre-results-2018/
-cp all-president-polling-centre-results-02.json /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-president-polling-centre-results-2018/
-cp all-president-polling-centre-results-03.json /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-president-polling-centre-results-2018/
+cp all-president-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
+cp all-president-polling-centre-results-02.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
+cp all-president-polling-centre-results-03.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
 
 #Download Parliamentary results
-cd /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-polling-centre-results-2018
-rm -rf all-parliamentry-polling-centre-results-*.json
+rm -rf /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-parliamentary-polling-centre-results-2018/all-parliamentry-polling-centre-results-*.json
+rm -rf /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-polling-centre-results-2018/all-parliamentry-polling-centre-results-*.json
+cd /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-parliamentary-polling-centre-results-2018
 wget $pparliamentary/all-parliamentry-polling-centre-results-01.json
-cp all-parliamentry-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-parliamentary-polling-centre-results-2018/
+cp all-parliamentry-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-polling-centre-results-2018/
 
 #Download Mayor/Chair results
 #wget -o $fmayorchairperson/all-mayor-chair-polling-centre-results-01.json $pmayorchairperson/all-mayor-chair-polling-centre-results-01.json
