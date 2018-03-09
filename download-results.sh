@@ -35,7 +35,6 @@ wget $ppresident/all-president-polling-centre-results-01.json
 wget $ppresident/all-president-polling-centre-results-02.json
 wget $ppresident/all-president-polling-centre-results-03.json
 wget $ppresident/all-president-polling-centre-results-04.json
-<<<<<<< HEAD
 cp all-president-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
 cp all-president-polling-centre-results-02.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
 cp all-president-polling-centre-results-03.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-president-polling-centre-results-2018/
@@ -46,16 +45,6 @@ rm -rf /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-poll
 cd /Users/tamba.s.lamin/DEV/sloedp/www/assets/results/all-parliamentary-polling-centre-results-2018
 wget $pparliamentary/all-parliamentry-polling-centre-results-01.json
 cp all-parliamentry-polling-centre-results-01.json /Users/tamba.s.lamin/DEV/sloedp/src/assets/results/all-parliamentary-polling-centre-results-2018/
-=======
-#wget -o $fpresident/all-president-polling-centre-results-01.json $ppresident/all-president-polling-centre-results-01.json
-#wget -o $fpresident/all-president-polling-centre-results-02.json $ppresident/all-president-polling-centre-results-02.json
-#wget -o $fpresident/all-president-polling-centre-results-03.json $ppresident/all-president-polling-centre-results-03.json
-#wget -o $fpresident/all-president-polling-centre-results-04.json $ppresident/all-president-polling-centre-results-04.json
-
-#Download Parliamentary results
-#wget -o $fparliamentary/all-parliamentary-polling-centre-results-01.json $pparliamentary/all-parliamentary-polling-centre-results-01.json
-#wget -o $fparliamentary/all-parliamentary-election-results.json $pparliamentary/all-parliamentary-election-results.json
->>>>>>> 63c4459f149d815a07a6fe5a349e87db0fb9ddce
 
 #Download Mayor/Chair results
 #wget -o $fmayorchairperson/all-mayor-chair-polling-centre-results-01.json $pmayorchairperson/all-mayor-chair-polling-centre-results-01.json
