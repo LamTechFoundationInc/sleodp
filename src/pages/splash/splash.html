@@ -6,11 +6,18 @@
 -->
 <ion-header>
 	<ion-toolbar color="dark">
-		<ion-title text-uppercase text-center>sloedp</ion-title>
+
+		<ion-buttons start>
+			<button ion-button class="bar-button-menutoggle-md" (click)="gotoRoot()">
+				Skip <ion-icon name="arrow-back" item-start></ion-icon>
+			</button>
+		</ion-buttons>
+
+		<ion-title text-uppercase text-center>SLOEDP Results</ion-title>
 
 		<ion-buttons end>
 			<button ion-button class="bar-button-menutoggle-md" (click)="gotoRoot()">
-				Elections <ion-icon name="arrow-forward" item-start></ion-icon>
+				Start using App <ion-icon name="arrow-forward" item-start></ion-icon>
 			</button>
 		</ion-buttons>
 	</ion-toolbar>
